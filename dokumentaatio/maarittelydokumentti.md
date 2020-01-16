@@ -1,6 +1,6 @@
 # Määrittelydokumentti
 
-Vertailen työssäni verkon reitinhakualgoritmeja. Lähtökohtaisesti vertailen Djikstran algoritmia A* algoritmiin, ja katson miten saisin parhaiten toteutettua A* tarvitsemat heuristiikat. Vertailen sekä tehokkuutta että kykyä valita optimaalinen reitti.
+Vertailen työssäni verkon reitinhakualgoritmeja. Lähtökohtaisesti vertailen Djikstran algoritmia A* algoritmiin, ja katson miten saisin parhaiten toteutettua A* tarvitsemat heuristiikat. Vertailen sekä tehokkuutta että kykyä valita optimaalinen reitti. Toteutan projektin Javalla, ja käytän Gradlea buildin hallinnassa.
 
 Haluan etsiä työssäni parannettua reitinhalualgoritmia julkisen liikenteen verkkoon. Painotuksina käytän perilläoloaikaa matka-ajat ja odotusajat yhteenlaskettuina. Valitsin Djikstran algoritmin ja A* :n koska Djikstran algoritmi on muuten sama kuin A* ilman heuristiikkaa, ja haluan testata voiko joikkoliikenteen reitinetsinnässä optimoida reitinhakua heuristiikoilla ja kuinka paljon.
 
