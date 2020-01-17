@@ -8,8 +8,12 @@ Syötteinä ohjelma saa joukkoliikenteen reittiaikataulutietoja. //update
     Mitä algoritmeja ja tietorakenteita toteutat työssäsi
     Mitä ongelmaa ratkaiset ja miksi valitsit kyseiset algoritmit/tietorakenteet
     Mitä syötteitä ohjelma saa ja miten näitä käytetään
+Ohjelma saa syötteeksi digitransit.fi:n tarjoamaa tietoa joukkoliikenteen reiteistä. Tarkoitus olisi tehdä sovellus joka etsii reittejä pysäkiltä pysäkille. Aluksi sovellus etsisi reitin niin, että vaihdot tapahtuvat pysäkiltä pysäkille ja sovellusta olisi tarkoitus laajentaa niin että se etsisi myös vaihtoja kävelyetäisyyden päässä olevista pysäkeistä.
 
+Djikstran aikavaativuus on O(n+mlog n), jossa n on kaarien määrä ja n solmujen määrä. Oletan että painotetussa verkossa A* aikavaativuus on sama. Kokeilen voinko A* pienentää tuota jotenkin.
+Djikstran tilavaativuus on O(n^2), A* on varmaankin sama, koska tallentaa samanlaista tietoa.
 
-    Tavoitteena olevat aika- ja tilavaativuudet (m.m. O-analyysit)
-    Lähteet
+LÄhteet:
+Tirakirja, Antti Laaksonen, 
 
+http://igraph.wikidot.com/algorithm-space-time-complexity
