@@ -8,5 +8,6 @@ Reittitietojen ulos saaminen oli hankalampaa. Pysäkinvälit tulivat ok, mutta a
 
 
 21.1 1h dokumentaation lukemista
+22.1 5h Digitransitin rajapinnan tutkimista
 23.1 3h hakua apista
 24.1 5h Koodin kirjoitusta

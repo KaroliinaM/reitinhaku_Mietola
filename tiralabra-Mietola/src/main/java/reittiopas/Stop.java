@@ -64,5 +64,9 @@ public class Stop {
     public void addConnection(Connection connection) {
         this.connections.add(connection);
     }
+    
+    public List<Connection> getConnections() {
+        return this.connections;
+    }
 
 }
