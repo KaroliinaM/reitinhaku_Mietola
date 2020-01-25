@@ -1,4 +1,4 @@
-package reittiopas;
+package data;
 
 
 import java.util.*;

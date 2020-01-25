@@ -5,41 +5,44 @@
  */
 package network;
 
+import java.util.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import data.Stop;
 
 /**
  *
  * @author k
  */
 public class MapdataTest {
-    
+    Mapdata mapdata;
     public MapdataTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
     @Before
     public void setUp() {
+      mapdata=new Mapdata();
     }
-    
-    @After
-    public void tearDown() {
-    }
+
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void hello() {}
+     public void addStopsTest() {
+         List<Stop> stops=new ArrayList<>();
+         Stop stop=new Stop();
+         stop.setGtfsId("123456");
+         stop.setName("Pasila");
+         stops.add(stop);
+         mapdata.setStops(stops);
+         assertEquals(mapdata.getStop("123456").getName(), "Pasila");
+         
+         
+     }
 }
