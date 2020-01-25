@@ -1,3 +1,7 @@
+package reittiopas;
+
+import java.util.*;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +19,7 @@ public class Stop {
     private double lat;
     private double lon;
     private String zoneId;
+    List<Connection> connections=new ArrayList<>();
 
     public String getGtfsId() {
         return gtfsId;
@@ -54,6 +59,10 @@ public class Stop {
 
     public void setZoneId(String zoneId) {
         this.zoneId = zoneId;
+    }
+    
+    public void addConnection(Connection connection) {
+        this.connections.add(connection);
     }
 
 }
