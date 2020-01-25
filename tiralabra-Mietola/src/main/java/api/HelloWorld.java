@@ -1,3 +1,5 @@
+package api;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +10,7 @@
  *
  * @author k
  */
+import reittiopas.Stopdata;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -58,14 +61,8 @@ public class HelloWorld {
             }
            // String stops=builder.toString().substring(builder.toString().indexOf("["), builder.toString().indexOf("]"));
             JsonObject jsonObject = new JsonParser().parse(builder.toString()).getAsJsonObject();
-            System.out.println(jsonObject.toString());
-            Data data=new Data();
             Stopdata stopdata=new Stopdata();
             Gson gson = new Gson();
-            String testi= "{\"gtfsId\":\"HSL:6150219\",\"name\":\"Louhosmäki\"}";
-            String we="{\"data\":{\"stops\":[{\"gtfsId\":\"HSL:6150219\",\"name\":\"Louhosmäki\",\"lat\":60.202282,\"lon\":24.358088,\"zoneId\":\"D\"},{\"gtfsId\":\"HSL:6150218\",\"name\":\"Solvik\",\"lat\":60.201517,\"lon\":24.375928,\"zoneId\":\"D\"},{\"gtfsId\":\"HSL:6150217\",\"name\":\"Evitskog\",\"lat\":60.20141,\"lon\":24.342,\"zoneId\":\"D\"}]}}";
-            
-             
             stopdata= gson.fromJson(builder.toString(), 
                             Stopdata.class); 
             
