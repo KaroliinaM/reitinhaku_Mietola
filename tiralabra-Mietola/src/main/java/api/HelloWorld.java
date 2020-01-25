@@ -10,7 +10,7 @@ package api;
  *
  * @author k
  */
-import reittiopas.Stopdata;
+import data.Stopdata;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

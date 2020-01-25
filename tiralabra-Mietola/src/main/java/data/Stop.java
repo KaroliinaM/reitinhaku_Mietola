@@ -1,4 +1,4 @@
-package reittiopas;
+package data;
 
 import java.util.*;
 
@@ -20,6 +20,7 @@ public class Stop {
     private double lon;
     private String zoneId;
     List<Connection> connections=new ArrayList<>();
+    private int timeEstimate;
 
     public String getGtfsId() {
         return gtfsId;
@@ -67,6 +68,13 @@ public class Stop {
     
     public List<Connection> getConnections() {
         return this.connections;
+    }
+    
+    public void setEstimate(int estimate) {
+        this.timeEstimate=estimate;
+    }
+    public int getEstimate() {
+        return this.timeEstimate;
     }
 
 }

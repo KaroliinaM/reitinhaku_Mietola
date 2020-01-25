@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reittiopas;
+package data;
 
 /**
  *
  * @author k
  */
-public class Connection {
+public class Connection  {
     private String departureStop;
     private String targetStop;
     private int duration;
