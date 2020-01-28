@@ -10,7 +10,11 @@ loin ohjelmalle joitain perusluokkia ja testejä niille. Huitaisin Djikstran äk
 
 
 21.1 1h dokumentaation lukemista
+
 22.1 5h Digitransitin rajapinnan tutkimista
+
 23.1 3h hakua apista
+
 24.1 5h Koodin kirjoitusta ja graphql-hakuja
+
 25.1 3h koodausta
