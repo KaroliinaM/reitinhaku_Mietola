@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author k
  */
-public class Stop {
+public class Stop implements Comparable<Stop>{
 
     private String gtfsId;
     private String name;
@@ -75,6 +75,11 @@ public class Stop {
     }
     public int getEstimate() {
         return this.timeEstimate;
+    }
+
+    @Override
+    public int compareTo(Stop t) {
+        return this.getEstimate()-t.getEstimate();
     }
 
 }

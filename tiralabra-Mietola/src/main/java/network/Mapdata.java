@@ -22,6 +22,7 @@ public class Mapdata {
     */
     public void setStops(List<Stop> stopData) {
         for(Stop s: stopData) {
+            s.setEstimate(1999999999);
             stops.put(s.getGtfsId(), s);
         }
     }
