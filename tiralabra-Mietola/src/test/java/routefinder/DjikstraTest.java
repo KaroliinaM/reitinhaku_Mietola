@@ -23,7 +23,7 @@ public class DjikstraTest {
     DjikstraRoutefinder finder;
     Connection conn1= new Connection("stop1", "stop2", 20);
     Connection conn2= new Connection("stop1", "stop3", 21);
-    Connection conn3= new Connection("stop1", "stop4", 10);
+    Connection conn3= new Connection("stop1", "stop4", 50);
     Connection conn4= new Connection("stop4", "stop3", 15);
     Connection conn5= new Connection("stop2", "stop6", 10);
     Connection conn6= new Connection("stop6", "stop5", 7);
@@ -33,14 +33,17 @@ public class DjikstraTest {
     Connection conn10= new Connection("stop8", "stop6", 6);
     Connection conn11= new Connection("stop7", "stop4", 3);
     Connection conn12= new Connection("stop3", "stop5", 17);
-    Stop stop1=createStop("stop1", "stop1", Arrays.asList(conn1, conn2, conn3));
+    Connection conn13= new Connection("stop8", "stop9", 2);
+    Connection conn14= new Connection("stop1", "stop9", 50);
+    Stop stop1=createStop("stop1", "stop1", Arrays.asList(conn1, conn2, conn3, conn14));
     Stop stop2=createStop("stop2", "stop2", Arrays.asList(conn5));
     Stop stop3=createStop("stop3", "stop3", Arrays.asList(conn12));
     Stop stop4=createStop("stop4", "stop4", Arrays.asList(conn4));
     Stop stop5=createStop("stop5", "stop5", Arrays.asList(conn7, conn8, conn9));
     Stop stop6=createStop("stop6", "stop6", Arrays.asList(conn6));
     Stop stop7=createStop("stop7", "stop7", Arrays.asList(conn11));
-    Stop stop8=createStop("stop8", "stop8", Arrays.asList(conn10));
+    Stop stop8=createStop("stop8", "stop8", Arrays.asList(conn10, conn13));
+    Stop stop9=createStop("stop9", "stop9", Arrays.asList());
 
     public DjikstraTest() {
     }
@@ -56,6 +59,7 @@ public class DjikstraTest {
         Mockito.when(mapdata.getStop("stop6")).thenReturn(stop6);
         Mockito.when(mapdata.getStop("stop7")).thenReturn(stop7);
         Mockito.when(mapdata.getStop("stop8")).thenReturn(stop8);
+        Mockito.when(mapdata.getStop("stop9")).thenReturn(stop9);
         finder=new DjikstraRoutefinder();
         finder.setMapdata(mapdata);
     }
@@ -70,12 +74,31 @@ public class DjikstraTest {
      @Test
      public void testRoute() {
          finder.search("stop1", "stop7");
+         //45
+     }
+     @Test
+     public void testRoute2() {
+         finder.search("stop5", "stop6");
+         //13
+     }
+     
+     @Test
+     public void testRoute3() {
+         finder.search("stop1", "stop9");
+         //48
+     }
+          
+     @Test
+     public void testRoute4() {
+         finder.search("stop1", "stop4");
+         //48
      }
     
     public Stop createStop(String gtfsId, String name, List<Connection> connections) {
         Stop stop=new Stop();
         stop.setGtfsId(gtfsId);
         stop.setName(name);
+        stop.setEstimate(1999999999);
         connections.stream().forEach((c) -> {
             stop.addConnection(c);
         });
