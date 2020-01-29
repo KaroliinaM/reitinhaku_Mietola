@@ -6,6 +6,7 @@
 package routefinder;
 
 import data.Connection;
+import data.Route;
 import data.Stop;
 import java.util.*;
 import network.Mapdata;
@@ -18,6 +19,7 @@ public class DjikstraRoutefinder {
     PriorityQueue<Stop> queue=new PriorityQueue();
     HashSet<String> done=new HashSet<>();
     Mapdata mapdata;
+    private Route route=new Route();
     
     public void setMapdata(Mapdata mapdata) {
         this.mapdata=mapdata;
@@ -41,15 +43,24 @@ public class DjikstraRoutefinder {
                 Stop t=mapdata.getStop(e.getTargetStop());
                 int currentDistance=t.getEstimate();
                 int newDistance=s.getEstimate()+e.getDuration();
-                
                 if(newDistance<currentDistance) {
                     t.setEstimate(newDistance);
+                    t.setPrevious(e);
                     queue.add(t);
                 }
             }
             
         }
+        Stop stop=mapdata.getStop(goal);
+        while(!stop.getGtfsId().equals(start)) {
+            Connection c=stop.getPrevious();
+            route.addConnection(c);
+            route.addTime(c.getDuration());
+            stop=mapdata.getStop(c.getDepartureStop());
+        }
         System.out.println("tulos");
+        System.out.println(route);
+        System.out.println(route.getTime());
         System.out.println(mapdata.getStop(goal).getEstimate());
     }
 }

@@ -21,6 +21,7 @@ public class Stop implements Comparable<Stop>{
     private String zoneId;
     List<Connection> connections=new ArrayList<>();
     private int timeEstimate;
+    private Connection previous;
 
     public String getGtfsId() {
         return gtfsId;
@@ -75,6 +76,14 @@ public class Stop implements Comparable<Stop>{
     }
     public int getEstimate() {
         return this.timeEstimate;
+    }
+    
+    public void setPrevious(Connection c) {
+        previous=c;
+    }
+    
+    public Connection getPrevious() {
+        return previous;
     }
 
     @Override
