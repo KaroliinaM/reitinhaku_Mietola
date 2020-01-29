@@ -39,8 +39,9 @@ public class DjikstraRoutefinder {
             List<Connection> edges=s.getConnections();
             for(Connection e: edges) {
                 Stop t=mapdata.getStop(e.getTargetStop());
-                int currentDistance=e.getDuration();
+                int currentDistance=t.getEstimate();
                 int newDistance=s.getEstimate()+e.getDuration();
+                
                 if(newDistance<currentDistance) {
                     t.setEstimate(newDistance);
                     queue.add(t);
@@ -48,5 +49,7 @@ public class DjikstraRoutefinder {
             }
             
         }
+        System.out.println("tulos");
+        System.out.println(mapdata.getStop(goal).getEstimate());
     }
 }
