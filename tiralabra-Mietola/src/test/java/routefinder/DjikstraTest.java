@@ -6,6 +6,7 @@
 package routefinder;
 
 import data.Connection;
+import data.Route;
 import data.Stop;
 import java.util.*;
 import network.Mapdata;
@@ -73,24 +74,28 @@ public class DjikstraTest {
     //
      @Test
      public void testRoute() {
-         finder.search("stop1", "stop7");
-         //45
+         Route r=finder.search("stop1", "stop7");
+         assertEquals(r.getTime(), 45);
+         
      }
      @Test
      public void testRoute2() {
-         finder.search("stop5", "stop6");
+         Route r=finder.search("stop5", "stop6");
+         assertEquals(r.getTime(), 13);
          //13
      }
      
      @Test
      public void testRoute3() {
-         finder.search("stop1", "stop9");
+         Route r=finder.search("stop1", "stop9");
+         assertEquals(r.getTime(), 48);
          //48
      }
           
      @Test
      public void testRoute4() {
-         finder.search("stop1", "stop4");
+         Route r=finder.search("stop1", "stop4");
+         assertEquals(r.getTime(), 48);
          //48
      }
     
