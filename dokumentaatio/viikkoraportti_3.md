@@ -4,5 +4,9 @@ Jätin datan haun hetkeksi aikaa hyllylle, palaan siihen vielä myöhemmin täll
 
 Testejä tehdessäni huomasin ettei algoritmi toimi, ylläri. En ollut tajunnut alustaa solmujen arviotietoja mockissa, senkään jälkeen ei vielä toiminut. Kun löysin kirjoitusvirheen ja korjasin sen, niin alkoi pelittämään. Tein pari testiä, näyttäisi tulevan oikeita tuloksia. Voisi ehkä mietti' monimutkaisempia testejä, koska sit kun alan kirjoittaa noita tietorakenteita auki, on hyvä tietää jos jokin ei toimi. Seuraavaksi lähden muokkaamaan sitä mitä tuo palauttaa, tällä hekellä tulee pelkkä matka-arvio. Voisin tehdä reitille oman olionsa.
 
+Tein oman olion reitille, tällä hetkellä siihen tallennetaan reitti ja reitin läpikäuýntiin kuluva aika. mietin ohjelman olioiden refaktorointia, mutta se voisi odottaa siihen kun saan oikeaa dataa matkojen kestoista.
 
 28.1 testien kirjoittamista
+29.1 4h testejä ja djikstran hiomista
+
+

@@ -26,11 +26,12 @@ public class DjikstraRoutefinder {
     }
     
     /**
-     * The Djikstra search algorithm
+      * The Djikstra search algorithm
      * @param start the starting point id
      * @param goal the target point id
+     * @return Route object
      */
-    public void search(String start, String goal) {
+    public Route search(String start, String goal) {
         Stop beginning = mapdata.getStop(start);
         beginning.setEstimate(0);
         queue.add(beginning);
@@ -62,5 +63,6 @@ public class DjikstraRoutefinder {
         System.out.println(route);
         System.out.println(route.getTime());
         System.out.println(mapdata.getStop(goal).getEstimate());
+        return route;
     }
 }
