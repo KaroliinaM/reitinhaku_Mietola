@@ -10,10 +10,11 @@ Selvitin lisää sitä, miten hakea dataa rajapinnasta. Reitit tulivat vaivatta,
 
 konffasin myös checkstylen, lähti lopulta toimimaan. PÄivittelen vähän määrittelydokumenttia kans
 
-Meni hetki checkstylen virheiden korjauksessa. Pitänee konffata sitä uusiksi jossain välissä, nyt nappasin konffin aika suoraan löytämästäni esimerkistä. 
+Meni hetki checkstylen virheiden korjauksessa. Pitänee konffata sitä uusiksi jossain välissä, nyt nappasin konffin aika suoraan löytämästäni esimerkistä. lopuksi kirjoittelin vielä lisää testejä. Buildi menee läpi, ohjelman käynnistäessä se lähtee ajamaan läpi hakua apista, kannattaa keskeyttää se. 
 
 28.1 2h testien kirjoittamista
 29.1 4h testejä ja djikstran hiomista
 30.1 4h api kuvioiden selvittelyä
+31.1 5h apia, checkstyleä, testejä ym säätöä
 
 
