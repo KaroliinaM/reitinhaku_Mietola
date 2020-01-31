@@ -8,8 +8,12 @@ Tein oman olion reitille, tällä hetkellä siihen tallennetaan reitti ja reitin
 
 Selvitin lisää sitä, miten hakea dataa rajapinnasta. Reitit tulivat vaivatta, mutta jos niihin hakee aikatauludataa samalla, rajapintakutsu kaatuu. kokeilin sellaista viritelmää että haen reittidatan ja teehn aikataulukutsun joka reitille erikseen. n. 5 ja puoli sataa reittiä, niiden kutsuminen kesti melkein 10 minuuttia. Voisin tehdä niin että haen aikataulut kerralla, talletan tiedostoon ja käytän tiedostoa, selviää vähemmillä kahvitauoilla. Näin mä sen varmaan teen :)
 
+konffasin myös checkstylen, lähti lopulta toimimaan. PÄivittelen vähän määrittelydokumenttia kans
+
+Meni hetki checkstylen virheiden korjauksessa. Pitänee konffata sitä uusiksi jossain välissä, nyt nappasin konffin aika suoraan löytämästäni esimerkistä. 
+
 28.1 2h testien kirjoittamista
 29.1 4h testejä ja djikstran hiomista
-30.1 4h api kuvioiden selvitelyä
+30.1 4h api kuvioiden selvittelyä
 
 

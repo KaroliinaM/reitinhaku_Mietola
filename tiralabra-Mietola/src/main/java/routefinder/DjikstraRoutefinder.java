@@ -5,10 +5,10 @@
  */
 package routefinder;
 
+import java.util.*;
 import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
-import java.util.*;
 import network.Mapdata;
 
 /**
@@ -16,17 +16,19 @@ import network.Mapdata;
  * @author k
  */
 public class DjikstraRoutefinder {
-    PriorityQueue<Stop> queue=new PriorityQueue();
-    HashSet<String> done=new HashSet<>();
+
+    PriorityQueue<Stop> queue = new PriorityQueue();
+    HashSet<String> done = new HashSet<>();
     Mapdata mapdata;
-    private OptimalRoute route=new OptimalRoute();
-    
+    private OptimalRoute route = new OptimalRoute();
+
     public void setMapdata(Mapdata mapdata) {
-        this.mapdata=mapdata;
+        this.mapdata = mapdata;
     }
-    
+
     /**
-      * The Djikstra search algorithm
+     * The Djikstra search algorithm.
+     *
      * @param start the starting point id
      * @param goal the target point id
      * @return Route object
@@ -35,29 +37,31 @@ public class DjikstraRoutefinder {
         Stop beginning = mapdata.getStop(start);
         beginning.setEstimate(0);
         queue.add(beginning);
-        while(!queue.isEmpty()) {
-            Stop s=queue.poll();
-            if(done.contains(s.getGtfsId())) continue;
+        while (!queue.isEmpty()) {
+            Stop s = queue.poll();
+            if (done.contains(s.getGtfsId())) {
+                continue;
+            }
             done.add(s.getGtfsId());
-            List<Connection> edges=s.getConnections();
-            for(Connection e: edges) {
-                Stop t=mapdata.getStop(e.getTargetStop());
-                int currentDistance=t.getEstimate();
-                int newDistance=s.getEstimate()+e.getDuration();
-                if(newDistance<currentDistance) {
+            List<Connection> edges = s.getConnections();
+            for (Connection e : edges) {
+                Stop t = mapdata.getStop(e.getTargetStop());
+                int currentDistance = t.getEstimate();
+                int newDistance = s.getEstimate() + e.getDuration();
+                if (newDistance < currentDistance) {
                     t.setEstimate(newDistance);
                     t.setPrevious(e);
                     queue.add(t);
                 }
             }
-            
+
         }
-        Stop stop=mapdata.getStop(goal);
-        while(!stop.getGtfsId().equals(start)) {
-            Connection c=stop.getPrevious();
+        Stop stop = mapdata.getStop(goal);
+        while (!stop.getGtfsId().equals(start)) {
+            Connection c = stop.getPrevious();
             route.addConnection(c);
             route.addTime(c.getDuration());
-            stop=mapdata.getStop(c.getDepartureStop());
+            stop = mapdata.getStop(c.getDepartureStop());
         }
         System.out.println("tulos");
         System.out.println(route);
