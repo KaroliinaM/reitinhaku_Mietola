@@ -6,7 +6,7 @@
 package routefinder;
 
 import data.Connection;
-import data.Route;
+import data.OptimalRoute;
 import data.Stop;
 import java.util.*;
 import network.Mapdata;
@@ -19,7 +19,7 @@ public class DjikstraRoutefinder {
     PriorityQueue<Stop> queue=new PriorityQueue();
     HashSet<String> done=new HashSet<>();
     Mapdata mapdata;
-    private Route route=new Route();
+    private OptimalRoute route=new OptimalRoute();
     
     public void setMapdata(Mapdata mapdata) {
         this.mapdata=mapdata;
@@ -31,7 +31,7 @@ public class DjikstraRoutefinder {
      * @param goal the target point id
      * @return Route object
      */
-    public Route search(String start, String goal) {
+    public OptimalRoute search(String start, String goal) {
         Stop beginning = mapdata.getStop(start);
         beginning.setEstimate(0);
         queue.add(beginning);

@@ -1,6 +1,5 @@
 package data;
 
-
 import java.util.*;
 
 /*
@@ -15,6 +14,8 @@ import java.util.*;
 public class Data {
 
     private List<Stop> stops = null;
+    private List<Route> routes = null;
+    private Route route;
 
     public List<Stop> getStops() {
         return stops;
@@ -24,14 +25,28 @@ public class Data {
         this.stops = stops;
     }
 
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
 //    Stops stops;
     /**
-     * public Data(Stops stops) { this.stops=stops;
-    }*
+     * public Data(Stops stops) { this.stops=stops; }*
      */
 }
 /**
  * class Stops { List<Stop> stops; public Stops(List<Stop> stops) {
- * this.stops=stops; }    
-}*
+ * this.stops=stops; } }*
  */
