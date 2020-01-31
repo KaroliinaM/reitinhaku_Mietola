@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.12">
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/ConnectionTest.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/OptimalRouteTest.java">
+<error line="14" severity="warning" message="Wrong order for &apos;org.junit.Assert.assertEquals&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/StopTest.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/network/MapdataTest.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/network/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/routefinder/DjikstraTest.java">
+<error line="15" severity="warning" message="Wrong order for &apos;data.Connection&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/routefinder/package-info.java">
+</file>
+</checkstyle>

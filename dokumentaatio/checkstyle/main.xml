@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.12">
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/ExecuteQuery.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/HelloWorld.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Connection.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Data.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/OptimalRoute.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Route.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Stop.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Stopdata.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Stoptime.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Trip.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/network/Mapdata.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/network/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/DjikstraRoutefinder.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/package-info.java">
+</file>
+</checkstyle>
