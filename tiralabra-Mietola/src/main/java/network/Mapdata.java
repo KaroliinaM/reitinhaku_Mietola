@@ -13,28 +13,29 @@ import data.Stop;
  * @author k
  */
 public class Mapdata {
-    
-    private Map<String, Stop> stops=new HashMap();
-    
+
+    private Map<String, Stop> stops = new HashMap();
+
     /**
-    * Sets the stop data fetched from api to hashmap 
-    * @param stopData List of stops
-    */
+     * Sets the stop data fetched from api to hashmap.
+     *
+     * @param stopData List of stops
+     */
     public void setStops(List<Stop> stopData) {
-        for(Stop s: stopData) {
+        for (Stop s : stopData) {
             s.setEstimate(1999999999);
             stops.put(s.getGtfsId(), s);
         }
     }
-    
+
     /**
-     * Get a stop by stop id
+     * Get a stop by stop id.
+     *
      * @param id stop identificator
      * @return stop object
      */
     public Stop getStop(String id) {
         return stops.get(id);
     }
-    
-    
+
 }

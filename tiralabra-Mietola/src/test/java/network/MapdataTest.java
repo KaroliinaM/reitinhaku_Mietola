@@ -5,13 +5,10 @@
  */
 package network;
 
-import java.util.*;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import java.util.*;
 import data.Stop;
 
 /**
@@ -19,30 +16,26 @@ import data.Stop;
  * @author k
  */
 public class MapdataTest {
+
     Mapdata mapdata;
+
     public MapdataTest() {
     }
-    
-    
+
     @Before
     public void setUp() {
-      mapdata=new Mapdata();
+        mapdata = new Mapdata();
     }
 
+    @Test
+    public void addStopsTest() {
+        List<Stop> stops = new ArrayList<>();
+        Stop stop = new Stop();
+        stop.setGtfsId("123456");
+        stop.setName("Pasila");
+        stops.add(stop);
+        mapdata.setStops(stops);
+        assertEquals(mapdata.getStop("123456").getName(), "Pasila");
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void addStopsTest() {
-         List<Stop> stops=new ArrayList<>();
-         Stop stop=new Stop();
-         stop.setGtfsId("123456");
-         stop.setName("Pasila");
-         stops.add(stop);
-         mapdata.setStops(stops);
-         assertEquals(mapdata.getStop("123456").getName(), "Pasila");
-         
-         
-     }
+    }
 }

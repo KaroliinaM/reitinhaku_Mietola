@@ -7,19 +7,18 @@ import java.util.*;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author k
  */
-public class Stop implements Comparable<Stop>{
+public class Stop implements Comparable<Stop> {
 
     private String gtfsId;
     private String name;
     private double lat;
     private double lon;
     private String zoneId;
-    List<Connection> connections=new ArrayList<>();
+    List<Connection> connections = new ArrayList<>();
     private int timeEstimate;
     private Connection previous;
 
@@ -62,33 +61,34 @@ public class Stop implements Comparable<Stop>{
     public void setZoneId(String zoneId) {
         this.zoneId = zoneId;
     }
-    
+
     public void addConnection(Connection connection) {
         this.connections.add(connection);
     }
-    
+
     public List<Connection> getConnections() {
         return this.connections;
     }
-    
+
     public void setEstimate(int estimate) {
-        this.timeEstimate=estimate;
+        this.timeEstimate = estimate;
     }
+
     public int getEstimate() {
         return this.timeEstimate;
     }
-    
+
     public void setPrevious(Connection c) {
-        previous=c;
+        previous = c;
     }
-    
+
     public Connection getPrevious() {
         return previous;
     }
 
     @Override
     public int compareTo(Stop t) {
-        return this.getEstimate()-t.getEstimate();
+        return this.getEstimate() - t.getEstimate();
     }
 
 }

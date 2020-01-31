@@ -9,27 +9,28 @@ package data;
  *
  * @author k
  */
-public class Connection  {
+public class Connection {
+
     private String departureStop;
     private String targetStop;
     private int duration;
-    
+
     public Connection(String departure, String arrival, int time) {
-        departureStop=departure;
-        targetStop=arrival;
-        duration=time;
+        departureStop = departure;
+        targetStop = arrival;
+        duration = time;
     }
-    
+
     public String getDepartureStop() {
         return this.departureStop;
     }
-    
+
     public String getTargetStop() {
         return this.targetStop;
     }
-        
+
     public int getDuration() {
         return this.duration;
     }
-    
+
 }
