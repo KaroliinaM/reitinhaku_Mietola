@@ -12,31 +12,51 @@ import java.util.*;
  * @author k
  */
 public class Route {
-    private List<Connection> connections=new ArrayList<>();
-    private int time=0;
-    
-    public void addConnection(Connection c) {
-        connections.add(c);
+
+    private String gtfsId;
+    private String shortName;
+    private String longName;
+    private String mode;
+    private List<Trip> trips = null;
+
+    public String getGtfsId() {
+        return gtfsId;
     }
-    public void addTime(int t) {
-        time+=t;
+
+    public void setGtfsId(String gtfsId) {
+        this.gtfsId = gtfsId;
     }
-    public int getTime() {
-        return time;
+
+    public String getShortName() {
+        return shortName;
     }
-    public List<Connection> getConnections() {
-        Collections.reverse(connections);
-        return connections;
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
-    
-    public String toString() {
-        Collections.reverse(connections);
-        String ret="";
-        for(Connection c: connections) {
-            ret+=" ["+c.getDepartureStop()+ " - "+ c.getTargetStop() +"] ";
-        }
-        ret += " on time " +  time;
-        return ret;
+
+    public String getLongName() {
+        return longName;
     }
-    
+
+    public void setLongName(String longName) {
+        this.longName = longName;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
+
 }
