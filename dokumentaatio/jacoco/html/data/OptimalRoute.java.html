@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OptimalRoute.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">data</a> &gt; <span class="el_source">OptimalRoute.java</span></div><h1>OptimalRoute.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package data;
+
+import java.util.*;
+
+/**
+ * the data that is derived from the algorithm is stored in this.
+ * @author k
+ */
+<span class="fc" id="L14">public class OptimalRoute {</span>
+
+<span class="fc" id="L16">    private List&lt;Connection&gt; connections = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L17">    private int time = 0;</span>
+
+    public void addConnection(Connection c) {
+<span class="fc" id="L20">        connections.add(c);</span>
+<span class="fc" id="L21">    }</span>
+
+    public void addTime(int t) {
+<span class="fc" id="L24">        time += t;</span>
+<span class="fc" id="L25">    }</span>
+
+    public int getTime() {
+<span class="fc" id="L28">        return time;</span>
+    }
+
+    public List&lt;Connection&gt; getConnections() {
+<span class="fc" id="L32">        Collections.reverse(connections);</span>
+<span class="fc" id="L33">        return connections;</span>
+    }
+
+    public String toString() {
+<span class="fc" id="L37">        Collections.reverse(connections);</span>
+<span class="fc" id="L38">        String ret = &quot;&quot;;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (Connection c : connections) {</span>
+<span class="fc" id="L40">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; - &quot; + c.getTargetStop() + &quot;] &quot;;</span>
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">        ret += &quot; on time &quot; + time;</span>
+<span class="fc" id="L43">        return ret;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

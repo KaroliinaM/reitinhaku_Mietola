@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HelloWorld.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">api</a> &gt; <span class="el_source">HelloWorld.java</span></div><h1>HelloWorld.java</h1><pre class="source lang-java linenums">package api;
+
+import java.util.*;
+import data.Data;
+import data.Route;
+import data.Stopdata;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author k
+ */
+<span class="nc" id="L17">public class HelloWorld {</span>
+
+    public static void main(String[] args) {
+
+<span class="nc" id="L21">        ExecuteQuery query = new ExecuteQuery();</span>
+<span class="nc" id="L22">        Stopdata stopdata = new Stopdata();</span>
+        Data data;
+<span class="nc" id="L24">        String url = &quot;https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql&quot;;</span>
+<span class="nc" id="L25">        String queryString = &quot;{routes { gtfsId shortName longName mode }}&quot;;</span>
+        //      String queryString2= &quot;{route(id:\&quot;HSL:4421\&quot;) { shortName trips {gtfsId stoptimes
+        //{ stop {name} scheduledDeparture serviceDay } } } }&quot;;
+
+<span class="nc" id="L29">        data = query.callApi(url, queryString, stopdata);</span>
+        //query.callApi(url, queryString2, stopdata);
+<span class="nc" id="L31">        List&lt;Route&gt; routes = data.getRoutes();</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        for (Route r : routes) {</span>
+            //System.out.println(r.getGtfsId());
+<span class="nc" id="L34">            String queryString2 = &quot;{route(id:\&quot;&quot; + r.getGtfsId() + &quot;\&quot;) &quot;</span>
+                    + &quot;{ shortName trips {gtfsId stoptimes { stop {name} &quot;
+                    + &quot;scheduledDeparture serviceDay } } } }&quot;;
+<span class="nc" id="L37">            query.callApi(url, queryString2, stopdata);</span>
+<span class="nc" id="L38">        }</span>
+
+<span class="nc" id="L40">        System.out.println(data.getRoutes().get(0).getGtfsId());</span>
+<span class="nc" id="L41">        String gtfsid = data.getRoutes().get(0).getGtfsId();</span>
+
+<span class="nc" id="L43">        String queryString2 = &quot;{route(id:\&quot;&quot; + data.getRoutes().get(0).getGtfsId() + &quot;\&quot;) &quot;</span>
+                + &quot;{ shortName trips {gtfsId stoptimes { stop {name} &quot;
+                + &quot;scheduledDeparture serviceDay } } } }&quot;;
+<span class="nc" id="L46">        query.callApi(url, queryString2, stopdata);</span>
+
+        /**
+         * String line, queryString, url;
+         *
+         * url =
+         * &quot;https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql&quot;;
+         * CloseableHttpClient client = null; CloseableHttpResponse response =
+         * null;
+         *
+         * client = HttpClientBuilder.create().build(); HttpPost httpPost = new
+         * HttpPost(url);
+         *
+         * httpPost.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);
+         *
+         * JSONObject jsonobj = new JSONObject(); // jsonobj.put(&quot;query&quot;,
+         * &quot;{stops {gtfsId name lat lon zoneId}}&quot;); jsonobj.put(&quot;query&quot;,
+         * &quot;{routes { gtfsId shortName longName mode }}&quot;);
+         *
+         *
+         * try { StringEntity entity = new StringEntity(jsonobj.toString());
+         * httpPost.setEntity(entity); response = client.execute(httpPost);
+         * System.out.println(response.getEntity());
+         *
+         * BufferedReader bufReader = new BufferedReader(new
+         * InputStreamReader(response.getEntity().getContent())); StringBuilder
+         * builder = new StringBuilder();
+         *
+         * while ((line = bufReader.readLine()) != null) { builder.append(line);
+         * builder.append(System.lineSeparator()); } /** Stopdata stopdata=new
+         * Stopdata(); Gson gson = new Gson(); stopdata=
+         * gson.fromJson(builder.toString(), Stopdata.class);          *
+         * System.out.println(stopdata.getData().getStops().size()); Stopdata
+         * stopdata=new Stopdata(); Gson gson = new Gson(); stopdata=
+         * gson.fromJson(builder.toString(), Stopdata.class);          *
+         * System.out.println(stopdata.getData().getRoutes().size());          *
+         * System.out.println(builder); } catch (IOException e) {
+         * e.printStackTrace();
+        }*
+         */
+<span class="nc" id="L86">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
