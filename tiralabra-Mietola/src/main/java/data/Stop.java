@@ -1,5 +1,6 @@
 package data;
 
+import java.io.Serializable;
 import java.util.*;
 
 /*
@@ -11,7 +12,7 @@ import java.util.*;
  *
  * @author k
  */
-public class Stop implements Comparable<Stop> {
+public class Stop implements Comparable<Stop>, Serializable {
 
     private String gtfsId;
     private String name;
