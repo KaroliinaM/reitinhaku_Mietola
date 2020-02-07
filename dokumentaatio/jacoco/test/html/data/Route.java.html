@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Route.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">data</a> &gt; <span class="el_source">Route.java</span></div><h1>Route.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package data;
+
+import java.io.Serializable;
+import java.util.*;
+
+/**
+ * For the api. The information about stops is stored in routes.
+ * @author k
+ */
+<span class="nc" id="L15">public class Route implements Serializable{</span>
+
+    private String gtfsId;
+    private String shortName;
+    private String longName;
+    private String mode;
+<span class="nc" id="L21">    private List&lt;Trip&gt; trips = null;</span>
+
+    public String getGtfsId() {
+<span class="nc" id="L24">        return gtfsId;</span>
+    }
+
+    public void setGtfsId(String gtfsId) {
+<span class="nc" id="L28">        this.gtfsId = gtfsId;</span>
+<span class="nc" id="L29">    }</span>
+
+    public String getShortName() {
+<span class="nc" id="L32">        return shortName;</span>
+    }
+
+    public void setShortName(String shortName) {
+<span class="nc" id="L36">        this.shortName = shortName;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getLongName() {
+<span class="nc" id="L40">        return longName;</span>
+    }
+
+    public void setLongName(String longName) {
+<span class="nc" id="L44">        this.longName = longName;</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getMode() {
+<span class="nc" id="L48">        return mode;</span>
+    }
+
+    public void setMode(String mode) {
+<span class="nc" id="L52">        this.mode = mode;</span>
+<span class="nc" id="L53">    }</span>
+
+    public List&lt;Trip&gt; getTrips() {
+<span class="nc" id="L56">        return trips;</span>
+    }
+
+    public void setTrips(List&lt;Trip&gt; trips) {
+<span class="nc" id="L60">        this.trips = trips;</span>
+<span class="nc" id="L61">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

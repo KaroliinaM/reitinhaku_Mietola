@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExecuteQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">api</a> &gt; <span class="el_source">ExecuteQuery.java</span></div><h1>ExecuteQuery.java</h1><pre class="source lang-java linenums">package api;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+import com.google.gson.Gson;
+import data.Connection;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import data.Data;
+import data.Route;
+import data.Stop;
+import data.Stopdata;
+import data.Stoptime;
+import data.Trip;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ *
+ * @author k
+ */
+<span class="nc" id="L36">public class ExecuteQuery {</span>
+
+    String line, queryString, url;
+    private static final String filepath = &quot;./obj&quot;;
+
+    public HashMap&lt;String, Stop&gt; loadStopData() {
+<span class="nc" id="L42">        HashMap&lt;String, Stop&gt; st = (HashMap&lt;String, Stop&gt;) readObjectFromFile(filepath);</span>
+<span class="nc" id="L43">        System.out.println(st.get(&quot;HSL:1293150&quot;).getConnections().size());</span>
+<span class="nc" id="L44">        return st;</span>
+    }
+
+    public void saveStopData() {
+<span class="nc" id="L48">        ExecuteQuery query = new ExecuteQuery();</span>
+<span class="nc" id="L49">        Stopdata stopdata = new Stopdata();</span>
+        Data routeData;
+        Data stopData;
+<span class="nc" id="L52">        String url = &quot;https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql&quot;;</span>
+<span class="nc" id="L53">        String routeQueryString = &quot;{routes { gtfsId shortName longName mode }}&quot;;</span>
+<span class="nc" id="L54">        String stopQueryString = &quot;{stops {gtfsId name lat lon zoneId} }&quot;;</span>
+        //  String queryString2= &quot;{route(id:\&quot;HSL:4421\&quot;) { shortName trips
+        //  {gtfsId stoptimes { stop {name} scheduledDeparture serviceDay } } }
+        //  }&quot;;
+
+<span class="nc" id="L59">        routeData = query.callApi(url, routeQueryString, stopdata);</span>
+<span class="nc" id="L60">        stopData = query.callApi(url, stopQueryString, stopdata);</span>
+        //query.callApi(url, queryString2, stopdata); 
+<span class="nc" id="L62">        List&lt;Route&gt; routes = routeData.getRoutes();</span>
+<span class="nc" id="L63">        HashMap&lt;String, Stop&gt; stops = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        for (Stop s : stopData.getStops()) {</span>
+<span class="nc" id="L65">            stops.put(s.getGtfsId(), s);</span>
+<span class="nc" id="L66">        }</span>
+
+<span class="nc" id="L68">        System.out.println(routes.size());</span>
+<span class="nc" id="L69">        System.out.println(stops.size());</span>
+<span class="nc" id="L70">        int i = 10;</span>
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        for (Route r : routes) {</span>
+<span class="nc" id="L73">            System.out.println(r.getGtfsId());</span>
+<span class="nc" id="L74">            String queryString2 = &quot;{route(id:\&quot;&quot; + r.getGtfsId() + &quot;\&quot;) &quot;</span>
+                    + &quot;{ shortName trips {gtfsId stoptimes { stop {gtfsId name} &quot; 
+                    + &quot;scheduledDeparture scheduledArrival serviceDay } } } }&quot;;
+<span class="nc" id="L77">            Data data2 = query.callApi(url, queryString2, stopdata);</span>
+<span class="nc" id="L78">            List&lt;Trip&gt; trips = data2.getRoute().getTrips();</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">            for (Trip t : trips) {</span>
+<span class="nc" id="L80">                List&lt;Stoptime&gt; stoptimes = t.getStoptimes();</span>
+<span class="nc" id="L81">                Stoptime previous = null;</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">                for (Stoptime s : stoptimes) {</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">                    if (s.getServiceDay() &gt; 0) {</span>
+<span class="nc" id="L84">                        return;</span>
+                    }
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                    if (previous != null) {</span>
+<span class="nc" id="L87">                        Stop stop = stops.get(previous.getStop().getGtfsId());</span>
+                        //         System.out.println(stop.getGtfsId());
+<span class="nc" id="L89">                        stop.addConnection(new Connection(previous.getStop().getGtfsId(), </span>
+<span class="nc" id="L90">                                s.getStop().getGtfsId(), s.getScheduledDeparture(),</span>
+<span class="nc" id="L91">                                s.getScheduledArrival()));</span>
+                        //           System.out.println(&quot;pysäkiltä &quot; + 
+                        //previous.getStop().getGtfsId() +  
+                        //&quot; pysäkille &quot; + s.getStop().getGtfsId() + &quot; ajassa &quot; 
+                        //+ s.getScheduledArrival());
+                    }
+<span class="nc" id="L97">                    previous = s;</span>
+<span class="nc" id="L98">                }</span>
+<span class="nc" id="L99">            }</span>
+            //    i--;
+            //    if(i&lt;0) break;
+<span class="nc" id="L102">        }</span>
+<span class="nc" id="L103">        System.out.println(stops.get(&quot;HSL:1293150&quot;).getConnections().size());</span>
+<span class="nc" id="L104">        System.out.println(stops.get(&quot;HSL:2643225&quot;).getConnections().size());</span>
+<span class="nc" id="L105">        System.out.println(&quot;saving...&quot;);</span>
+<span class="nc" id="L106">        writeObjectToFile(stops);</span>
+<span class="nc" id="L107">    }</span>
+
+    public static Object readObjectFromFile(String filepath) {
+
+        try {
+
+<span class="nc" id="L113">            FileInputStream fileIn = new FileInputStream(filepath);</span>
+<span class="nc" id="L114">            ObjectInputStream objectIn = new ObjectInputStream(fileIn);</span>
+
+<span class="nc" id="L116">            Object obj = objectIn.readObject();</span>
+
+<span class="nc" id="L118">            System.out.println(&quot;The Object has been read from the file&quot;);</span>
+<span class="nc" id="L119">            objectIn.close();</span>
+<span class="nc" id="L120">            return obj;</span>
+
+<span class="nc" id="L122">        } catch (Exception ex) {</span>
+<span class="nc" id="L123">            ex.printStackTrace();</span>
+<span class="nc" id="L124">            return null;</span>
+        }
+    }
+
+    public Data callApi(String url, String queryString, Stopdata stopdata) {
+<span class="nc" id="L129">        this.url = url;</span>
+<span class="nc" id="L130">        this.queryString = queryString;</span>
+<span class="nc" id="L131">        CloseableHttpClient client = null;</span>
+<span class="nc" id="L132">        CloseableHttpResponse response = null;</span>
+
+<span class="nc" id="L134">        client = HttpClientBuilder.create().build();</span>
+<span class="nc" id="L135">        HttpPost httpPost = new HttpPost(url);</span>
+
+<span class="nc" id="L137">        httpPost.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);</span>
+
+<span class="nc" id="L139">        JSONObject jsonobj = new JSONObject();</span>
+        //       jsonobj.put(&quot;query&quot;, &quot;{stops {gtfsId name lat lon zoneId}}&quot;);
+<span class="nc" id="L141">        jsonobj.put(&quot;query&quot;, queryString);</span>
+
+        try {
+<span class="nc" id="L144">            StringEntity entity = new StringEntity(jsonobj.toString());</span>
+<span class="nc" id="L145">            httpPost.setEntity(entity);</span>
+<span class="nc" id="L146">            response = client.execute(httpPost);</span>
+<span class="nc" id="L147">            System.out.println(response.getEntity());</span>
+
+<span class="nc" id="L149">            BufferedReader bufReader = new BufferedReader(new InputStreamReader(response.getEntity()</span>
+<span class="nc" id="L150">                    .getContent()));</span>
+<span class="nc" id="L151">            StringBuilder builder = new StringBuilder();</span>
+
+<span class="nc bnc" id="L153" title="All 2 branches missed.">            while ((line = bufReader.readLine()) != null) {</span>
+<span class="nc" id="L154">                builder.append(line);</span>
+<span class="nc" id="L155">                builder.append(System.lineSeparator());</span>
+            }
+            //          Stopdata stopdata=new Stopdata();
+<span class="nc" id="L158">            Gson gson = new Gson();</span>
+<span class="nc" id="L159">            stopdata = gson.fromJson(builder.toString(),</span>
+                    Stopdata.class);
+
+            //  System.out.println(builder);
+<span class="nc" id="L163">        } catch (IOException e) {</span>
+<span class="nc" id="L164">            e.printStackTrace();</span>
+<span class="nc" id="L165">        }</span>
+<span class="nc" id="L166">        return stopdata.getData();</span>
+    }
+
+    public static void writeObjectToFile(Object serObj) {
+
+        try {
+
+<span class="nc" id="L173">            FileOutputStream fileOut = new FileOutputStream(filepath);</span>
+<span class="nc" id="L174">            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);</span>
+<span class="nc" id="L175">            objectOut.writeObject(serObj);</span>
+<span class="nc" id="L176">            objectOut.close();</span>
+<span class="nc" id="L177">            System.out.println(&quot;The Object  was succesfully written to a file&quot;);</span>
+
+<span class="nc" id="L179">        } catch (Exception ex) {</span>
+<span class="nc" id="L180">            ex.printStackTrace();</span>
+<span class="nc" id="L181">        }</span>
+<span class="nc" id="L182">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

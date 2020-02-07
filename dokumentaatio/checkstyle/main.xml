@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.12">
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/ExecuteQuery.java">
+<error line="10" severity="warning" message="Wrong order for &apos;org.apache.http.client.methods.CloseableHttpResponse&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="25" severity="warning" message="Wrong order for &apos;java.io.FileInputStream&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/HelloWorld.java">
+<error line="4" severity="warning" message="Wrong order for &apos;data.Connection&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="11" severity="warning" message="Wrong order for &apos;java.io.BufferedReader&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/package-info.java">
 </file>
@@ -28,8 +32,20 @@
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/network/package-info.java">
 </file>
-<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/DjikstraRoutefinder.java">
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/AstarRouteFinder.java">
+<error line="11" severity="warning" message="Wrong order for &apos;java.util.*&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/DijkstraRoutefinder.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/FinderUI.java">
+<error line="10" severity="warning" message="Wrong order for &apos;java.util.*&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/package-info.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/DistanceCalculator.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/package-info.java">
 </file>
 </checkstyle>

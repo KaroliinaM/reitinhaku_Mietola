@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DijkstraRoutefinder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">routefinder</a> &gt; <span class="el_source">DijkstraRoutefinder.java</span></div><h1>DijkstraRoutefinder.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package routefinder;
+
+import java.util.*;
+import data.Connection;
+import data.OptimalRoute;
+import data.Stop;
+import network.Mapdata;
+
+/**
+ *
+ * @author k
+ */
+<span class="fc" id="L18">public class DijkstraRoutefinder {</span>
+
+<span class="fc" id="L20">    PriorityQueue&lt;Stop&gt; queue = new PriorityQueue();</span>
+<span class="fc" id="L21">    HashSet&lt;String&gt; done = new HashSet&lt;&gt;();</span>
+    Mapdata mapdata;
+<span class="fc" id="L23">    private OptimalRoute route = new OptimalRoute();</span>
+
+    public void setMapdata(Mapdata mapdata) {
+<span class="fc" id="L26">        this.mapdata = mapdata;</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * The Djikstra search algorithm.
+     *
+     * @param start the starting point id
+     * @param goal the target point id
+     * @return Route object
+     */
+    public OptimalRoute search(String start, String goal, int time) {
+<span class="fc" id="L37">        Stop beginning = mapdata.getStop(start);</span>
+<span class="fc" id="L38">        beginning.setEstimate(0);</span>
+<span class="fc" id="L39">        queue.add(beginning);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        while (!queue.isEmpty()) {</span>
+<span class="fc" id="L41">            Stop s = queue.poll();</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">            if (done.contains(s.getGtfsId())) {</span>
+<span class="fc" id="L43">                continue;</span>
+            }
+<span class="fc" id="L45">            done.add(s.getGtfsId());</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            if (s.getEstimate() &gt; time) {</span>
+<span class="fc" id="L47">                time = s.getEstimate();</span>
+            }
+<span class="fc" id="L49">            List&lt;Connection&gt; edges = s.getConnections();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            for (Connection e : edges) {</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">                if (e.getDepartureTime() &lt; time) {</span>
+<span class="fc" id="L52">                    continue;</span>
+                }
+<span class="fc" id="L54">                Stop t = mapdata.getStop(e.getTargetStop());</span>
+<span class="fc" id="L55">                int currentDistance = t.getEstimate();</span>
+<span class="fc" id="L56">                int newDistance = e.getArrivalTime();</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">                if (newDistance &lt; currentDistance) {</span>
+<span class="fc" id="L58">                    t.setEstimate(newDistance);</span>
+<span class="fc" id="L59">                    t.setPrevious(e);</span>
+<span class="fc" id="L60">                    queue.add(t);</span>
+                }
+<span class="fc" id="L62">            }</span>
+
+<span class="fc" id="L64">        }</span>
+<span class="fc" id="L65">        Stop stop = mapdata.getStop(goal);</span>
+<span class="fc" id="L66">        route.addTime(stop.getEstimate());</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        while (!stop.getGtfsId().equals(start)) {</span>
+<span class="fc" id="L68">            Connection c = stop.getPrevious();</span>
+<span class="fc" id="L69">            route.addConnection(c);</span>
+<span class="fc" id="L70">            stop = mapdata.getStop(c.getDepartureStop());</span>
+<span class="fc" id="L71">        }</span>
+<span class="fc" id="L72">        System.out.println(&quot;tulos&quot;);</span>
+<span class="fc" id="L73">        System.out.println(route);</span>
+<span class="fc" id="L74">        System.out.println(route.getTime());</span>
+<span class="fc" id="L75">        System.out.println(mapdata.getStop(goal).getEstimate());</span>
+<span class="fc" id="L76">        return route;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

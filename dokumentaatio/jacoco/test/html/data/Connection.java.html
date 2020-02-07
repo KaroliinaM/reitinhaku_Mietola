@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Connection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">data</a> &gt; <span class="el_source">Connection.java</span></div><h1>Connection.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package data;
+
+import java.io.Serializable;
+
+/**
+ * The edges for the traffic network.
+ *
+ * @author k
+ */
+public class Connection implements Serializable {
+
+    private String departureStop;
+    private String targetStop;
+    private int departureTime;
+    private int arrivalTime;
+
+<span class="fc" id="L22">    public Connection(String departureStop, String targetStop, int departureTime, int arrivalTime) {</span>
+<span class="fc" id="L23">        this.departureStop = departureStop;</span>
+<span class="fc" id="L24">        this.targetStop = targetStop;</span>
+<span class="fc" id="L25">        this.departureTime = departureTime;</span>
+<span class="fc" id="L26">        this.arrivalTime = arrivalTime;</span>
+<span class="fc" id="L27">    }</span>
+
+    public String getDepartureStop() {
+<span class="fc" id="L30">        return this.departureStop;</span>
+    }
+
+    public String getTargetStop() {
+<span class="fc" id="L34">        return this.targetStop;</span>
+    }
+
+    public int getDepartureTime() {
+<span class="fc" id="L38">        return this.departureTime;</span>
+    }
+
+    public int getArrivalTime() {
+<span class="fc" id="L42">        return this.arrivalTime;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L47">        return this.getDepartureStop() + &quot; klo &quot; + this.getDepartureTime() + &quot;-&quot; + this.targetStop</span>
+<span class="nc" id="L48">                + &quot; klo &quot; + this.getArrivalTime();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

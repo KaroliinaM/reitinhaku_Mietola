@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinderUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">ui</a> &gt; <span class="el_source">FinderUI.java</span></div><h1>FinderUI.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ui;
+
+import api.ExecuteQuery;
+import data.Stop;
+import java.util.*;
+import network.Mapdata;
+import routefinder.AstarRouteFinder;
+import routefinder.DijkstraRoutefinder;
+import utils.DistanceCalculator;
+
+/**
+ *
+ * @author k
+ */
+<span class="nc" id="L20">public class FinderUI {</span>
+
+    /**
+     * Doesn't work as UI, because cmd readers don't work. Going to look into it
+     * next week. Gets the data, sets it into the map and then does the search.
+     * Prints out only the stop id:s, got to make it more informative.
+     */
+    public void run() {
+<span class="nc" id="L28">        ExecuteQuery query = new ExecuteQuery();</span>
+        //  query.saveStopData();
+<span class="nc" id="L30">        Map&lt;String, Stop&gt; stopdata = query.loadStopData();</span>
+<span class="nc" id="L31">        System.out.println(&quot;haettu&quot;);</span>
+<span class="nc" id="L32">        Mapdata maps = new Mapdata();</span>
+<span class="nc" id="L33">        DistanceCalculator calculator = new DistanceCalculator();</span>
+<span class="nc" id="L34">        List&lt;Stop&gt; stops = new ArrayList&lt;Stop&gt;(stopdata.values());</span>
+<span class="nc" id="L35">        maps.setStops(stops);</span>
+        // DjikstraRoutefinder finder=new DjikstraRoutefinder();
+<span class="nc" id="L37">        AstarRouteFinder finder = new AstarRouteFinder();</span>
+<span class="nc" id="L38">        finder.setDistanceCalculator(calculator);</span>
+<span class="nc" id="L39">        finder.setMapdata(maps);</span>
+<span class="nc" id="L40">        finder.search(&quot;HSL:1434114&quot;, &quot;HSL:1453114&quot;, 0);</span>
+<span class="nc" id="L41">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
