@@ -14,9 +14,13 @@ nyt näkyisi pelaavan ohjelmanakin. UI ei ole kovin UI, koska inputtia ei voi la
 
 
 3.2 2h A* suunnittelua
+
 4.2 2h heuristiikan hankkimista
+
 5.2 4h A* koodausta ja testejä
+
 6.2 4h api säätöä
+
 7.2 6h apia, luokkien refaktorointia, buildin korjaamista, javadocceja, etc.
 
 
