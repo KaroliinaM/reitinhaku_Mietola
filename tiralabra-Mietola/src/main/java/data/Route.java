@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- *
+ * For the api. The information about stops is stored in routes.
  * @author k
  */
 public class Route implements Serializable{

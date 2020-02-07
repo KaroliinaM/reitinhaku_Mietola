@@ -23,6 +23,7 @@ import data.Stop;
 public class DjikstraTest {
 
     DjikstraRoutefinder finder;
+    DjikstraRoutefinder finder2;
     Connection conn1 = new Connection("stop1", "stop2", 0, 20);
     Connection conn2 = new Connection("stop1", "stop3", 0, 21);
     Connection conn3 = new Connection("stop1", "stop4", 0, 50);
@@ -47,6 +48,24 @@ public class DjikstraTest {
     Stop stop8 = createStop("stop8", "stop8", Arrays.asList(conn10, conn13));
     Stop stop9 = createStop("stop9", "stop9", Arrays.asList());
 
+    Stop stop11 = createStop("stop11", "stop11", myltiplyConnections(Arrays.asList(
+                    new Connection("stop11", "stop12", 0, 5),
+                    new Connection("stop11", "stop13", 0, 18), 
+                    new Connection("stop11", "stop14", 0, 20))));
+    Stop stop12 = createStop("stop12", "stop12", myltiplyConnections(Arrays.asList(
+            new Connection("stop12", "stop15", 0, 4))));
+    Stop stop13 = createStop("stop13", "stop13", myltiplyConnections(Arrays.asList(
+            new Connection("stop13", "stop17", 0, 1))));
+    Stop stop14 = createStop("stop14", "stop14", Arrays.asList());
+    Stop stop15 = createStop("stop15", "stop15", myltiplyConnections(Arrays.asList(
+            new Connection("stop15", "stop16", 0, 4))));
+    Stop stop16 = createStop("stop16", "stop16", myltiplyConnections(Arrays.asList(
+            new Connection("stop16", "stop12", 0, 1))));
+    Stop stop17 = createStop("stop17", "stop17", myltiplyConnections(Arrays.asList(
+            new Connection("stop17", "stop16", 0, 3), 
+            new Connection("stop17", "stop14", 0, 1), 
+            new Connection("stop17", "stop14", 0, 1))));
+
     public DjikstraTest() {
     }
 
@@ -64,6 +83,16 @@ public class DjikstraTest {
         Mockito.when(mapdata.getStop("stop9")).thenReturn(stop9);
         finder = new DjikstraRoutefinder();
         finder.setMapdata(mapdata);
+        Mapdata mapdata2 = Mockito.mock(Mapdata.class);
+        Mockito.when(mapdata2.getStop("stop11")).thenReturn(stop11);
+        Mockito.when(mapdata2.getStop("stop12")).thenReturn(stop12);
+        Mockito.when(mapdata2.getStop("stop13")).thenReturn(stop13);
+        Mockito.when(mapdata2.getStop("stop14")).thenReturn(stop14);
+        Mockito.when(mapdata2.getStop("stop15")).thenReturn(stop15);
+        Mockito.when(mapdata2.getStop("stop16")).thenReturn(stop16);
+        Mockito.when(mapdata2.getStop("stop17")).thenReturn(stop17);
+        finder2 = new DjikstraRoutefinder();
+        finder2.setMapdata(mapdata2);
     }
 
     @After
@@ -77,13 +106,10 @@ public class DjikstraTest {
 
     }
 
-    @Test
-    public void testRoute2() {
-        OptimalRoute r = finder.search("stop5", "stop6", 0);
-        assertEquals(r.getTime(), 13);
-        //13
-    }
-
+    /**
+     * @Test public void testRoute2() { OptimalRoute r = finder.search("stop5",
+     * "stop6", 0); assertEquals(r.getTime(), 13); //13 } *
+     */
     @Test
     public void testRoute3() {
         OptimalRoute r = finder.search("stop1", "stop9", 0);
@@ -98,6 +124,19 @@ public class DjikstraTest {
         //48
     }
 
+    @Test
+    public void testRoute5() {
+        OptimalRoute r = finder2.search("stop11", "stop17", 0);
+        assertEquals(r.getTime(), 21);
+        //  finder2.search("stop11", "stop15", 0);
+    }
+
+    @Test
+    public void testRoute6() {
+        OptimalRoute r = finder2.search("stop11", "stop13", 0);
+        assertEquals(r.getTime(), 18);
+    }
+
     public Stop createStop(String gtfsId, String name, List<Connection> connections) {
         Stop stop = new Stop();
         stop.setGtfsId(gtfsId);
@@ -107,5 +146,17 @@ public class DjikstraTest {
             stop.addConnection(c);
         });
         return stop;
+    }
+
+    public List<Connection> myltiplyConnections(List<Connection> connections) {
+        List<Connection> ret = new ArrayList<>();
+        for (Connection c : connections) {
+            for (int i = 0; i <= 30; i += 10) {
+                Connection conn = new Connection(c.getDepartureStop(), c.getTargetStop(), 
+                        c.getDepartureTime() + i, c.getArrivalTime() + i);
+                ret.add(conn);
+            }
+        }
+        return ret;
     }
 }

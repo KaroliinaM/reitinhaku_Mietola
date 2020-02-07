@@ -48,23 +48,23 @@ public class DistanceCalculatorTest {
         assertEquals(time2, 5);
         System.out.println(time2);
     }
-    
+
     @Test
     public void getDistanceTraveTime() {
         //pasila-kumpula
-        Stop first=createStop(60.19803, 24.93425);
-        Stop second=createStop(60.20488, 24.96385);
-        int time=calculator.timeEstimate(first,second);
+        Stop first = createStop(60.19803, 24.93425);
+        Stop second = createStop(60.20488, 24.96385);
+        int time = calculator.timeEstimate(first, second);
         assertEquals(time, 5);
         //pitäjänmäki-itäkeskus
-        Stop three=createStop(60.22325, 24.860594);
-        Stop four=createStop(60.209231, 25.079047);
-        int time2=calculator.timeEstimate(three,four);
+        Stop three = createStop(60.22325, 24.860594);
+        Stop four = createStop(60.209231, 25.079047);
+        int time2 = calculator.timeEstimate(three, four);
         assertEquals(time2, 36);
     }
-    
+
     public Stop createStop(double lat, double lon) {
-        Stop stop=new Stop();
+        Stop stop = new Stop();
         stop.setLat(lat);
         stop.setLon(lon);
         return stop;

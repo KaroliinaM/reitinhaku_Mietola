@@ -8,10 +8,11 @@ package data;
 import java.io.Serializable;
 
 /**
+ * The edges for the traffic network.
  *
  * @author k
  */
-public class Connection implements Serializable{
+public class Connection implements Serializable {
 
     private String departureStop;
     private String targetStop;
@@ -21,8 +22,8 @@ public class Connection implements Serializable{
     public Connection(String departureStop, String targetStop, int departureTime, int arrivalTime) {
         this.departureStop = departureStop;
         this.targetStop = targetStop;
-        this.departureTime= departureTime;
-        this.arrivalTime=arrivalTime;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
     }
 
     public String getDepartureStop() {
@@ -36,9 +37,15 @@ public class Connection implements Serializable{
     public int getDepartureTime() {
         return this.departureTime;
     }
-    
+
     public int getArrivalTime() {
         return this.arrivalTime;
+    }
+
+    @Override
+    public String toString() {
+        return this.getDepartureStop() + " klo " + this.getDepartureTime() + "-" + this.targetStop
+                + " klo " + this.getArrivalTime();
     }
 
 }

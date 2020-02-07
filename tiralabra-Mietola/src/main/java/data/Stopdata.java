@@ -6,7 +6,7 @@ package data;
  * and open the template in the editor.
  */
 /**
- *
+ * For the api.
  * @author k
  */
 public class Stopdata {

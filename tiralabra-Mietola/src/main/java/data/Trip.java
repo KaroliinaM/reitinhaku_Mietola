@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- *
+ * For the api.
  * @author k
  */
 public class Trip implements Serializable{

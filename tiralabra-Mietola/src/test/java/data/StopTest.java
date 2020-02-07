@@ -34,8 +34,8 @@ public class StopTest {
 
     @Test
     public void setConnections() {
-        stop.addConnection(new Connection("123456", "98765", 130));
-        stop.addConnection(new Connection("123456", "asdf", 120));
+        stop.addConnection(new Connection("123456", "98765", 0, 130));
+        stop.addConnection(new Connection("123456", "asdf", 0, 120));
         assertEquals(stop.getConnections().size(), 2);
     }
 }

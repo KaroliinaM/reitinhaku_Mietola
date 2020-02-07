@@ -8,17 +8,28 @@ package utils;
 import data.Stop;
 
 /**
+ * The distances for the a* heuristics.
  *
  * @author k
  */
 public class DistanceCalculator {
-    
+
     public int timeEstimate(Stop current, Stop dest) {
-        Double distance=distFrom(current.getLat(), current.getLon(), dest.getLat(), dest.getLon());
-        int estimate=timeForDist(distance);
+        Double distance = distFrom(current.getLat(), current.getLon(), dest.getLat()
+                , dest.getLon());
+        int estimate = timeForDist(distance);
         return estimate;
     }
 
+    /**
+     * converts the distance between two points in a map as distance.
+     *
+     * @param lat1 starting point latitude
+     * @param lng1 starting point longitude
+     * @param lat2 ending point latitude
+     * @param lng2 ending point longitude
+     * @return the distance as meters
+     */
     public double distFrom(double lat1, double lng1, double lat2, double lng2) {
         double earthRadius = 6371000; //meters
         double dLat = Math.toRadians(lat2 - lat1);
@@ -31,7 +42,11 @@ public class DistanceCalculator {
 
         return dist;
     }
-
+    /**
+     * Converts the distance as travel time.
+     * @param meters
+     * @return minutes
+     */
     public int timeForDist(double meters) {
         double ratio = 2000 / 6;
         int time = (int) (meters / ratio);

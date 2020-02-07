@@ -8,7 +8,7 @@ package data;
 import java.io.Serializable;
 
 /**
- *
+ * For the api.
  * @author k
  */
 public class Stoptime implements Serializable {

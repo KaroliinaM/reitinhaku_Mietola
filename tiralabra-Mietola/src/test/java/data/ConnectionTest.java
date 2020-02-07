@@ -23,7 +23,7 @@ public class ConnectionTest {
 
     @Before
     public void setUp() {
-        connection = new Connection("1234567", "asdf", 123);
+        connection = new Connection("1234567", "asdf", 0, 123);
     }
 
     @After

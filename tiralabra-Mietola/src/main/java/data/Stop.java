@@ -9,7 +9,7 @@ import java.util.*;
  * and open the template in the editor.
  */
 /**
- *
+ * The network nodes.
  * @author k
  */
 public class Stop implements Comparable<Stop>, Serializable {

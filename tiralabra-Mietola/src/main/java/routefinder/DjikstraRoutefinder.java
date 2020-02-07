@@ -43,9 +43,14 @@ public class DjikstraRoutefinder {
                 continue;
             }
             done.add(s.getGtfsId());
+            if (s.getEstimate() > time) {
+                time = s.getEstimate();
+            }
             List<Connection> edges = s.getConnections();
             for (Connection e : edges) {
-                if(e.getDepartureTime()<time) continue;
+                if (e.getDepartureTime() < time) {
+                    continue;
+                }
                 Stop t = mapdata.getStop(e.getTargetStop());
                 int currentDistance = t.getEstimate();
                 int newDistance = e.getArrivalTime();

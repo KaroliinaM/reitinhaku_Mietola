@@ -17,7 +17,9 @@ public class Mapdata {
     private Map<String, Stop> stops = new HashMap();
 
     /**
-     * Sets the stop data fetched from api to hashmap.
+     * Sets the stop data fetched from api to hashmap. 
+     * Separate class, because the search modifies the estimates
+     * , and the data can be reseted by re-fetching
      *
      * @param stopData List of stops
      */
