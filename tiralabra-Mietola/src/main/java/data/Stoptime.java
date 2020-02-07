@@ -5,14 +5,17 @@
  */
 package data;
 
+import java.io.Serializable;
+
 /**
  *
  * @author k
  */
-public class Stoptime {
+public class Stoptime implements Serializable {
 
     private Stop stop;
     private int scheduledDeparture;
+    private int scheduledArrival;
     private int serviceDay;
 
     public Stop getStop() {
@@ -29,6 +32,14 @@ public class Stoptime {
 
     public void setScheduledDeparture(int scheduledDeparture) {
         this.scheduledDeparture = scheduledDeparture;
+    }
+
+    public int getScheduledArrival() {
+        return scheduledArrival;
+    }
+
+    public void setScheduledArrival(int scheduledArrival) {
+        this.scheduledArrival = scheduledArrival;
     }
 
     public int getServiceDay() {

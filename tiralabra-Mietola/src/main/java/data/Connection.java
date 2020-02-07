@@ -5,20 +5,24 @@
  */
 package data;
 
+import java.io.Serializable;
+
 /**
  *
  * @author k
  */
-public class Connection {
+public class Connection implements Serializable{
 
     private String departureStop;
     private String targetStop;
-    private int duration;
+    private int departureTime;
+    private int arrivalTime;
 
-    public Connection(String departure, String arrival, int time) {
-        departureStop = departure;
-        targetStop = arrival;
-        duration = time;
+    public Connection(String departureStop, String targetStop, int departureTime, int arrivalTime) {
+        this.departureStop = departureStop;
+        this.targetStop = targetStop;
+        this.departureTime= departureTime;
+        this.arrivalTime=arrivalTime;
     }
 
     public String getDepartureStop() {
@@ -29,8 +33,12 @@ public class Connection {
         return this.targetStop;
     }
 
-    public int getDuration() {
-        return this.duration;
+    public int getDepartureTime() {
+        return this.departureTime;
+    }
+    
+    public int getArrivalTime() {
+        return this.arrivalTime;
     }
 
 }

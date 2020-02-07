@@ -23,20 +23,20 @@ import data.Stop;
 public class DjikstraTest {
 
     DjikstraRoutefinder finder;
-    Connection conn1 = new Connection("stop1", "stop2", 20);
-    Connection conn2 = new Connection("stop1", "stop3", 21);
-    Connection conn3 = new Connection("stop1", "stop4", 50);
-    Connection conn4 = new Connection("stop4", "stop3", 15);
-    Connection conn5 = new Connection("stop2", "stop6", 10);
-    Connection conn6 = new Connection("stop6", "stop5", 7);
-    Connection conn7 = new Connection("stop5", "stop2", 3);
-    Connection conn8 = new Connection("stop5", "stop8", 9);
-    Connection conn9 = new Connection("stop5", "stop7", 8);
-    Connection conn10 = new Connection("stop8", "stop6", 6);
-    Connection conn11 = new Connection("stop7", "stop4", 3);
-    Connection conn12 = new Connection("stop3", "stop5", 17);
-    Connection conn13 = new Connection("stop8", "stop9", 2);
-    Connection conn14 = new Connection("stop1", "stop9", 50);
+    Connection conn1 = new Connection("stop1", "stop2", 0, 20);
+    Connection conn2 = new Connection("stop1", "stop3", 0, 21);
+    Connection conn3 = new Connection("stop1", "stop4", 0, 50);
+    Connection conn4 = new Connection("stop4", "stop3", 48, 63);
+    Connection conn5 = new Connection("stop2", "stop6", 20, 30);
+    Connection conn6 = new Connection("stop6", "stop5", 30, 37);
+    Connection conn7 = new Connection("stop5", "stop2", 37, 39);
+    Connection conn8 = new Connection("stop5", "stop8", 37, 46);
+    Connection conn9 = new Connection("stop5", "stop7", 37, 45);
+    Connection conn10 = new Connection("stop8", "stop6", 46, 52);
+    Connection conn11 = new Connection("stop7", "stop4", 45, 48);
+    Connection conn12 = new Connection("stop3", "stop5", 21, 38);
+    Connection conn13 = new Connection("stop8", "stop9", 46, 48);
+    Connection conn14 = new Connection("stop1", "stop9", 0, 50);
     Stop stop1 = createStop("stop1", "stop1", Arrays.asList(conn1, conn2, conn3, conn14));
     Stop stop2 = createStop("stop2", "stop2", Arrays.asList(conn5));
     Stop stop3 = createStop("stop3", "stop3", Arrays.asList(conn12));
@@ -72,28 +72,28 @@ public class DjikstraTest {
 
     @Test
     public void testRoute() {
-        OptimalRoute r = finder.search("stop1", "stop7");
+        OptimalRoute r = finder.search("stop1", "stop7", 0);
         assertEquals(r.getTime(), 45);
 
     }
 
     @Test
     public void testRoute2() {
-        OptimalRoute r = finder.search("stop5", "stop6");
+        OptimalRoute r = finder.search("stop5", "stop6", 0);
         assertEquals(r.getTime(), 13);
         //13
     }
 
     @Test
     public void testRoute3() {
-        OptimalRoute r = finder.search("stop1", "stop9");
+        OptimalRoute r = finder.search("stop1", "stop9", 0);
         assertEquals(r.getTime(), 48);
         //48
     }
 
     @Test
     public void testRoute4() {
-        OptimalRoute r = finder.search("stop1", "stop4");
+        OptimalRoute r = finder.search("stop1", "stop4", 0);
         assertEquals(r.getTime(), 48);
         //48
     }

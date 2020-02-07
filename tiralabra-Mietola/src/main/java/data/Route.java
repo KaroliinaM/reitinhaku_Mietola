@@ -5,13 +5,14 @@
  */
 package data;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author k
  */
-public class Route {
+public class Route implements Serializable{
 
     private String gtfsId;
     private String shortName;

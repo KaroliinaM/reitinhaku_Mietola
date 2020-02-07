@@ -5,13 +5,14 @@
  */
 package data;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author k
  */
-public class Trip {
+public class Trip implements Serializable{
 
     private String gtfsId;
     private List<Stoptime> stoptimes = null;

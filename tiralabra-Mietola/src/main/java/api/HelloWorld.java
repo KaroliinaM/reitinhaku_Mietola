@@ -1,11 +1,19 @@
 package api;
 
+import data.Connection;
+import data.Data;
+import data.Route;
 import data.Stop;
+import data.Stopdata;
+import data.Stoptime;
+import data.Trip;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,8 +30,8 @@ public class HelloWorld {
 
     public static void main(String[] args) {
         
-        ArrayList<Stop> st = (ArrayList<Stop>) ReadObjectFromFile(filepath);
-        System.out.println(st.get(0).getGtfsId());
+        HashMap<String, Stop> st = (HashMap<String, Stop>) ReadObjectFromFile(filepath);
+        System.out.println(st.get("HSL:1293150").getConnections().size());
  /**   ArrayList<Stop> stops=new ArrayList<>();
 
         Stop stop = new Stop();
@@ -37,32 +45,70 @@ public class HelloWorld {
 
         WriteObjectToFile(stops);
 
-        /**
-         * ExecuteQuery query = new ExecuteQuery(); Stopdata stopdata = new
-         * Stopdata(); Data data; String url =
-         * "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
-         * String queryString = "{routes { gtfsId shortName longName mode }}";
-         * // String queryString2= "{route(id:\"HSL:4421\") { shortName trips
-         * {gtfsId stoptimes //{ stop {name} scheduledDeparture serviceDay } } }
-         * }";
-         *
-         * data = query.callApi(url, queryString, stopdata);
-         * //query.callApi(url, queryString2, stopdata); List<Route> routes =
-         * data.getRoutes(); for (Route r : routes) {
-         * //System.out.println(r.getGtfsId()); String queryString2 =
-         * "{route(id:\"" + r.getGtfsId() + "\") " + "{ shortName trips {gtfsId
-         * stoptimes { stop {name} " + "scheduledDeparture serviceDay } } } }";
-         * query.callApi(url, queryString2, stopdata); }
-         *
-         * System.out.println(data.getRoutes().get(0).getGtfsId()); String
-         * gtfsid = data.getRoutes().get(0).getGtfsId();
-         *
-         * String queryString2 = "{route(id:\"" +
-         * data.getRoutes().get(0).getGtfsId() + "\") " + "{ shortName trips
-         * {gtfsId stoptimes { stop {name} " + "scheduledDeparture serviceDay }
-         * } } }"; query.callApi(url, queryString2, stopdata);
-         *
-         * /**
+        **/
+ /**
+         ExecuteQuery query = new ExecuteQuery(); 
+         Stopdata stopdata = new Stopdata(); 
+          Data routeData;
+          Data stopData;
+          String url = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
+          String routeQueryString = "{routes { gtfsId shortName longName mode }}";
+          String stopQueryString= "{stops {gtfsId name lat lon zoneId} }";
+         //  String queryString2= "{route(id:\"HSL:4421\") { shortName trips
+        //  {gtfsId stoptimes { stop {name} scheduledDeparture serviceDay } } }
+        //  }";
+         
+        routeData = query.callApi(url, routeQueryString, stopdata);
+        stopData = query.callApi(url, stopQueryString, stopdata);
+          //query.callApi(url, queryString2, stopdata); 
+          List<Route> routes = routeData.getRoutes();
+          HashMap<String, Stop> stops=new HashMap<>();
+          for(Stop s: stopData.getStops()) {
+              stops.put(s.getGtfsId(), s);
+          }
+          
+          System.out.println(routes.size());
+          System.out.println(stops.size());
+          int i=10;
+          
+
+          for (Route r : routes) {
+            System.out.println(r.getGtfsId()); 
+            String queryString2 = "{route(id:\"" + r.getGtfsId() + "\") " + "{ shortName trips {gtfsId stoptimes { stop {gtfsId name} " + "scheduledArrival serviceDay } } } }";
+            Data data2=query.callApi(url, queryString2, stopdata);
+            List<Trip> trips=data2.getRoute().getTrips();
+            for(Trip t: trips) {
+                List<Stoptime> stoptimes=t.getStoptimes();
+                Stoptime previous=null;
+                for(Stoptime s: stoptimes) {
+                    if(s.getServiceDay()>0) return;
+                    if(previous!=null) {
+                        Stop stop=stops.get(previous.getStop().getGtfsId());
+               //         System.out.println(stop.getGtfsId());
+                        stop.addConnection(new Connection(previous.getStop().getGtfsId(), s.getStop().getGtfsId(), s.getScheduledArrival()));
+             //           System.out.println("pysäkiltä " + previous.getStop().getGtfsId() +  " pysäkille " + s.getStop().getGtfsId() + " ajassa " + s.getScheduledArrival());
+                    }
+                    previous=s;
+                }
+            }
+        //    i--;
+        //    if(i<0) break;
+          } 
+          System.out.println(stops.get("HSL:1293150").getConnections().size());
+          System.out.println(stops.get("HSL:2643225").getConnections().size());
+          System.out.println("saving...");
+          WriteObjectToFile(stops); 
+          
+          **/
+          
+         
+      //    System.out.println(data.getRoutes().get(0).getGtfsId()); String
+      //    gtfsid = data.getRoutes().get(0).getGtfsId();
+        
+      //    String queryString2 = "{route(id:\"" + data.getRoutes().get(0).getGtfsId() + "\") " + "{ shortName trips {gtfsId stoptimes { stop {name} " + "scheduledDeparture serviceDay }} } }"; 
+      //    query.callApi(url, queryString2, stopdata);
+         
+/**
          * String line, queryString, url;
          *
          * url =

@@ -1,5 +1,6 @@
 package data;
 
+import java.io.Serializable;
 import java.util.*;
 
 /*
@@ -11,7 +12,7 @@ import java.util.*;
  *
  * @author k
  */
-public class Data {
+public class Data implements Serializable {
 
     private List<Stop> stops = null;
     private List<Route> routes = null;

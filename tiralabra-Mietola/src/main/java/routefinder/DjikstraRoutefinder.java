@@ -33,7 +33,7 @@ public class DjikstraRoutefinder {
      * @param goal the target point id
      * @return Route object
      */
-    public OptimalRoute search(String start, String goal) {
+    public OptimalRoute search(String start, String goal, int time) {
         Stop beginning = mapdata.getStop(start);
         beginning.setEstimate(0);
         queue.add(beginning);
@@ -45,9 +45,10 @@ public class DjikstraRoutefinder {
             done.add(s.getGtfsId());
             List<Connection> edges = s.getConnections();
             for (Connection e : edges) {
+                if(e.getDepartureTime()<time) continue;
                 Stop t = mapdata.getStop(e.getTargetStop());
                 int currentDistance = t.getEstimate();
-                int newDistance = s.getEstimate() + e.getDuration();
+                int newDistance = e.getArrivalTime();
                 if (newDistance < currentDistance) {
                     t.setEstimate(newDistance);
                     t.setPrevious(e);
@@ -57,10 +58,10 @@ public class DjikstraRoutefinder {
 
         }
         Stop stop = mapdata.getStop(goal);
+        route.addTime(stop.getEstimate());
         while (!stop.getGtfsId().equals(start)) {
             Connection c = stop.getPrevious();
             route.addConnection(c);
-            route.addTime(c.getDuration());
             stop = mapdata.getStop(c.getDepartureStop());
         }
         System.out.println("tulos");
