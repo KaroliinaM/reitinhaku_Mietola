@@ -10,7 +10,7 @@ import data.Stop;
 import java.util.*;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
-import routefinder.DjikstraRoutefinder;
+import routefinder.DijkstraRoutefinder;
 import utils.DistanceCalculator;
 
 /**

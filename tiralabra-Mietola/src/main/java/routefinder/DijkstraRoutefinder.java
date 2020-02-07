@@ -15,7 +15,7 @@ import network.Mapdata;
  *
  * @author k
  */
-public class DjikstraRoutefinder {
+public class DijkstraRoutefinder {
 
     PriorityQueue<Stop> queue = new PriorityQueue();
     HashSet<String> done = new HashSet<>();

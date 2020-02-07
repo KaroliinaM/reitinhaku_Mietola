@@ -20,10 +20,10 @@ import data.Stop;
  *
  * @author k
  */
-public class DjikstraTest {
+public class DijkstraTest {
 
-    DjikstraRoutefinder finder;
-    DjikstraRoutefinder finder2;
+    DijkstraRoutefinder finder;
+    DijkstraRoutefinder finder2;
     Connection conn1 = new Connection("stop1", "stop2", 0, 20);
     Connection conn2 = new Connection("stop1", "stop3", 0, 21);
     Connection conn3 = new Connection("stop1", "stop4", 0, 50);
@@ -66,7 +66,7 @@ public class DjikstraTest {
             new Connection("stop17", "stop14", 0, 1), 
             new Connection("stop17", "stop14", 0, 1))));
 
-    public DjikstraTest() {
+    public DijkstraTest() {
     }
 
     @Before
@@ -81,7 +81,7 @@ public class DjikstraTest {
         Mockito.when(mapdata.getStop("stop7")).thenReturn(stop7);
         Mockito.when(mapdata.getStop("stop8")).thenReturn(stop8);
         Mockito.when(mapdata.getStop("stop9")).thenReturn(stop9);
-        finder = new DjikstraRoutefinder();
+        finder = new DijkstraRoutefinder();
         finder.setMapdata(mapdata);
         Mapdata mapdata2 = Mockito.mock(Mapdata.class);
         Mockito.when(mapdata2.getStop("stop11")).thenReturn(stop11);
@@ -91,7 +91,7 @@ public class DjikstraTest {
         Mockito.when(mapdata2.getStop("stop15")).thenReturn(stop15);
         Mockito.when(mapdata2.getStop("stop16")).thenReturn(stop16);
         Mockito.when(mapdata2.getStop("stop17")).thenReturn(stop17);
-        finder2 = new DjikstraRoutefinder();
+        finder2 = new DijkstraRoutefinder();
         finder2.setMapdata(mapdata2);
     }
 
