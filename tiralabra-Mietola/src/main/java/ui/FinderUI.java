@@ -26,7 +26,7 @@ public class FinderUI {
      */
     public void run() {
         ExecuteQuery query = new ExecuteQuery();
-        //  query.saveStopData();
+         // query.saveStopData();
         Map<String, Stop> stopdata = query.loadStopData();
         System.out.println("haettu");
         Mapdata maps = new Mapdata();
