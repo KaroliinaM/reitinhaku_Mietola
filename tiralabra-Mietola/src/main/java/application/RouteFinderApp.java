@@ -1,0 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package application;
+
+import api.ExecuteQuery;
+import data.Stop;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import network.Mapdata;
+import routefinder.AstarRouteFinder;
+import utils.DistanceCalculator;
+
+/**
+ *
+ * @author k
+ */
+public class RouteFinderApp {
+    
+    public void run() {
+        ExecuteQuery query = new ExecuteQuery();
+        // query.saveStopData();
+        Map<String, Stop> stopdata = query.loadStopData();
+        System.out.println("haettu");
+        Mapdata maps = new Mapdata();
+        DistanceCalculator calculator = new DistanceCalculator();
+        List<Stop> stops = new ArrayList<>(stopdata.values());
+        maps.setStops(stops);
+        // DjikstraRoutefinder finder=new DjikstraRoutefinder();
+        AstarRouteFinder finder = new AstarRouteFinder();
+        finder.setDistanceCalculator(calculator);
+        finder.setMapdata(maps);
+        finder.search("HSL:1434114", "HSL:1453114", 0);
+    }
+    
+}

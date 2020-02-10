@@ -12,12 +12,24 @@ import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
 import utils.DistanceCalculator;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author k
  */
-public class FinderUI {
+public class FinderUI implements Runnable {
+    
+    private JFrame frame;
 
     /**
      * Doesn't work as UI, because cmd readers don't work. Going to look into it
@@ -25,19 +37,40 @@ public class FinderUI {
      * Prints out only the stop id:s, got to make it more informative.
      */
     public void run() {
-        ExecuteQuery query = new ExecuteQuery();
-         // query.saveStopData();
-        Map<String, Stop> stopdata = query.loadStopData();
-        System.out.println("haettu");
-        Mapdata maps = new Mapdata();
-        DistanceCalculator calculator = new DistanceCalculator();
-        List<Stop> stops = new ArrayList<Stop>(stopdata.values());
-        maps.setStops(stops);
-        // DjikstraRoutefinder finder=new DjikstraRoutefinder();
-        AstarRouteFinder finder = new AstarRouteFinder();
-        finder.setDistanceCalculator(calculator);
-        finder.setMapdata(maps);
-        finder.search("HSL:1434114", "HSL:1453114", 0);
+
+    }
+    
+    public void runUI() {
+        frame = new JFrame("otsikko");
+        frame.setPreferredSize(new Dimension(200, 100));
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        createUIComponents(frame.getContentPane());
+        frame.pack();
+        frame.setVisible(true);
+    }
+    public void createUIComponents(Container container) {
+        GridLayout layout=new GridLayout(4, 2);
+        container.setLayout(layout);
+        createLabel("Reittiopas", container);
+        createLabel("", container);
+        createLabel("Lähtöpysäkki", container);
+        JTextField departureStop=new JTextField();
+        container.add(departureStop);
+        createLabel("kohdepysäkki", container);
+        JTextField targetStop=new JTextField();
+        container.add(targetStop);
+        createLabel("", container);
+        JButton searchRoute= new JButton("Hae reitti");
+        SearchListener listener=new SearchListener();
+        searchRoute.addActionListener(listener);
+        container.add(searchRoute);
+   //     JList stopList=new JList();
+   //     container.add(stopList);
+        
+    }
+    public void createLabel(String text, Container container) {
+        JLabel label=new JLabel(text);
+        container.add(label);
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package api;
 
+import application.RouteFinderApp;
 import ui.FinderUI;
 
 /**
@@ -17,9 +18,12 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FinderUI ui = new FinderUI();
+        
+        RouteFinderApp finderApp= new RouteFinderApp();
+        finderApp.run();
+/**        FinderUI ui = new FinderUI();
 
-        ui.run();
+        ui.runUI(); **/
     }
     
 }
