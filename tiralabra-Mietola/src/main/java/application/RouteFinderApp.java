@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
+import routefinder.DijkstraRoutefinder;
+import ui.FinderUI;
 import utils.DistanceCalculator;
 
 /**
@@ -29,11 +31,14 @@ public class RouteFinderApp {
         DistanceCalculator calculator = new DistanceCalculator();
         List<Stop> stops = new ArrayList<>(stopdata.values());
         maps.setStops(stops);
-        // DjikstraRoutefinder finder=new DjikstraRoutefinder();
-        AstarRouteFinder finder = new AstarRouteFinder();
-        finder.setDistanceCalculator(calculator);
-        finder.setMapdata(maps);
-        finder.search("HSL:1434114", "HSL:1453114", 0);
+        DijkstraRoutefinder finder = new DijkstraRoutefinder();
+        //    AstarRouteFinder finder = new AstarRouteFinder();
+        //      finder.setDistanceCalculator(calculator);
+        finder.setMapdata(maps);        
+        FinderUI ui = new FinderUI();
+        ui.setAlgorithm(finder);
+        ui.runUI();
+        //  finder.search("HSL:1434114", "HSL:1453114", 23520); 
     }
     
 }

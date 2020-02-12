@@ -1,5 +1,6 @@
 package data;
 
+import datastructures.MyArrayList;
 import java.io.Serializable;
 import java.util.*;
 
@@ -10,6 +11,7 @@ import java.util.*;
  */
 /**
  * The network nodes.
+ *
  * @author k
  */
 public class Stop implements Comparable<Stop>, Serializable {
@@ -19,7 +21,8 @@ public class Stop implements Comparable<Stop>, Serializable {
     private double lat;
     private double lon;
     private String zoneId;
-    List<Connection> connections = new ArrayList<>();
+    MyArrayList connections = new MyArrayList();
+//    List<Connection> connections = new ArrayList<>();
     private int timeEstimate;
     private Connection previous;
 
@@ -64,10 +67,10 @@ public class Stop implements Comparable<Stop>, Serializable {
     }
 
     public void addConnection(Connection connection) {
-        this.connections.add(connection);
+        this.connections.insertObject(connection);
     }
 
-    public List<Connection> getConnections() {
+    public MyArrayList getConnections() {
         return this.connections;
     }
 

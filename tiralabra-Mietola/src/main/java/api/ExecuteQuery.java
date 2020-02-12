@@ -40,7 +40,7 @@ public class ExecuteQuery {
 
     public HashMap<String, Stop> loadStopData() {
         HashMap<String, Stop> st = (HashMap<String, Stop>) readObjectFromFile(filepath);
-        System.out.println(st.get("HSL:1293150").getConnections().size());
+  //      System.out.println(st.get("HSL:1293150").getConnections().size());
         return st;
     }
 
@@ -100,8 +100,8 @@ public class ExecuteQuery {
             //    i--;
             //    if(i<0) break;
         }
-        System.out.println(stops.get("HSL:1293150").getConnections().size());
-        System.out.println(stops.get("HSL:2643225").getConnections().size());
+    //    System.out.println(stops.get("HSL:1293150").getConnections().size());
+    //    System.out.println(stops.get("HSL:2643225").getConnections().size());
         System.out.println("saving...");
         writeObjectToFile(stops);
     }

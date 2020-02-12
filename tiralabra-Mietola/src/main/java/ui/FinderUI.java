@@ -7,6 +7,7 @@ package ui;
 
 import api.ExecuteQuery;
 import data.Stop;
+import java.awt.BorderLayout;
 import java.util.*;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
@@ -20,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -28,8 +30,10 @@ import javax.swing.WindowConstants;
  * @author k
  */
 public class FinderUI implements Runnable {
-    
+
     private JFrame frame;
+    private DijkstraRoutefinder finder;
+    private SearchListener listener = new SearchListener();
 
     /**
      * Doesn't work as UI, because cmd readers don't work. Going to look into it
@@ -39,38 +43,58 @@ public class FinderUI implements Runnable {
     public void run() {
 
     }
-    
+
     public void runUI() {
         frame = new JFrame("otsikko");
-        frame.setPreferredSize(new Dimension(200, 100));
+        frame.setPreferredSize(new Dimension(800, 800));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createUIComponents(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
     }
+
     public void createUIComponents(Container container) {
-        GridLayout layout=new GridLayout(4, 2);
-        container.setLayout(layout);
-        createLabel("Reittiopas", container);
-        createLabel("", container);
-        createLabel("Lähtöpysäkki", container);
-        JTextField departureStop=new JTextField();
-        container.add(departureStop);
-        createLabel("kohdepysäkki", container);
-        JTextField targetStop=new JTextField();
-        container.add(targetStop);
-        createLabel("", container);
-        JButton searchRoute= new JButton("Hae reitti");
-        SearchListener listener=new SearchListener();
-        searchRoute.addActionListener(listener);
-        container.add(searchRoute);
-   //     JList stopList=new JList();
-   //     container.add(stopList);
-        
+        container.add(createInputPanel(), BorderLayout.NORTH);
+        container.add(createList(), BorderLayout.CENTER);
     }
-    public void createLabel(String text, Container container) {
-        JLabel label=new JLabel(text);
+
+    private JPanel createInputPanel() {
+        JPanel panel = new JPanel();
+        GridLayout layout = new GridLayout(4, 2);
+        panel.setLayout(layout);
+        createLabel("Reittiopas", panel);
+        createLabel("", panel);
+        createLabel("Lähtöpysäkki", panel);
+        JTextField departureStop = new JTextField();
+        panel.add(departureStop);
+        createLabel("kohdepysäkki", panel);
+        JTextField targetStop = new JTextField();
+        panel.add(targetStop);
+        createLabel("", panel);
+        JButton searchRoute = new JButton("Hae reitti");
+        listener.addInputFields(departureStop, targetStop);
+        listener.addRouteFinder(finder);
+        searchRoute.addActionListener(listener);
+        panel.add(searchRoute);
+        return panel;
+    }
+
+    private JPanel createList() {
+        JPanel panel = new JPanel();
+        String[] paivat = new String[100];
+        JList list = new JList(paivat);
+        listener.addTargetList(paivat);
+        panel.add(list, BorderLayout.CENTER);
+        return panel;
+    }
+
+    private void createLabel(String text, Container container) {
+        JLabel label = new JLabel(text);
         container.add(label);
     }
-    
+
+    public void setAlgorithm(DijkstraRoutefinder finder) {
+        this.finder = finder;
+    }
+
 }

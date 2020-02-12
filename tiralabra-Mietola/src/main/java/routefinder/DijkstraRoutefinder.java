@@ -9,6 +9,7 @@ import java.util.*;
 import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
+import datastructures.MyArrayList;
 import network.Mapdata;
 
 /**
@@ -46,8 +47,12 @@ public class DijkstraRoutefinder {
             if (s.getEstimate() > time) {
                 time = s.getEstimate();
             }
-            List<Connection> edges = s.getConnections();
-            for (Connection e : edges) {
+            MyArrayList edges = s.getConnections();
+            //   List<Connection> edges = s.getConnections();
+            //   for (Connection e : edges) {
+            Connection e = null;
+            for (int i = 0; i < edges.returnObjLength(); i++) {
+                e = (Connection) edges.getObject(i);
                 if (e.getDepartureTime() < time) {
                     continue;
                 }

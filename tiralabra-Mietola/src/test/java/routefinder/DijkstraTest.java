@@ -98,18 +98,14 @@ public class DijkstraTest {
     @After
     public void tearDown() {
     }
+    
 
     @Test
     public void testRoute() {
         OptimalRoute r = finder.search("stop1", "stop7", 0);
         assertEquals(r.getTime(), 45);
-
     }
 
-    /**
-     * @Test public void testRoute2() { OptimalRoute r = finder.search("stop5",
-     * "stop6", 0); assertEquals(r.getTime(), 13); //13 } *
-     */
     @Test
     public void testRoute3() {
         OptimalRoute r = finder.search("stop1", "stop9", 0);

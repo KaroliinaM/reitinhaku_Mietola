@@ -18,12 +18,14 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        RouteFinderApp finderApp= new RouteFinderApp();
-        finderApp.run();
-/**        FinderUI ui = new FinderUI();
 
-        ui.runUI(); **/
+        RouteFinderApp finderApp = new RouteFinderApp();
+        finderApp.run();
+        /**
+         * FinderUI ui = new FinderUI();
+         *
+         * ui.runUI(); *
+         */
     }
-    
+
 }
