@@ -17,7 +17,12 @@ import ui.FinderUI;
 import utils.DistanceCalculator;
 
 /**
- *
+ * step 1: Comment all the other code out, except the lines 26 and 27, 
+ *         this will download the data from digitransit api, and save it locally..
+ *         Takes about 10 minutes, sorry :(
+ * step 2: Comment the line 30 out, and uncomment the rest. The data is now loaded from a file.
+ *         comment out either lines 39 and 40, the the application uses Dijkstra, or line 38, 
+ *         then a* is used. UI implementation is on it's way
  * @author k
  */
 public class RouteFinderApp {

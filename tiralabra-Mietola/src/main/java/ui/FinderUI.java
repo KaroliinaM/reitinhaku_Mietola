@@ -36,9 +36,7 @@ public class FinderUI implements Runnable {
     private SearchListener listener = new SearchListener();
 
     /**
-     * Doesn't work as UI, because cmd readers don't work. Going to look into it
-     * next week. Gets the data, sets it into the map and then does the search.
-     * Prints out only the stop id:s, got to make it more informative.
+     * a swing UI, in progress. The output is printed on the console.
      */
     public void run() {
 
