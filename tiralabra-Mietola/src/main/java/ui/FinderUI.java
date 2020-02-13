@@ -79,9 +79,8 @@ public class FinderUI implements Runnable {
 
     private JPanel createList() {
         JPanel panel = new JPanel();
-        String[] paivat = new String[100];
-        JList list = new JList(paivat);
-        listener.addTargetList(paivat);
+        JLabel list = new JLabel();
+        listener.addTargetList(list);
         panel.add(list, BorderLayout.CENTER);
         return panel;
     }

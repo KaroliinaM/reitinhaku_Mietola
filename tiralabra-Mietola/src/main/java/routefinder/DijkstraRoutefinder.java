@@ -25,10 +25,11 @@ public class DijkstraRoutefinder {
 
     public void setMapdata(Mapdata mapdata) {
         this.mapdata = mapdata;
+        route.setMapdata(mapdata);
     }
 
     /**
-     * The Djikstra search algorithm.
+     * The Dijkstra search algorithm.
      *
      * @param start the starting point id
      * @param goal the target point id

@@ -23,7 +23,7 @@ public class SearchListener implements ActionListener {
 
     private JTextField departure;
     private JTextField target;
-    private String[] outputList;
+    private JLabel outputList;
     public AstarRouteFinder astarfinder;
     public DijkstraRoutefinder dijkstrafinder;
 
@@ -32,7 +32,7 @@ public class SearchListener implements ActionListener {
         this.target = target;
     }
 
-    public void addTargetList(String[] outputList) {
+    public void addTargetList(JLabel outputList) {
         this.outputList = outputList;
     }
 
@@ -43,5 +43,6 @@ public class SearchListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         OptimalRoute route = dijkstrafinder.search(departure.getText(), target.getText(), 0);
+        outputList.setText(route.toUiString());
     }
 }

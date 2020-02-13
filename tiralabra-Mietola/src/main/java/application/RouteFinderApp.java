@@ -22,7 +22,7 @@ import utils.DistanceCalculator;
  *         Takes about 10 minutes, sorry :(
  * step 2: Comment the line 30 out, and uncomment the rest. The data is now loaded from a file.
  *         comment out either lines 39 and 40, the the application uses Dijkstra, or line 38, 
- *         then a* is used. UI implementation is on it's way
+ *         then a* is used. UI implementation is on its way
  * @author k
  */
 public class RouteFinderApp {

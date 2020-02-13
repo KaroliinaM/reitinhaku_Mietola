@@ -27,6 +27,7 @@ public class AstarRouteFinder {
 
     public void setMapdata(Mapdata mapdata) {
         this.mapdata = mapdata;
+        route.setMapdata(mapdata);
     }
 
     public void setDistanceCalculator(DistanceCalculator distancecalculator) {
