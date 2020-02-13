@@ -1,23 +1,21 @@
-package data;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package utils;
+
+import java.util.Random;
+import network.Mapdata;
+
 /**
- * For the api.
+ *
  * @author k
  */
-public class Stopdata {
+public class PerformanceTest {
 
-    private Data data;
+    Random random = new Random();
 
-    public Data getData() {
-        return data;
-    }
+    Mapdata mapdata = new Mapdata();
 
-    public void setData(Data data) {
-        this.data = data;
-    }
 }

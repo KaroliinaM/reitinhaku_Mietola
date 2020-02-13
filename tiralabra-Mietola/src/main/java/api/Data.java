@@ -1,5 +1,6 @@
-package data;
+package api;
 
+import data.Stop;
 import java.io.Serializable;
 import java.util.*;
 

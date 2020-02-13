@@ -7,6 +7,7 @@ package network;
 
 import java.util.*;
 import data.Stop;
+import datastructures.MyArrayList;
 
 /**
  *
@@ -17,14 +18,15 @@ public class Mapdata {
     private Map<String, Stop> stops = new HashMap();
 
     /**
-     * Sets the stop data fetched from api to hashmap. 
-     * Separate class, because the search modifies the estimates
-     * , and the data can be reseted by re-fetching
+     * Sets the stop data fetched from api to hashmap. Separate class, because
+     * the search modifies the estimates , and the data can be reseted by
+     * re-fetching
      *
      * @param stopData List of stops
      */
-    public void setStops(List<Stop> stopData) {
-        for (Stop s : stopData) {
+    public void setStops(MyArrayList stopData) {
+        for (int i = 0; i < stopData.returnObjLength(); i++) {
+            Stop s = (Stop) stopData.getObject(i);
             s.setEstimate(1999999999);
             stops.put(s.getGtfsId(), s);
         }

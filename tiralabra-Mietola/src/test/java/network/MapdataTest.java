@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 import data.Stop;
+import datastructures.MyArrayList;
 
 /**
  *
@@ -29,11 +30,12 @@ public class MapdataTest {
 
     @Test
     public void addStopsTest() {
-        List<Stop> stops = new ArrayList<>();
+        //List<Stop> stops = new ArrayList<>();
+        MyArrayList stops = new MyArrayList();
         Stop stop = new Stop();
         stop.setGtfsId("123456");
         stop.setName("Pasila");
-        stops.add(stop);
+        stops.insertObject(stop);
         mapdata.setStops(stops);
         assertEquals(mapdata.getStop("123456").getName(), "Pasila");
 

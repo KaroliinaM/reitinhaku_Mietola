@@ -2,12 +2,7 @@ package api;
 
 import ui.FinderUI;
 import data.Connection;
-import data.Data;
-import data.Route;
 import data.Stop;
-import data.Stopdata;
-import data.Stoptime;
-import data.Trip;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

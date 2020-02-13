@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package api;
+package application;
 
-import application.RouteFinderApp;
 import ui.FinderUI;
 
 /**
@@ -20,12 +19,9 @@ public class NewMain {
     public static void main(String[] args) {
 
         RouteFinderApp finderApp = new RouteFinderApp();
-        finderApp.run();
-        /**
-         * FinderUI ui = new FinderUI();
-         *
-         * ui.runUI(); *
-         */
+        finderApp.run(); 
+     
+
     }
 
 }
