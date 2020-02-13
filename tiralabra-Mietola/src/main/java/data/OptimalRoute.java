@@ -50,9 +50,10 @@ public class OptimalRoute {
 
         String ret = "<html>";
         for (Connection c : connections) {
-            ret += " [" + c.getDepartureStop() + " " 
-                    + mapdata.getStop(c.getDepartureStop()).getName() + " - " + c.getTargetStop() 
-                    + " " + mapdata.getStop(c.getTargetStop()).getName() + "]<br> ";
+            ret += " [" + c.getDepartureStop() + " "
+                    + mapdata.getStop(c.getDepartureStop()).getName() + " - " + c.getTargetStop()
+                    + " " + mapdata.getStop(c.getTargetStop()).getName() + "] reitti: " 
+                    + c.getRouteName() + "<br> ";
         }
         ret += " on time " + time + "</html>";
         return ret;

@@ -23,13 +23,14 @@ import utils.DistanceCalculator;
  * step 2: Comment the line 30 out, and uncomment the rest. The data is now loaded from a file.
  *         comment out either lines 39 and 40, the the application uses Dijkstra, or line 38, 
  *         then a* is used. UI implementation is on its way
+ *          Coprrection: ui works only with dijkstra yet
  * @author k
  */
 public class RouteFinderApp {
     
     public void run() {
         ExecuteQuery query = new ExecuteQuery();
-        // query.saveStopData();
+     //   query.saveStopData();
         Map<String, Stop> stopdata = query.loadStopData();
         System.out.println("haettu");
         Mapdata maps = new Mapdata();
@@ -42,7 +43,7 @@ public class RouteFinderApp {
         finder.setMapdata(maps);        
         FinderUI ui = new FinderUI();
         ui.setAlgorithm(finder);
-        ui.runUI();
+        ui.runUI(); 
         //  finder.search("HSL:1434114", "HSL:1453114", 23520); 
     }
     

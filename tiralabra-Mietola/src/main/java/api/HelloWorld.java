@@ -26,7 +26,7 @@ import java.util.Scanner;
  * and open the template in the editor.
  */
 /**
- *
+ * Just random stuff in case I might need it. 
  * @author k
  */
 public class HelloWorld {

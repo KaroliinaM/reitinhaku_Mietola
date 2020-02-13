@@ -88,7 +88,7 @@ public class ExecuteQuery {
                         //         System.out.println(stop.getGtfsId());
                         stop.addConnection(new Connection(previous.getStop().getGtfsId(), 
                                 s.getStop().getGtfsId(), s.getScheduledDeparture(),
-                                s.getScheduledArrival()));
+                                s.getScheduledArrival(), r.getShortName()));
                         //           System.out.println("pysäkiltä " + 
                         //previous.getStop().getGtfsId() +  
                         //" pysäkille " + s.getStop().getGtfsId() + " ajassa " 

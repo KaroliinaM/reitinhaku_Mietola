@@ -37,11 +37,11 @@ public class OptimalRouteTest {
     public void testRouteFormation() {
 
         List<Connection> connections = 
-                Arrays.asList(new Connection("ekaLähtö", "ekaMaali", 0,  40), 
-                new Connection("tokaLähtö", "tokaMaali", 0, 50), 
-                new Connection("kolmasLähtö", "kolmasMaali", 0,  60), 
-                new Connection("neljäsLähtö", "neljäsMaali", 0, 70),
-                new Connection("viidesLähtö", "viidesMaali", 0, 80));
+                Arrays.asList(new Connection("ekaLähtö", "ekaMaali", 0,  40, "13"), 
+                new Connection("tokaLähtö", "tokaMaali", 0, 50, "17"), 
+                new Connection("kolmasLähtö", "kolmasMaali", 0,  60, "17"), 
+                new Connection("neljäsLähtö", "neljäsMaali", 0, 70, "55"),
+                new Connection("viidesLähtö", "viidesMaali", 0, 80, "30"));
         int time = 40;
         for (Connection c : connections) {
             optimalroute.addConnection(c);

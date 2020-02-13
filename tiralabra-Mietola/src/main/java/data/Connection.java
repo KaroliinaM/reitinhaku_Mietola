@@ -18,12 +18,15 @@ public class Connection implements Serializable {
     private String targetStop;
     private int departureTime;
     private int arrivalTime;
+    private String routeName;
 
-    public Connection(String departureStop, String targetStop, int departureTime, int arrivalTime) {
+    public Connection(String departureStop, String targetStop, int departureTime, 
+            int arrivalTime, String routeName) {
         this.departureStop = departureStop;
         this.targetStop = targetStop;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.routeName = routeName;
     }
 
     public String getDepartureStop() {
@@ -40,6 +43,10 @@ public class Connection implements Serializable {
 
     public int getArrivalTime() {
         return this.arrivalTime;
+    }
+    
+    public String getRouteName() {
+        return this.routeName;
     }
 
     @Override

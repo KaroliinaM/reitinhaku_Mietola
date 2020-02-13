@@ -81,20 +81,20 @@ public class AstarTest {
 
     public Mapdata createMapdata() {
         Mapdata reitit = Mockito.mock(Mapdata.class);
-        Connection connection1 = new Connection("stop1", "stop2", 0, 10);
-        Connection connection2 = new Connection("stop1", "stop6", 0, 10);
-        Connection connection3 = new Connection("stop1", "stop9", 0, 20);
-        Connection connection4 = new Connection("stop1", "stop11", 0, 10);
-        Connection connection5 = new Connection("stop2", "stop3", 10, 20);
-        Connection connection6 = new Connection("stop3", "stop4", 20, 30);
-        Connection connection7 = new Connection("stop4", "stop5", 30, 40);
-        Connection connection8 = new Connection("stop6", "stop7", 10, 20);
-        Connection connection9 = new Connection("stop7", "stop8", 20, 30);
-        Connection connection10 = new Connection("stop8", "stop5", 31, 36);
-        Connection connection11 = new Connection("stop9", "stop10", 20, 25);
-        Connection connection12 = new Connection("stop10", "stop8", 25, 31);
-        Connection connection13 = new Connection("stop11", "stop12", 10, 20);
-        Connection connection14 = new Connection("stop12", "stop3", 20, 30);
+        Connection connection1 = new Connection("stop1", "stop2", 0, 10, "0");
+        Connection connection2 = new Connection("stop1", "stop6", 0, 10, "0");
+        Connection connection3 = new Connection("stop1", "stop9", 0, 20, "0");
+        Connection connection4 = new Connection("stop1", "stop11", 0, 10, "0");
+        Connection connection5 = new Connection("stop2", "stop3", 10, 20, "0");
+        Connection connection6 = new Connection("stop3", "stop4", 20, 30, "0");
+        Connection connection7 = new Connection("stop4", "stop5", 30, 40, "0");
+        Connection connection8 = new Connection("stop6", "stop7", 10, 20, "0");
+        Connection connection9 = new Connection("stop7", "stop8", 20, 30, "0");
+        Connection connection10 = new Connection("stop8", "stop5", 31, 36, "0");
+        Connection connection11 = new Connection("stop9", "stop10", 20, 25, "0");
+        Connection connection12 = new Connection("stop10", "stop8", 25, 31, "0");
+        Connection connection13 = new Connection("stop11", "stop12", 10, 20, "0");
+        Connection connection14 = new Connection("stop12", "stop3", 20, 30, "0");
         stop1 = createStop("stop1", "stop1", Arrays.asList(connection1, connection2, connection3));
         stop2 = createStop("stop2", "stop2", Arrays.asList(connection5));
         stop3 = createStop("stop3", "stop3", Arrays.asList(connection6));
