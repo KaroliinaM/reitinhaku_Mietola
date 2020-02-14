@@ -10,7 +10,10 @@ Aloitin suorituskykytestien tekemisen. Ajattelin aluksi että teen sen kivalla g
 
 
 
-10.2 2h swingisäätöä 
+10.2 2h swingisäätöä
+
 12.2 6h tietorakenteita ja käyttöliittymää
+
 13.2 4h tietorakenteiden käyttöönottoa ja käyttöliittymän muokkaamista
+
 14.2 6h vertauisarviota, suorituskykytestejä ja dokumentaatiota
