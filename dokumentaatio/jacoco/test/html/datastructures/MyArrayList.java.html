@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyArrayList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">datastructures</a> &gt; <span class="el_source">MyArrayList.java</span></div><h1>MyArrayList.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datastructures;
+
+import java.io.Serializable;
+
+/**
+ * Implementation of a ArrayList. Cam be used to store Strings, Integers and Objects
+ * @author k
+ */
+<span class="fc" id="L14">public class MyArrayList implements Serializable {</span>
+
+<span class="fc" id="L16">    int[] integers = new int[50];</span>
+<span class="fc" id="L17">    String[] strings = new String[50];</span>
+<span class="fc" id="L18">    Object[] objects = new Object[50];</span>
+<span class="fc" id="L19">    int intPointer = 0;</span>
+<span class="fc" id="L20">    int stringPointer = 0;</span>
+<span class="fc" id="L21">    int objectPointer = 0;</span>
+
+    public void insertInt(int integer) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (intPointer == integers.length) {</span>
+<span class="fc" id="L25">            int[] newInts = new int[integers.length + 50];</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">            for (int i = 0; i &lt; integers.length; i++) {</span>
+<span class="fc" id="L27">                newInts[i] = integers[i];</span>
+            }
+<span class="fc" id="L29">            integers = newInts;</span>
+        }
+<span class="fc" id="L31">        integers[intPointer] = integer;</span>
+<span class="fc" id="L32">        intPointer++;</span>
+<span class="fc" id="L33">    }</span>
+
+    public void insertString(String newString) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (stringPointer == strings.length) {</span>
+<span class="fc" id="L37">            String[] newStrings = new String[strings.length + 50];</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            for (int i = 0; i &lt; strings.length; i++) {</span>
+<span class="fc" id="L39">                newStrings[i] = strings[i];</span>
+            }
+<span class="fc" id="L41">            strings = newStrings;</span>
+        }
+<span class="fc" id="L43">        strings[stringPointer] = newString;</span>
+<span class="fc" id="L44">        stringPointer++;</span>
+<span class="fc" id="L45">    }</span>
+
+    public void insertObject(Object object) {
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        if (objectPointer == objects.length) {</span>
+<span class="nc" id="L49">            Object[] newObjects = new Object[objects.length + 50];</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            for (int i = 0; i &lt; objects.length; i++) {</span>
+<span class="nc" id="L51">                newObjects[i] = objects[i];</span>
+            }
+<span class="nc" id="L53">            objects = newObjects;</span>
+        }
+<span class="fc" id="L55">        objects[objectPointer] = object;</span>
+<span class="fc" id="L56">        objectPointer++;</span>
+<span class="fc" id="L57">    }</span>
+
+    public String getString(int i) {
+<span class="fc" id="L60">        return this.strings[i];</span>
+    }
+
+    public int getInt(int i) {
+<span class="fc" id="L64">        return this.integers[i];</span>
+    }
+
+    public Object getObject(int i) {
+<span class="fc" id="L68">        return this.objects[i];</span>
+    }
+
+    public int returnIntLength() {
+<span class="nc" id="L72">        return intPointer;</span>
+    }
+
+    public int returnStringLength() {
+<span class="nc" id="L76">        return stringPointer;</span>
+    }
+
+    public int returnObjLength() {
+<span class="fc" id="L80">        return objectPointer;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

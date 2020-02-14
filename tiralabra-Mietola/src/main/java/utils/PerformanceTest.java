@@ -5,17 +5,37 @@
  */
 package utils;
 
+import data.Connection;
+import data.Stop;
+import datastructures.MyArrayList;
 import java.util.Random;
 import network.Mapdata;
+import routefinder.AstarRouteFinder;
+import routefinder.DijkstraRoutefinder;
 
 /**
- *
+ * It's a start.
  * @author k
  */
 public class PerformanceTest {
 
-    Random random = new Random();
+    DijkstraRoutefinder dijkstrafinder;
+    AstarRouteFinder astarfinder;
+    MyArrayList stopdata;
 
-    Mapdata mapdata = new Mapdata();
+    public void setData(DijkstraRoutefinder finder, AstarRouteFinder astarfinder, 
+            MyArrayList stopdata) {
+        this.dijkstrafinder = finder;
+        this.astarfinder = astarfinder;
+        this.stopdata = stopdata;
+    }
+
+    public void run() {
+        Random random = new Random(1337);
+        int n = stopdata.returnObjLength();
+        Stop start = (Stop) stopdata.getObject(random.nextInt(n));
+        Stop goal = (Stop) stopdata.getObject(random.nextInt(n));
+        dijkstrafinder.search(start.getGtfsId(), goal.getGtfsId(), 0);
+    }
 
 }

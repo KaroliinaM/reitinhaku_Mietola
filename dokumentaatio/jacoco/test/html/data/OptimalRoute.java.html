@@ -6,41 +6,76 @@
 package data;
 
 import java.util.*;
+import network.Mapdata;
 
 /**
- * the data that is derived from the algorithm is stored in this.
+ * the data for the route that is derived from the algorithm is stored in here.
+ *
  * @author k
  */
-<span class="fc" id="L14">public class OptimalRoute {</span>
+<span class="fc" id="L16">public class OptimalRoute {</span>
 
-<span class="fc" id="L16">    private List&lt;Connection&gt; connections = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L17">    private int time = 0;</span>
+<span class="fc" id="L18">    private List&lt;Connection&gt; connections = new ArrayList&lt;&gt;();</span>
+    Mapdata mapdata;
+<span class="fc" id="L20">    private int time = 0;</span>
+<span class="fc" id="L21">    private boolean exist = true;</span>
 
-    public void addConnection(Connection c) {
-<span class="fc" id="L20">        connections.add(c);</span>
-<span class="fc" id="L21">    }</span>
-
-    public void addTime(int t) {
-<span class="fc" id="L24">        time += t;</span>
+    public void setMapdata(Mapdata mapdata) {
+<span class="fc" id="L24">        this.mapdata = mapdata;</span>
 <span class="fc" id="L25">    }</span>
 
+    public void addConnection(Connection c) {
+<span class="fc" id="L28">        connections.add(c);</span>
+<span class="fc" id="L29">    }</span>
+
+    public void addTime(int t) {
+<span class="fc" id="L32">        time += t;</span>
+<span class="fc" id="L33">    }</span>
+
     public int getTime() {
-<span class="fc" id="L28">        return time;</span>
+<span class="fc" id="L36">        return time;</span>
     }
 
     public List&lt;Connection&gt; getConnections() {
-<span class="fc" id="L32">        Collections.reverse(connections);</span>
-<span class="fc" id="L33">        return connections;</span>
+<span class="fc" id="L40">        Collections.reverse(connections);</span>
+<span class="fc" id="L41">        return connections;</span>
+    }
+
+    public void setNonexistent() {
+<span class="nc" id="L45">        this.exist = false;</span>
+<span class="nc" id="L46">    }</span>
+
+    public boolean getIfExists() {
+<span class="nc" id="L49">        return exist;</span>
+    }
+
+    /**
+     * Format output to be presented to UI.
+     *
+     * @return html String.
+     */
+    public String toUiString() {
+        //Collections.reverse(connections);
+
+<span class="nc" id="L60">        String ret = &quot;&lt;html&gt;&quot;;</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        for (Connection c : connections) {</span>
+<span class="nc" id="L62">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; &quot;</span>
+<span class="nc" id="L63">                    + mapdata.getStop(c.getDepartureStop()).getName() + &quot; - &quot; + c.getTargetStop()</span>
+<span class="nc" id="L64">                    + &quot; &quot; + mapdata.getStop(c.getTargetStop()).getName() + &quot;] reitti: &quot;</span>
+<span class="nc" id="L65">                    + c.getRouteName() + &quot;&lt;br&gt; &quot;;</span>
+<span class="nc" id="L66">        }</span>
+<span class="nc" id="L67">        ret += &quot; on time &quot; + time + &quot;&lt;/html&gt;&quot;;</span>
+<span class="nc" id="L68">        return ret;</span>
     }
 
     public String toString() {
-<span class="fc" id="L37">        Collections.reverse(connections);</span>
-<span class="fc" id="L38">        String ret = &quot;&quot;;</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (Connection c : connections) {</span>
-<span class="fc" id="L40">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; - &quot; + c.getTargetStop() + &quot;] &quot;;</span>
-<span class="fc" id="L41">        }</span>
-<span class="fc" id="L42">        ret += &quot; on time &quot; + time;</span>
-<span class="fc" id="L43">        return ret;</span>
+<span class="fc" id="L72">        Collections.reverse(connections);</span>
+<span class="fc" id="L73">        String ret = &quot;&quot;;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        for (Connection c : connections) {</span>
+<span class="fc" id="L75">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; - &quot; + c.getTargetStop() + &quot;] &quot;;</span>
+<span class="fc" id="L76">        }</span>
+<span class="fc" id="L77">        ret += &quot; on time &quot; + time;</span>
+<span class="fc" id="L78">        return ret;</span>
     }
 
 }

@@ -9,6 +9,17 @@
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/package-info.java">
 </file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/datastructures/MyArrayListTest.java">
+<error line="9" severity="warning" message="Wrong order for &apos;org.junit.After&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="12" severity="warning" message="Wrong order for &apos;org.junit.Assert.*&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/datastructures/StopHeapTest.java">
+<error line="9" severity="warning" message="Wrong order for &apos;java.util.Random&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="10" severity="warning" message="Wrong order for &apos;org.junit.After&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="13" severity="warning" message="Wrong order for &apos;org.junit.Assert.*&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/datastructures/package-info.java">
+</file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/network/MapdataTest.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/network/package-info.java">

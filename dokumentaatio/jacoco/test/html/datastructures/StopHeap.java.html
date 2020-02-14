@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StopHeap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">datastructures</a> &gt; <span class="el_source">StopHeap.java</span></div><h1>StopHeap.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datastructures;
+
+import data.Stop;
+
+/**
+ * A heap structure for Stop objects.
+ * 
+ * @author k
+ */
+<span class="fc" id="L15">public class StopHeap {</span>
+
+<span class="fc" id="L17">    Stop[] stops = new Stop[50];</span>
+<span class="fc" id="L18">    int pointer = 1;</span>
+
+    public void add(Stop stop) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (pointer == stops.length) {</span>
+<span class="fc" id="L22">            Stop[] newStops = new Stop[stops.length + 50];</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">            for (int i = 0; i &lt; stops.length; i++) {</span>
+<span class="fc" id="L24">                newStops[i] = stops[i];</span>
+            }
+<span class="fc" id="L26">            stops = newStops;</span>
+        }
+<span class="fc" id="L28">        stops[pointer] = stop;</span>
+<span class="fc" id="L29">        int place = pointer;</span>
+<span class="fc" id="L30">        pointer++;</span>
+        while (true) {
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if (place == 1) {</span>
+<span class="fc" id="L33">                break;</span>
+            }
+<span class="fc" id="L35">            Stop parent = stops[place / 2];</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            if (stops[place].getEstimate() &gt;= parent.getEstimate()) {</span>
+<span class="fc" id="L37">                break;</span>
+            }
+<span class="fc" id="L39">            Stop apu = parent;</span>
+<span class="fc" id="L40">            stops[place / 2] = stops[place];</span>
+<span class="fc" id="L41">            stops[place] = apu;</span>
+<span class="fc" id="L42">            place = place / 2;</span>
+<span class="fc" id="L43">        }</span>
+<span class="fc" id="L44">    }</span>
+
+    public Stop poll() {
+<span class="fc" id="L47">        Stop closest = stops[1];</span>
+<span class="fc" id="L48">        stops[1] = stops[pointer - 1];</span>
+<span class="fc" id="L49">        int place = 1;</span>
+        while (true) {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            if (pointer &lt;= place * 2) {</span>
+<span class="fc" id="L52">                break;</span>
+            }
+            int minPlace;
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (pointer == place * 2 + 1) {</span>
+<span class="fc" id="L56">                minPlace = place * 2;</span>
+            } else {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                minPlace = stops[place * 2].getEstimate() &lt; stops[place * 2 + 1].getEstimate() ? </span>
+                        place * 2 : place * 2 + 1;
+            }
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (stops[minPlace].getEstimate() &gt;= stops[place].getEstimate()) {</span>
+<span class="fc" id="L62">                break;</span>
+            }
+<span class="fc" id="L64">            Stop apu = stops[place];</span>
+<span class="fc" id="L65">            stops[place] = stops[minPlace];</span>
+<span class="fc" id="L66">            stops[minPlace] = apu;</span>
+<span class="fc" id="L67">            place = minPlace;</span>
+<span class="fc" id="L68">        }</span>
+<span class="fc" id="L69">        return closest;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

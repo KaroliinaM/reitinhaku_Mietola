@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * The edges for the traffic network.
+ * Keeps track of the times, stops and also the bus number.
  *
  * @author k
  */
@@ -18,34 +19,41 @@ public class Connection implements Serializable {
     private String targetStop;
     private int departureTime;
     private int arrivalTime;
+    private String routeName;
 
-<span class="fc" id="L22">    public Connection(String departureStop, String targetStop, int departureTime, int arrivalTime) {</span>
-<span class="fc" id="L23">        this.departureStop = departureStop;</span>
-<span class="fc" id="L24">        this.targetStop = targetStop;</span>
-<span class="fc" id="L25">        this.departureTime = departureTime;</span>
-<span class="fc" id="L26">        this.arrivalTime = arrivalTime;</span>
-<span class="fc" id="L27">    }</span>
+    public Connection(String departureStop, String targetStop, int departureTime, 
+<span class="fc" id="L25">            int arrivalTime, String routeName) {</span>
+<span class="fc" id="L26">        this.departureStop = departureStop;</span>
+<span class="fc" id="L27">        this.targetStop = targetStop;</span>
+<span class="fc" id="L28">        this.departureTime = departureTime;</span>
+<span class="fc" id="L29">        this.arrivalTime = arrivalTime;</span>
+<span class="fc" id="L30">        this.routeName = routeName;</span>
+<span class="fc" id="L31">    }</span>
 
     public String getDepartureStop() {
-<span class="fc" id="L30">        return this.departureStop;</span>
+<span class="fc" id="L34">        return this.departureStop;</span>
     }
 
     public String getTargetStop() {
-<span class="fc" id="L34">        return this.targetStop;</span>
+<span class="fc" id="L38">        return this.targetStop;</span>
     }
 
     public int getDepartureTime() {
-<span class="fc" id="L38">        return this.departureTime;</span>
+<span class="fc" id="L42">        return this.departureTime;</span>
     }
 
     public int getArrivalTime() {
-<span class="fc" id="L42">        return this.arrivalTime;</span>
+<span class="fc" id="L46">        return this.arrivalTime;</span>
+    }
+    
+    public String getRouteName() {
+<span class="nc" id="L50">        return this.routeName;</span>
     }
 
     @Override
     public String toString() {
-<span class="nc" id="L47">        return this.getDepartureStop() + &quot; klo &quot; + this.getDepartureTime() + &quot;-&quot; + this.targetStop</span>
-<span class="nc" id="L48">                + &quot; klo &quot; + this.getArrivalTime();</span>
+<span class="nc" id="L55">        return this.getDepartureStop() + &quot; klo &quot; + this.getDepartureTime() + &quot;-&quot; + this.targetStop</span>
+<span class="nc" id="L56">                + &quot; klo &quot; + this.getArrivalTime();</span>
     }
 
 }

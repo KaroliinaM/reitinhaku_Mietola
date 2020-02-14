@@ -8,6 +8,7 @@ package routefinder;
 import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
+import datastructures.MyArrayList;
 import java.util.*;
 import network.Mapdata;
 import utils.DistanceCalculator;
@@ -16,66 +17,75 @@ import utils.DistanceCalculator;
  *
  * @author k
  */
-<span class="fc" id="L19">public class AstarRouteFinder {</span>
+<span class="fc" id="L20">public class AstarRouteFinder {</span>
 
-<span class="fc" id="L21">    PriorityQueue&lt;Stop&gt; queue = new PriorityQueue();</span>
-<span class="fc" id="L22">    HashSet&lt;String&gt; done = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L22">    PriorityQueue&lt;Stop&gt; queue = new PriorityQueue();</span>
+<span class="fc" id="L23">    HashSet&lt;String&gt; done = new HashSet&lt;&gt;();</span>
     Mapdata mapdata;
-<span class="fc" id="L24">    private OptimalRoute route = new OptimalRoute();</span>
+<span class="fc" id="L25">    private OptimalRoute route = new OptimalRoute();</span>
     DistanceCalculator distancecalculator;
 
     public void setMapdata(Mapdata mapdata) {
-<span class="fc" id="L28">        this.mapdata = mapdata;</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L29">        this.mapdata = mapdata;</span>
+<span class="fc" id="L30">        route.setMapdata(mapdata);</span>
+<span class="fc" id="L31">    }</span>
 
     public void setDistanceCalculator(DistanceCalculator distancecalculator) {
-<span class="fc" id="L32">        this.distancecalculator = distancecalculator;</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L34">        this.distancecalculator = distancecalculator;</span>
+<span class="fc" id="L35">    }</span>
 
     public OptimalRoute search(String start, String goal, int time) {
-<span class="fc" id="L36">        Stop beginning = mapdata.getStop(start);</span>
-<span class="fc" id="L37">        Stop destination = mapdata.getStop(goal);</span>
-<span class="fc" id="L38">        beginning.setEstimate(0);</span>
-<span class="fc" id="L39">        queue.add(beginning);</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">        while (!queue.isEmpty()) {</span>
-<span class="fc" id="L41">            Stop s = queue.poll();</span>
-<span class="fc" id="L42">            System.out.println(&quot;solmu &quot; + s.getName() + &quot; &quot; + s.getEstimate());</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (done.contains(s.getGtfsId())) {</span>
-<span class="fc" id="L44">                continue;</span>
+<span class="fc" id="L38">        Stop beginning = mapdata.getStop(start);</span>
+<span class="fc" id="L39">        Stop destination = mapdata.getStop(goal);</span>
+<span class="fc" id="L40">        beginning.setEstimate(0);</span>
+<span class="fc" id="L41">        queue.add(beginning);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        while (!queue.isEmpty()) {</span>
+<span class="fc" id="L43">            Stop s = queue.poll();</span>
+            //        System.out.println(&quot;solmu &quot; + s.getName() + &quot; &quot; + s.getEstimate());
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (done.contains(s.getGtfsId())) {</span>
+<span class="fc" id="L46">                continue;</span>
             }
-<span class="fc" id="L46">            done.add(s.getGtfsId());</span>
-<span class="fc bfc" id="L47" title="All 2 branches covered.">            if (s.getEstimate() &gt; time) {</span>
-<span class="fc" id="L48">                time = s.getEstimate();</span>
+<span class="fc" id="L48">            done.add(s.getGtfsId());</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            if (s.getEstimate() &gt; time) {</span>
+<span class="fc" id="L50">                time = s.getEstimate();</span>
             }
-<span class="fc" id="L50">            List&lt;Connection&gt; edges = s.getConnections();</span>
-<span class="fc bfc" id="L51" title="All 2 branches covered.">            for (Connection e : edges) {</span>
-<span class="fc bfc" id="L52" title="All 2 branches covered.">                if (e.getDepartureTime() &lt; time) {</span>
-<span class="fc" id="L53">                    continue;</span>
+            //  List&lt;Connection&gt; edges = s.getConnections();
+<span class="fc" id="L53">            MyArrayList edges = s.getConnections();</span>
+            //for (Connection e : edges) {
+<span class="fc" id="L55">            Connection e = null;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            for (int i = 0; i &lt; edges.returnObjLength(); i++) {</span>
+<span class="fc" id="L57">                e = (Connection) edges.getObject(i);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                if (e.getDepartureTime() &lt; time) {</span>
+<span class="fc" id="L59">                    continue;</span>
                 }
-<span class="fc" id="L55">                Stop t = mapdata.getStop(e.getTargetStop());</span>
-<span class="fc" id="L56">                int currentDistance = t.getEstimate();</span>
-<span class="fc" id="L57">                int heuristictime = distancecalculator.timeEstimate(t, destination);</span>
-<span class="fc" id="L58">                int newDistance = e.getArrivalTime() + heuristictime;</span>
-<span class="fc bfc" id="L59" title="All 2 branches covered.">                if (newDistance &lt; currentDistance) {</span>
-<span class="fc" id="L60">                    t.setEstimate(newDistance);</span>
-<span class="fc" id="L61">                    t.setPrevious(e);</span>
-<span class="fc" id="L62">                    queue.add(t);</span>
+<span class="fc" id="L61">                Stop t = mapdata.getStop(e.getTargetStop());</span>
+<span class="fc" id="L62">                int currentDistance = t.getEstimate();</span>
+<span class="fc" id="L63">                int heuristictime = distancecalculator.timeEstimate(t, destination);</span>
+<span class="fc" id="L64">                int newDistance = e.getArrivalTime() + heuristictime;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">                if (newDistance &lt; currentDistance) {</span>
+<span class="fc" id="L66">                    t.setEstimate(newDistance);</span>
+<span class="fc" id="L67">                    t.setPrevious(e);</span>
+<span class="fc" id="L68">                    queue.add(t);</span>
                 }
-<span class="fc" id="L64">            }</span>
+            }
 
-<span class="fc" id="L66">        }</span>
-<span class="fc" id="L67">        Stop stop = mapdata.getStop(goal);</span>
-<span class="fc" id="L68">        route.addTime(stop.getEstimate());</span>
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        while (!stop.getGtfsId().equals(start)) {</span>
-<span class="fc" id="L70">            Connection c = stop.getPrevious();</span>
-<span class="fc" id="L71">            route.addConnection(c);</span>
-<span class="fc" id="L72">            stop = mapdata.getStop(c.getDepartureStop());</span>
-<span class="fc" id="L73">        }</span>
-<span class="fc" id="L74">        System.out.println(&quot;tulos&quot;);</span>
-<span class="fc" id="L75">        System.out.println(route);</span>
-<span class="fc" id="L76">        System.out.println(route.getTime());</span>
-<span class="fc" id="L77">        System.out.println(mapdata.getStop(goal).getEstimate());</span>
-<span class="fc" id="L78">        return route;</span>
+<span class="fc" id="L72">        }</span>
+<span class="fc" id="L73">        Stop stop = mapdata.getStop(goal);</span>
+<span class="fc" id="L74">        route.addTime(stop.getEstimate());</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        while (!stop.getGtfsId().equals(start)) {</span>
+<span class="fc" id="L76">            Connection c = stop.getPrevious();</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">            if (c == null) {</span>
+<span class="nc" id="L78">                route.setNonexistent();</span>
+<span class="nc" id="L79">                break;</span>
+            }
+<span class="fc" id="L81">            route.addConnection(c);</span>
+<span class="fc" id="L82">            stop = mapdata.getStop(c.getDepartureStop());</span>
+<span class="fc" id="L83">        }</span>
+<span class="fc" id="L84">        System.out.println(&quot;tulos&quot;);</span>
+<span class="fc" id="L85">        System.out.println(route);</span>
+<span class="fc" id="L86">        System.out.println(route.getTime());</span>
+<span class="fc" id="L87">        System.out.println(mapdata.getStop(goal).getEstimate());</span>
+<span class="fc" id="L88">        return route;</span>
     }
 
 }

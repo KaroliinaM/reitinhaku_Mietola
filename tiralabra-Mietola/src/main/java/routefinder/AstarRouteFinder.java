@@ -41,7 +41,7 @@ public class AstarRouteFinder {
         queue.add(beginning);
         while (!queue.isEmpty()) {
             Stop s = queue.poll();
-            System.out.println("solmu " + s.getName() + " " + s.getEstimate());
+            //        System.out.println("solmu " + s.getName() + " " + s.getEstimate());
             if (done.contains(s.getGtfsId())) {
                 continue;
             }
@@ -74,6 +74,10 @@ public class AstarRouteFinder {
         route.addTime(stop.getEstimate());
         while (!stop.getGtfsId().equals(start)) {
             Connection c = stop.getPrevious();
+            if (c == null) {
+                route.setNonexistent();
+                break;
+            }
             route.addConnection(c);
             stop = mapdata.getStop(c.getDepartureStop());
         }

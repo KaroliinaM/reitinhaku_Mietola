@@ -10,7 +10,8 @@ import java.util.*;
  * and open the template in the editor.
  */
 /**
- * The network nodes.
+ * The network nodes. The Stop object stores it's location in latituude and longitude 
+ * and also the connection information between stops.
  *
  * @author k
  */

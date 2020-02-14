@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * The edges for the traffic network.
+ * Keeps track of the times, stops and also the bus number.
  *
  * @author k
  */

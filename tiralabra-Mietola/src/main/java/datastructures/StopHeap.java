@@ -8,7 +8,8 @@ package datastructures;
 import data.Stop;
 
 /**
- *
+ * A heap structure for Stop objects.
+ * 
  * @author k
  */
 public class StopHeap {

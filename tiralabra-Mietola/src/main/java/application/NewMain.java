@@ -6,6 +6,7 @@
 package application;
 
 import ui.FinderUI;
+import utils.PerformanceTest;
 
 /**
  *

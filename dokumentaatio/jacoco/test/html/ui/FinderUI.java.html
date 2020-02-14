@@ -7,38 +7,92 @@ package ui;
 
 import api.ExecuteQuery;
 import data.Stop;
+import java.awt.BorderLayout;
 import java.util.*;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
 import utils.DistanceCalculator;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author k
  */
-<span class="nc" id="L20">public class FinderUI {</span>
+<span class="nc" id="L32">public class FinderUI implements Runnable {</span>
+
+    private JFrame frame;
+    private DijkstraRoutefinder finder;
+<span class="nc" id="L36">    private SearchListener listener = new SearchListener();</span>
 
     /**
-     * Doesn't work as UI, because cmd readers don't work. Going to look into it
-     * next week. Gets the data, sets it into the map and then does the search.
-     * Prints out only the stop id:s, got to make it more informative.
+     * a swing UI, in progress. The output is printed on the console.
      */
     public void run() {
-<span class="nc" id="L28">        ExecuteQuery query = new ExecuteQuery();</span>
-        //  query.saveStopData();
-<span class="nc" id="L30">        Map&lt;String, Stop&gt; stopdata = query.loadStopData();</span>
-<span class="nc" id="L31">        System.out.println(&quot;haettu&quot;);</span>
-<span class="nc" id="L32">        Mapdata maps = new Mapdata();</span>
-<span class="nc" id="L33">        DistanceCalculator calculator = new DistanceCalculator();</span>
-<span class="nc" id="L34">        List&lt;Stop&gt; stops = new ArrayList&lt;Stop&gt;(stopdata.values());</span>
-<span class="nc" id="L35">        maps.setStops(stops);</span>
-        // DjikstraRoutefinder finder=new DjikstraRoutefinder();
-<span class="nc" id="L37">        AstarRouteFinder finder = new AstarRouteFinder();</span>
-<span class="nc" id="L38">        finder.setDistanceCalculator(calculator);</span>
-<span class="nc" id="L39">        finder.setMapdata(maps);</span>
-<span class="nc" id="L40">        finder.search(&quot;HSL:1434114&quot;, &quot;HSL:1453114&quot;, 0);</span>
-<span class="nc" id="L41">    }</span>
-    
+
+<span class="nc" id="L43">    }</span>
+
+    public void runUI() {
+<span class="nc" id="L46">        frame = new JFrame(&quot;otsikko&quot;);</span>
+<span class="nc" id="L47">        frame.setPreferredSize(new Dimension(800, 800));</span>
+<span class="nc" id="L48">        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L49">        createUIComponents(frame.getContentPane());</span>
+<span class="nc" id="L50">        frame.pack();</span>
+<span class="nc" id="L51">        frame.setVisible(true);</span>
+<span class="nc" id="L52">    }</span>
+
+    public void createUIComponents(Container container) {
+<span class="nc" id="L55">        container.add(createInputPanel(), BorderLayout.NORTH);</span>
+<span class="nc" id="L56">        container.add(createList(), BorderLayout.CENTER);</span>
+<span class="nc" id="L57">    }</span>
+
+    private JPanel createInputPanel() {
+<span class="nc" id="L60">        JPanel panel = new JPanel();</span>
+<span class="nc" id="L61">        GridLayout layout = new GridLayout(4, 2);</span>
+<span class="nc" id="L62">        panel.setLayout(layout);</span>
+<span class="nc" id="L63">        createLabel(&quot;Reittiopas&quot;, panel);</span>
+<span class="nc" id="L64">        createLabel(&quot;&quot;, panel);</span>
+<span class="nc" id="L65">        createLabel(&quot;Lähtöpysäkki&quot;, panel);</span>
+<span class="nc" id="L66">        JTextField departureStop = new JTextField();</span>
+<span class="nc" id="L67">        panel.add(departureStop);</span>
+<span class="nc" id="L68">        createLabel(&quot;kohdepysäkki&quot;, panel);</span>
+<span class="nc" id="L69">        JTextField targetStop = new JTextField();</span>
+<span class="nc" id="L70">        panel.add(targetStop);</span>
+<span class="nc" id="L71">        createLabel(&quot;&quot;, panel);</span>
+<span class="nc" id="L72">        JButton searchRoute = new JButton(&quot;Hae reitti&quot;);</span>
+<span class="nc" id="L73">        listener.addInputFields(departureStop, targetStop);</span>
+<span class="nc" id="L74">        listener.addRouteFinder(finder);</span>
+<span class="nc" id="L75">        searchRoute.addActionListener(listener);</span>
+<span class="nc" id="L76">        panel.add(searchRoute);</span>
+<span class="nc" id="L77">        return panel;</span>
+    }
+
+    private JPanel createList() {
+<span class="nc" id="L81">        JPanel panel = new JPanel();</span>
+<span class="nc" id="L82">        JLabel list = new JLabel();</span>
+<span class="nc" id="L83">        listener.addTargetList(list);</span>
+<span class="nc" id="L84">        panel.add(list, BorderLayout.CENTER);</span>
+<span class="nc" id="L85">        return panel;</span>
+    }
+
+    private void createLabel(String text, Container container) {
+<span class="nc" id="L89">        JLabel label = new JLabel(text);</span>
+<span class="nc" id="L90">        container.add(label);</span>
+<span class="nc" id="L91">    }</span>
+
+    public void setAlgorithm(DijkstraRoutefinder finder) {
+<span class="nc" id="L94">        this.finder = finder;</span>
+<span class="nc" id="L95">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

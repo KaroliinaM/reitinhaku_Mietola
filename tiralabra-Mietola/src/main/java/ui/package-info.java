@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 /**
- * Package for the user interface.
+ * Package for the user interface classes.
  */
 package ui;

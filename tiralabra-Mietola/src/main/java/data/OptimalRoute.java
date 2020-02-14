@@ -9,7 +9,7 @@ import java.util.*;
 import network.Mapdata;
 
 /**
- * the data that is derived from the algorithm is stored in this.
+ * the data for the route that is derived from the algorithm is stored in here.
  *
  * @author k
  */
@@ -18,6 +18,7 @@ public class OptimalRoute {
     private List<Connection> connections = new ArrayList<>();
     Mapdata mapdata;
     private int time = 0;
+    private boolean exist = true;
 
     public void setMapdata(Mapdata mapdata) {
         this.mapdata = mapdata;
@@ -40,6 +41,14 @@ public class OptimalRoute {
         return connections;
     }
 
+    public void setNonexistent() {
+        this.exist = false;
+    }
+
+    public boolean getIfExists() {
+        return exist;
+    }
+
     /**
      * Format output to be presented to UI.
      *
@@ -52,7 +61,7 @@ public class OptimalRoute {
         for (Connection c : connections) {
             ret += " [" + c.getDepartureStop() + " "
                     + mapdata.getStop(c.getDepartureStop()).getName() + " - " + c.getTargetStop()
-                    + " " + mapdata.getStop(c.getTargetStop()).getName() + "] reitti: " 
+                    + " " + mapdata.getStop(c.getTargetStop()).getName() + "] reitti: "
                     + c.getRouteName() + "<br> ";
         }
         ret += " on time " + time + "</html>";

@@ -7,28 +7,30 @@ package network;
 
 import java.util.*;
 import data.Stop;
+import datastructures.MyArrayList;
 
 /**
  *
  * @author k
  */
-<span class="fc" id="L15">public class Mapdata {</span>
+<span class="fc" id="L16">public class Mapdata {</span>
 
-<span class="fc" id="L17">    private Map&lt;String, Stop&gt; stops = new HashMap();</span>
+<span class="fc" id="L18">    private Map&lt;String, Stop&gt; stops = new HashMap();</span>
 
     /**
-     * Sets the stop data fetched from api to hashmap. 
-     * Separate class, because the search modifies the estimates
-     * , and the data can be reseted by re-fetching
+     * Sets the stop data fetched from api to hashmap. Separate class, because
+     * the search modifies the estimates , and the data can be reseted by
+     * re-fetching
      *
      * @param stopData List of stops
      */
-    public void setStops(List&lt;Stop&gt; stopData) {
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (Stop s : stopData) {</span>
-<span class="fc" id="L28">            s.setEstimate(1999999999);</span>
-<span class="fc" id="L29">            stops.put(s.getGtfsId(), s);</span>
-<span class="fc" id="L30">        }</span>
-<span class="fc" id="L31">    }</span>
+    public void setStops(MyArrayList stopData) {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int i = 0; i &lt; stopData.returnObjLength(); i++) {</span>
+<span class="fc" id="L29">            Stop s = (Stop) stopData.getObject(i);</span>
+<span class="fc" id="L30">            s.setEstimate(1999999999);</span>
+<span class="fc" id="L31">            stops.put(s.getGtfsId(), s);</span>
+        }
+<span class="fc" id="L33">    }</span>
 
     /**
      * Get a stop by stop id.
@@ -37,7 +39,7 @@ import data.Stop;
      * @return stop object
      */
     public Stop getStop(String id) {
-<span class="fc" id="L40">        return stops.get(id);</span>
+<span class="fc" id="L42">        return stops.get(id);</span>
     }
 
 }
