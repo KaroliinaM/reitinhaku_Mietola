@@ -30,7 +30,7 @@ public class RouteFinderApp {
 
     public void run() {
         ExecuteQuery query = new ExecuteQuery();
-        //   query.saveStopData();
+       //  query.saveStopData();
         Map<String, Stop> stopdata = query.loadStopData();
         System.out.println("haettu");
         Mapdata maps = new Mapdata();
@@ -52,7 +52,7 @@ public class RouteFinderApp {
         FinderUI ui = new FinderUI();
         ui.setAlgorithms(dikstrafinder, astarfinder);
         ui.runUI();
-        //  finder.search("HSL:1434114", "HSL:1453114", 23520); 
+        //  finder.search("HSL:1434114", "HSL:1453114", 23520); **/
     }
 
 }

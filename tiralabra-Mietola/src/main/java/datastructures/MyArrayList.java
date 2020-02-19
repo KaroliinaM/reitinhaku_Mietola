@@ -76,7 +76,7 @@ public class MyArrayList implements Serializable {
         }
         objectPointer--;
     }
-    
+
     public void removeString(int x) {
         for (int i = x; i < strings.length - 1; i++) {
             strings[i] = strings[i + 1];
@@ -94,6 +94,14 @@ public class MyArrayList implements Serializable {
 
     public int returnObjLength() {
         return objectPointer;
+    }
+
+    public void reverseObject() {
+        for (int i = 0; i < this.objectPointer / 2; i++) {
+            Object temp = objects[i];
+            objects[i] = objects[this.objectPointer - 1 - i];
+            objects[this.objectPointer - 1 - i] = temp;
+        }
     }
 
 }

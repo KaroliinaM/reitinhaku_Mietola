@@ -5,6 +5,7 @@
  */
 package data;
 
+import datastructures.MyArrayList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,22 +37,25 @@ public class OptimalRouteTest {
     @Test
     public void testRouteFormation() {
 
-        List<Connection> connections = 
-                Arrays.asList(new Connection("ekaLähtö", "ekaMaali", 0,  40, "13"), 
-                new Connection("tokaLähtö", "tokaMaali", 0, 50, "17"), 
-                new Connection("kolmasLähtö", "kolmasMaali", 0,  60, "17"), 
-                new Connection("neljäsLähtö", "neljäsMaali", 0, 70, "55"),
-                new Connection("viidesLähtö", "viidesMaali", 0, 80, "30"));
+        List<Connection> connections
+                = Arrays.asList(new Connection("ekaLähtö", "ekaMaali", 0, 40, "13"),
+                        new Connection("tokaLähtö", "tokaMaali", 0, 50, "17"),
+                        new Connection("kolmasLähtö", "kolmasMaali", 0, 60, "17"),
+                        new Connection("neljäsLähtö", "neljäsMaali", 0, 70, "55"),
+                        new Connection("viidesLähtö", "viidesMaali", 0, 80, "30"));
         int time = 40;
         for (Connection c : connections) {
             optimalroute.addConnection(c);
             optimalroute.addTime(time);
             time += 10;
         }
-        List<Connection> reitti = optimalroute.getConnections();
+        MyArrayList reitti = optimalroute.getConnections();
         Collections.reverse(connections);
-        
-        assertEquals(reitti, connections);
+
+        for (int i = 0; i < reitti.returnObjLength(); i++) {
+            assertEquals(reitti.getObject(i), connections.get(i));
+        }
+        // assertEquals(reitti, connections);
         assertEquals(optimalroute.getTime(), 300);
     }
 }

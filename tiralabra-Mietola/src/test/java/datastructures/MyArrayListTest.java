@@ -97,4 +97,25 @@ public class MyArrayListTest {
         assertEquals(list.getString(0), "Kumpula");
     }
 
+    @Test
+    public void testReverse() {
+        String[] stops = {"Pasila", "Pitäjänmäki", "Etelä-Haaga", "Suutarila", "Töyrynummi",
+            "Tuomarila", "Nuuksio", "Lauttasaari", "Ruoholahti", "Kallio", "Merihaka"};
+        for (int i = 0; i < 10; i++) {
+            list.insertObject(new Connection(stops[i], stops[i + 1], 50, 100, "0"));
+        }
+        list.reverseObject();
+        for (int i = 0; i < 10; i++) {
+            Connection c = (Connection) list.getObject(i);
+            assertEquals(c.getDepartureStop(), stops[stops.length - 2 - i]);
+        }
+        list.removeObject(0);
+        list.reverseObject();
+        for (int i = 0; i < 9; i++) {
+            Connection c = (Connection) list.getObject(i);
+            assertEquals(c.getDepartureStop(), stops[i]);
+        }
+
+    }
+
 }

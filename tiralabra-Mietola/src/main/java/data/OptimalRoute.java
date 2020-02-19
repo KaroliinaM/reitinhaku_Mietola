@@ -5,6 +5,7 @@
  */
 package data;
 
+import datastructures.MyArrayList;
 import java.util.*;
 import network.Mapdata;
 
@@ -15,7 +16,8 @@ import network.Mapdata;
  */
 public class OptimalRoute {
 
-    private List<Connection> connections = new ArrayList<>();
+    //private List<Connection> connections = new ArrayList<>();
+    private MyArrayList connections = new MyArrayList();
     Mapdata mapdata;
     private int time = 0;
     private boolean exist = true;
@@ -25,7 +27,7 @@ public class OptimalRoute {
     }
 
     public void addConnection(Connection c) {
-        connections.add(c);
+        connections.insertObject(c);
     }
 
     public void addTime(int t) {
@@ -36,8 +38,9 @@ public class OptimalRoute {
         return time;
     }
 
-    public List<Connection> getConnections() {
-        Collections.reverse(connections);
+    public MyArrayList getConnections() {
+        //Collections.reverse(connections);
+        connections.reverseObject();
         return connections;
     }
 
@@ -58,7 +61,8 @@ public class OptimalRoute {
         //Collections.reverse(connections);
 
         String ret = "<html>";
-        for (Connection c : connections) {
+        for (int i = 0; i < connections.returnObjLength(); i++) {
+            Connection c = (Connection) connections.getObject(i);
             ret += " [" + c.getDepartureStop() + " "
                     + mapdata.getStop(c.getDepartureStop()).getName() + " - " + c.getTargetStop()
                     + " " + mapdata.getStop(c.getTargetStop()).getName() + "] reitti: "
@@ -69,9 +73,10 @@ public class OptimalRoute {
     }
 
     public String toString() {
-        Collections.reverse(connections);
+        connections.reverseObject();
         String ret = "";
-        for (Connection c : connections) {
+        for (int i = 0; i < connections.returnObjLength(); i++) {
+            Connection c = (Connection) connections.getObject(i);
             ret += " [" + c.getDepartureStop() + " - " + c.getTargetStop() + "] ";
         }
         ret += " on time " + time;
