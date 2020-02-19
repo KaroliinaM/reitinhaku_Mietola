@@ -10,7 +10,10 @@ import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
 import datastructures.MyArrayList;
+import datastructures.MyHashSet;
+import datastructures.StopHeap;
 import network.Mapdata;
+import utils.HashFunction;
 
 /**
  *
@@ -18,8 +21,10 @@ import network.Mapdata;
  */
 public class DijkstraRoutefinder {
 
-    PriorityQueue<Stop> queue = new PriorityQueue();
-    HashSet<String> done = new HashSet<>();
+    //PriorityQueue<Stop> queue = new PriorityQueue();
+    StopHeap queue = new StopHeap();
+    //HashSet<String> done = new HashSet<>();
+    MyHashSet done = new MyHashSet(new HashFunction());
     Mapdata mapdata;
     private OptimalRoute route = new OptimalRoute();
 

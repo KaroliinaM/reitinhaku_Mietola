@@ -1,8 +1,5 @@
 package api;
 
-import ui.FinderUI;
-import data.Connection;
-import data.Stop;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,6 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import data.Connection;
+import data.Stop;
+import ui.FinderUI;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -5,12 +5,13 @@
  */
 package application;
 
-import api.ExecuteQuery;
-import data.Stop;
-import datastructures.MyArrayList;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import api.ExecuteQuery;
+import data.Stop;
+import datastructures.MyArrayList;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;

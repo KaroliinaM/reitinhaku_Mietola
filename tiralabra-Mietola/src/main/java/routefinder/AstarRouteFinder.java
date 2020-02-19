@@ -5,13 +5,16 @@
  */
 package routefinder;
 
+import java.util.*;
 import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
 import datastructures.MyArrayList;
-import java.util.*;
+import datastructures.MyHashSet;
+import datastructures.StopHeap;
 import network.Mapdata;
 import utils.DistanceCalculator;
+import utils.HashFunction;
 
 /**
  *
@@ -19,8 +22,10 @@ import utils.DistanceCalculator;
  */
 public class AstarRouteFinder {
 
-    PriorityQueue<Stop> queue = new PriorityQueue();
-    HashSet<String> done = new HashSet<>();
+    // PriorityQueue<Stop> queue = new PriorityQueue();
+    StopHeap queue = new StopHeap();
+    // HashSet<String> done = new HashSet<>();
+    MyHashSet done = new MyHashSet(new HashFunction());
     Mapdata mapdata;
     private OptimalRoute route = new OptimalRoute();
     DistanceCalculator distancecalculator;

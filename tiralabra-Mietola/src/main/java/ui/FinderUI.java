@@ -5,17 +5,12 @@
  */
 package ui;
 
-import api.ExecuteQuery;
-import data.Stop;
+
 import java.awt.BorderLayout;
-import java.util.*;
-import network.Mapdata;
-import routefinder.AstarRouteFinder;
-import routefinder.DijkstraRoutefinder;
-import utils.DistanceCalculator;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.*;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +19,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import api.ExecuteQuery;
+import data.Stop;
+import network.Mapdata;
+import routefinder.AstarRouteFinder;
+import routefinder.DijkstraRoutefinder;
+import utils.DistanceCalculator;
 
 /**
  *

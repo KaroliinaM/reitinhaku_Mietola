@@ -8,6 +8,8 @@ package network;
 import java.util.*;
 import data.Stop;
 import datastructures.MyArrayList;
+import datastructures.MyHashMap;
+import utils.HashFunction;
 
 /**
  *
@@ -15,7 +17,8 @@ import datastructures.MyArrayList;
  */
 public class Mapdata {
 
-    private Map<String, Stop> stops = new HashMap();
+    //private Map<String, Stop> stops = new HashMap();
+    private MyHashMap stops = new MyHashMap(new HashFunction());
 
     /**
      * Sets the stop data fetched from api to hashmap. Separate class, because

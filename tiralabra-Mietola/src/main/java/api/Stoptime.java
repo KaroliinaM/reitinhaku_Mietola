@@ -5,8 +5,8 @@
  */
 package api;
 
-import data.Stop;
 import java.io.Serializable;
+import data.Stop;
 
 /**
  * For the api.

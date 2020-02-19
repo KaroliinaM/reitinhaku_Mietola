@@ -1,8 +1,8 @@
 package api;
 
-import data.Stop;
 import java.io.Serializable;
 import java.util.*;
+import data.Stop;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

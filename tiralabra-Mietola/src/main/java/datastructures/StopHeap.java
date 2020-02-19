@@ -9,7 +9,7 @@ import data.Stop;
 
 /**
  * A heap structure for Stop objects.
- * 
+ *
  * @author k
  */
 public class StopHeap {
@@ -55,8 +55,8 @@ public class StopHeap {
             if (pointer == place * 2 + 1) {
                 minPlace = place * 2;
             } else {
-                minPlace = stops[place * 2].getEstimate() < stops[place * 2 + 1].getEstimate() ? 
-                        place * 2 : place * 2 + 1;
+                minPlace = stops[place * 2].getEstimate() < stops[place * 2 + 1].getEstimate()
+                        ? place * 2 : place * 2 + 1;
             }
             if (stops[minPlace].getEstimate() >= stops[place].getEstimate()) {
                 break;
@@ -66,7 +66,13 @@ public class StopHeap {
             stops[minPlace] = apu;
             place = minPlace;
         }
+        pointer--;
         return closest;
+    }
+
+    public boolean isEmpty() {
+        System.out.println(pointer);
+        return pointer == 1;
     }
 
 }

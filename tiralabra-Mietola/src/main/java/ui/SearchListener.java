@@ -5,13 +5,13 @@
  */
 package ui;
 
-import data.Connection;
-import data.OptimalRoute;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import data.Connection;
+import data.OptimalRoute;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
 

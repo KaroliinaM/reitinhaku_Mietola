@@ -5,10 +5,10 @@
  */
 package datastructures;
 
+import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.mockito.Mockito;
 import utils.HashFunction;
 
@@ -33,7 +33,7 @@ public class MyHashSetTest {
     }
 
     @Test
-    public void TestOnSmallSet() {
+    public void testOnSmallSet() {
         set.add("Malmi");
         set.add("Suomenoja");
         set.add("Oittaa");

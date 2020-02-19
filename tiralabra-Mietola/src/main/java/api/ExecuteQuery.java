@@ -6,7 +6,6 @@ package api;
  * and open the template in the editor.
  */
 import com.google.gson.Gson;
-import data.Connection;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -14,15 +13,16 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONObject;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import data.Stop;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
+import data.Connection;
+import data.Stop;
 
 /**
  *

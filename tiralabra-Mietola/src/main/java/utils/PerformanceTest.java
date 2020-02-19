@@ -5,10 +5,10 @@
  */
 package utils;
 
+import java.util.Random;
 import data.Connection;
 import data.Stop;
 import datastructures.MyArrayList;
-import java.util.Random;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;

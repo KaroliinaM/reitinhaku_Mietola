@@ -5,16 +5,16 @@
  */
 package routefinder;
 
-import data.Connection;
-import data.OptimalRoute;
-import data.Stop;
-import java.util.*;
-import network.Mapdata;
-import org.junit.After;
 import static org.junit.Assert.assertEquals;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import java.util.*;
+import data.Connection;
+import data.OptimalRoute;
+import data.Stop;
+import network.Mapdata;
 import utils.DistanceCalculator;
 
 /**

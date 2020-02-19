@@ -5,8 +5,8 @@
  */
 package data;
 
-import datastructures.MyArrayList;
 import java.util.*;
+import datastructures.MyArrayList;
 import network.Mapdata;
 
 /**

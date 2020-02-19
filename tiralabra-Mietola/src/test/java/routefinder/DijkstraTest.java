@@ -11,10 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import java.util.*;
-import network.Mapdata;
 import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
+import network.Mapdata;
 
 /**
  *

@@ -5,12 +5,12 @@
  */
 package datastructures;
 
-import data.Stop;
-import java.util.Random;
+import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.Random;
+import data.Stop;
 
 /**
  *
@@ -71,6 +71,21 @@ public class StopHeapTest {
             x = stop2.getEstimate();
         }
 
+    }
+    @Test
+    public void pollEmptyHeap() {
+        assertEquals(heap.poll(), null);
+    }
+    
+    @Test
+    public void testEmpty() {
+        assertTrue(heap.isEmpty());
+        heap.add(createStop("", 5));
+        heap.add(createStop("", 10));
+        assertFalse(heap.isEmpty());
+        heap.poll();
+        heap.poll();
+        assertTrue(heap.isEmpty());
     }
 
     public Stop createStop(String name, int estimate) {
