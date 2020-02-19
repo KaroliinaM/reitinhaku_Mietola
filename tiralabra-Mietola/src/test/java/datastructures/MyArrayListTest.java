@@ -73,15 +73,28 @@ public class MyArrayListTest {
         }
         assertEquals(list.getString(55), "luku65");
     }
-    
+
     @Test
-    public void testRemove() {
-        list.insertObject(new Connection("alku", "loppu", 50, 100, "13"));
-        list.insertObject(new Connection("toinenalku", "toinenloppu", 50, 100, "12"));
-        list.insertObject(new Connection("kolmasalku", "kolmasloppu", 50, 100, "12"));
+    public void testObjectRemove() {
         list.insertObject(new Connection("alku", "loppu", 50, 100, "13"));
         list.insertObject(new Connection("toinenalku", "toinenloppu", 50, 100, "12"));
         list.insertObject(new Connection("kolmasalku", "kolmasloppu", 50, 100, "12"));
         list.removeObject(1);
+        list.removeObject(0);
+        assertEquals(list.returnObjLength(), 1);
+        Connection connection = (Connection) list.getObject(0);
+        assertEquals(connection.getDepartureStop(), "kolmasalku");
     }
+
+    @Test
+    public void testStringRemove() {
+        list.insertString("Pasila");
+        list.insertString("Myllypuro");
+        list.insertString("Kumpula");
+        list.removeString(0);
+        list.removeString(0);
+        assertEquals(list.returnStringLength(), 1);
+        assertEquals(list.getString(0), "Kumpula");
+    }
+
 }

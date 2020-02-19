@@ -9,7 +9,7 @@ import data.Stop;
 import utils.HashFunction;
 
 /**
- *
+ * HashMap structure.
  * @author k
  */
 public class MyHashMap {

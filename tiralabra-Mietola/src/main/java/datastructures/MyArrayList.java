@@ -76,6 +76,13 @@ public class MyArrayList implements Serializable {
         }
         objectPointer--;
     }
+    
+    public void removeString(int x) {
+        for (int i = x; i < strings.length - 1; i++) {
+            strings[i] = strings[i + 1];
+        }
+        stringPointer--;
+    }
 
     public int returnIntLength() {
         return intPointer;
