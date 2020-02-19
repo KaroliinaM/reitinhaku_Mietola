@@ -36,13 +36,14 @@ public class SearchListener implements ActionListener {
         this.outputList = outputList;
     }
 
-    public void addRouteFinder(DijkstraRoutefinder finder) {
-        this.dijkstrafinder = finder;
+    public void addRouteFinders(DijkstraRoutefinder dijkstraFinder, AstarRouteFinder astarFinder) {
+        this.dijkstrafinder = dijkstraFinder;
+        this.astarfinder = astarFinder;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        OptimalRoute route = dijkstrafinder.search(departure.getText(), target.getText(), 0);
+        OptimalRoute route = astarfinder.search(departure.getText(), target.getText(), 0);
         outputList.setText(route.toUiString());
     }
 }

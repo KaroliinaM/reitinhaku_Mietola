@@ -73,4 +73,15 @@ public class MyArrayListTest {
         }
         assertEquals(list.getString(55), "luku65");
     }
+    
+    @Test
+    public void testRemove() {
+        list.insertObject(new Connection("alku", "loppu", 50, 100, "13"));
+        list.insertObject(new Connection("toinenalku", "toinenloppu", 50, 100, "12"));
+        list.insertObject(new Connection("kolmasalku", "kolmasloppu", 50, 100, "12"));
+        list.insertObject(new Connection("alku", "loppu", 50, 100, "13"));
+        list.insertObject(new Connection("toinenalku", "toinenloppu", 50, 100, "12"));
+        list.insertObject(new Connection("kolmasalku", "kolmasloppu", 50, 100, "12"));
+        list.removeObject(1);
+    }
 }

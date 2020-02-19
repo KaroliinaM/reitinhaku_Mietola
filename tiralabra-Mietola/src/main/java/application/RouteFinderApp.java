@@ -41,15 +41,16 @@ public class RouteFinderApp {
             stops.insertObject(s);
         }
         maps.setStops(stops);
-        DijkstraRoutefinder finder = new DijkstraRoutefinder();
+        DijkstraRoutefinder dikstrafinder = new DijkstraRoutefinder();
         AstarRouteFinder astarfinder = new AstarRouteFinder();
         astarfinder.setDistanceCalculator(calculator);
-        finder.setMapdata(maps);
+        dikstrafinder.setMapdata(maps);
+        astarfinder.setMapdata(maps);
         //  PerformanceTest test=new PerformanceTest();
         //  test.setData(finder, astarfinder, stops);
         //  test.run();
         FinderUI ui = new FinderUI();
-        ui.setAlgorithm(finder);
+        ui.setAlgorithms(dikstrafinder, astarfinder);
         ui.runUI();
         //  finder.search("HSL:1434114", "HSL:1453114", 23520); 
     }

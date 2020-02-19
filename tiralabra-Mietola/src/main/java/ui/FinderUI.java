@@ -32,7 +32,8 @@ import javax.swing.WindowConstants;
 public class FinderUI implements Runnable {
 
     private JFrame frame;
-    private DijkstraRoutefinder finder;
+    private DijkstraRoutefinder dijkstrafinder;
+    private AstarRouteFinder astarfinder;
     private SearchListener listener = new SearchListener();
 
     /**
@@ -71,7 +72,7 @@ public class FinderUI implements Runnable {
         createLabel("", panel);
         JButton searchRoute = new JButton("Hae reitti");
         listener.addInputFields(departureStop, targetStop);
-        listener.addRouteFinder(finder);
+        listener.addRouteFinders(dijkstrafinder, astarfinder);
         searchRoute.addActionListener(listener);
         panel.add(searchRoute);
         return panel;
@@ -90,8 +91,9 @@ public class FinderUI implements Runnable {
         container.add(label);
     }
 
-    public void setAlgorithm(DijkstraRoutefinder finder) {
-        this.finder = finder;
+    public void setAlgorithms(DijkstraRoutefinder dikstrafinder, AstarRouteFinder astarfinder) {
+        this.dijkstrafinder = dikstrafinder;
+        this.astarfinder = astarfinder;
     }
 
 }

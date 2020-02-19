@@ -8,7 +8,9 @@ package datastructures;
 import java.io.Serializable;
 
 /**
- * Implementation of a ArrayList. Cam be used to store Strings, Integers and Objects
+ * Implementation of a ArrayList. Cam be used to store Strings, Integers and
+ * Objects
+ *
  * @author k
  */
 public class MyArrayList implements Serializable {
@@ -66,6 +68,13 @@ public class MyArrayList implements Serializable {
 
     public Object getObject(int i) {
         return this.objects[i];
+    }
+
+    public void removeObject(int x) {
+        for (int i = x; i < this.objects.length - 1; i++) {
+            this.objects[i] = this.objects[i + 1];
+        }
+        objectPointer--;
     }
 
     public int returnIntLength() {
