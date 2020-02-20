@@ -71,7 +71,6 @@ public class StopHeap {
     }
 
     public boolean isEmpty() {
-        System.out.println(pointer);
         return pointer == 1;
     }
 

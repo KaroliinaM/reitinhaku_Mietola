@@ -23,14 +23,15 @@ import utils.HashFunction;
 public class AstarRouteFinder {
 
     // PriorityQueue<Stop> queue = new PriorityQueue();
-    StopHeap queue = new StopHeap();
+    StopHeap queue;
     // HashSet<String> done = new HashSet<>();
-    MyHashSet done = new MyHashSet(new HashFunction());
+    MyHashSet done;
     Mapdata mapdata;
-    private OptimalRoute route = new OptimalRoute();
+    private OptimalRoute route;
     DistanceCalculator distancecalculator;
 
     public void setMapdata(Mapdata mapdata) {
+        route = new OptimalRoute();
         this.mapdata = mapdata;
         route.setMapdata(mapdata);
     }
@@ -40,6 +41,8 @@ public class AstarRouteFinder {
     }
 
     public OptimalRoute search(String start, String goal, int time) {
+        queue = new StopHeap();
+        done = new MyHashSet(new HashFunction());
         Stop beginning = mapdata.getStop(start);
         Stop destination = mapdata.getStop(goal);
         beginning.setEstimate(0);
@@ -86,10 +89,6 @@ public class AstarRouteFinder {
             route.addConnection(c);
             stop = mapdata.getStop(c.getDepartureStop());
         }
-        System.out.println("tulos");
-        System.out.println(route);
-        System.out.println(route.getTime());
-        System.out.println(mapdata.getStop(goal).getEstimate());
         return route;
     }
 

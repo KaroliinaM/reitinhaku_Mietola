@@ -22,13 +22,14 @@ import utils.HashFunction;
 public class DijkstraRoutefinder {
 
     //PriorityQueue<Stop> queue = new PriorityQueue();
-    StopHeap queue = new StopHeap();
+    StopHeap queue;
     //HashSet<String> done = new HashSet<>();
-    MyHashSet done = new MyHashSet(new HashFunction());
+    MyHashSet done;
     Mapdata mapdata;
-    private OptimalRoute route = new OptimalRoute();
+    private OptimalRoute route;
 
     public void setMapdata(Mapdata mapdata) {
+        route = new OptimalRoute();
         this.mapdata = mapdata;
         route.setMapdata(mapdata);
     }
@@ -41,6 +42,8 @@ public class DijkstraRoutefinder {
      * @return Route object
      */
     public OptimalRoute search(String start, String goal, int time) {
+        queue = new StopHeap();
+        done = new MyHashSet(new HashFunction());
         Stop beginning = mapdata.getStop(start);
         beginning.setEstimate(0);
         queue.add(beginning);
@@ -84,10 +87,6 @@ public class DijkstraRoutefinder {
             route.addConnection(c);
             stop = mapdata.getStop(c.getDepartureStop());
         }
-        System.out.println("tulos");
-        System.out.println(route);
-        System.out.println(route.getTime());
-        System.out.println(mapdata.getStop(goal).getEstimate());
         return route;
     }
 }

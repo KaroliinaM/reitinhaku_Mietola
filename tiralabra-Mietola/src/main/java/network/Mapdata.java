@@ -31,6 +31,7 @@ public class Mapdata {
         for (int i = 0; i < stopData.returnObjLength(); i++) {
             Stop s = (Stop) stopData.getObject(i);
             s.setEstimate(1999999999);
+            s.setPrevious(null);
             stops.put(s.getGtfsId(), s);
         }
     }

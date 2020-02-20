@@ -5,7 +5,6 @@
  */
 package application;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +30,7 @@ public class RouteFinderApp {
 
     public void run() {
         ExecuteQuery query = new ExecuteQuery();
-       //  query.saveStopData();
+        //  query.saveStopData();
         Map<String, Stop> stopdata = query.loadStopData();
         System.out.println("haettu");
         Mapdata maps = new Mapdata();
@@ -47,13 +46,14 @@ public class RouteFinderApp {
         astarfinder.setDistanceCalculator(calculator);
         dikstrafinder.setMapdata(maps);
         astarfinder.setMapdata(maps);
-        //  PerformanceTest test=new PerformanceTest();
-        //  test.setData(finder, astarfinder, stops);
-        //  test.run();
-        FinderUI ui = new FinderUI();
-        ui.setAlgorithms(dikstrafinder, astarfinder);
-        ui.runUI();
-        //  finder.search("HSL:1434114", "HSL:1453114", 23520); **/
+        PerformanceTest test = new PerformanceTest();
+        test.setData(dikstrafinder, astarfinder, stops);
+        test.run();
+        /**
+         * FinderUI ui = new FinderUI(); ui.setAlgorithms(dikstrafinder,
+         * astarfinder); ui.runUI(); // finder.search("HSL:1434114",
+         * "HSL:1453114", 23520); *
+         */
     }
 
 }
