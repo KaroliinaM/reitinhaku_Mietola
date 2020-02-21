@@ -45,7 +45,7 @@ public class DijkstraRoutefinder {
         queue = new StopHeap();
         done = new MyHashSet(new HashFunction());
         Stop beginning = mapdata.getStop(start);
-        beginning.setEstimate(0);
+        beginning.setEstimate(time);
         queue.add(beginning);
         while (!queue.isEmpty()) {
             Stop s = queue.poll();

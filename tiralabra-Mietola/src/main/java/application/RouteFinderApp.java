@@ -43,19 +43,19 @@ public class RouteFinderApp {
             stops.insertObject(s);
             stopNames.put(s.getGtfsId() + " " + s.getName(), s);
         }
-        maps.setStops(stops);
+        //maps.setStops(stops);
         DijkstraRoutefinder dikstrafinder = new DijkstraRoutefinder();
         AstarRouteFinder astarfinder = new AstarRouteFinder();
         astarfinder.setDistanceCalculator(calculator);
-        dikstrafinder.setMapdata(maps);
-        astarfinder.setMapdata(maps);
+        //dikstrafinder.setMapdata(maps);
+        //astarfinder.setMapdata(maps);
         //  PerformanceTest test = new PerformanceTest();
         //  test.setData(dikstrafinder, astarfinder, stops);
         //  test.run();
 
         FinderUI ui = new FinderUI();
         ui.setAlgorithms(dikstrafinder, astarfinder);
-        ui.runUI(stopNames);
+        ui.runUI(stopNames, stops);
         //finder.search("HSL:1434114", "HSL:1453114", 23520); **/
     }
 

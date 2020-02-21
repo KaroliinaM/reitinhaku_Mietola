@@ -67,8 +67,10 @@ public class OptimalRoute {
      * @return html String.
      */
     public String toUiString() {
-        //Collections.reverse(connections);
-
+        if (!exist) {
+            return "Reittiä ei ole";
+        }
+        connections.reverseObject();
         String ret = "<html>";
         for (int i = 0; i < connections.returnObjLength(); i++) {
             Connection c = (Connection) connections.getObject(i);
@@ -77,8 +79,15 @@ public class OptimalRoute {
                     + " " + mapdata.getStop(c.getTargetStop()).getName() + "] reitti: "
                     + c.getRouteName() + "<br> ";
         }
-        ret += " on time " + travelTime + "</html>";
+        ret += " on time " + toTime(travelTime) + "</html>";
         return ret;
+    }
+
+    public String toTime(int TravelTime) {
+        System.out.println("time " + TravelTime);
+        int hours = TravelTime / 3600;
+        int minutes = (TravelTime % 3600) / 60;
+        return hours + ":" + minutes;
     }
 
     public String toString() {

@@ -45,7 +45,7 @@ public class AstarRouteFinder {
         done = new MyHashSet(new HashFunction());
         Stop beginning = mapdata.getStop(start);
         Stop destination = mapdata.getStop(goal);
-        beginning.setEstimate(0);
+        beginning.setEstimate(time);
         queue.add(beginning);
         while (!queue.isEmpty()) {
             Stop s = queue.poll();
@@ -80,6 +80,7 @@ public class AstarRouteFinder {
         }
         Stop stop = mapdata.getStop(goal);
         route.setTravelTimes(beginning.getEstimate(), stop.getEstimate());
+        System.out.println(beginning.getEstimate());
         while (!stop.getGtfsId().equals(start)) {
             Connection c = stop.getPrevious();
             if (c == null) {

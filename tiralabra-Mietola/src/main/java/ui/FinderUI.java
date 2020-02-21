@@ -32,38 +32,40 @@ import utils.DistanceCalculator;
  * @author k
  */
 public class FinderUI implements Runnable {
-    
+
     private JFrame frame;
     private DijkstraRoutefinder dijkstrafinder;
     private AstarRouteFinder astarfinder;
     private SearchListener listener = new SearchListener();
     HashMap<String, Stop> stopnames;
+    MyArrayList stopdata;
 
     /**
      * a swing UI, in progress. The output is printed on the console.
      */
     public void run() {
-        
+
     }
-    
-    public void runUI(HashMap<String, Stop> stopnames) {
+
+    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata) {
+        this.stopdata = stopdata;
         this.stopnames = stopnames;
         frame = new JFrame("otsikko");
-        frame.setPreferredSize(new Dimension(800, 800));
+        frame.setPreferredSize(new Dimension(800, 1000));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createUIComponents(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
     }
-    
+
     public void createUIComponents(Container container) {
         container.add(createInputPanel(), BorderLayout.NORTH);
         container.add(createList(), BorderLayout.CENTER);
     }
-    
+
     private JPanel createInputPanel() {
         JPanel panel = new JPanel();
-        GridLayout layout = new GridLayout(4, 2);
+        GridLayout layout = new GridLayout(5, 2);
         panel.setLayout(layout);
         createLabel("Reittiopas", panel);
         createLabel("", panel);
@@ -76,16 +78,26 @@ public class FinderUI implements Runnable {
         JComboBox targetStop = new JComboBox(stopnames.keySet().toArray());
         //  JTextField targetStop = new JTextField();
         panel.add(targetStop);
+        createLabel("lähtöaika", panel);
+        JPanel timepanel = new JPanel();
+        GridLayout timelayout = new GridLayout(1, 2);
+        timepanel.setLayout(timelayout);
+        JTextField hours = new JTextField("0");
+        timepanel.add(hours);
+        JTextField minutes = new JTextField("0");
+        timepanel.add(minutes);
+        panel.add(timepanel);
         createLabel("", panel);
         JButton searchRoute = new JButton("Hae reitti");
-        listener.addInputFields(departureStop, targetStop);
+        listener.addInputFields(departureStop, targetStop, hours, minutes);
         listener.addStoplist(stopnames);
+        listener.addStopData(stopdata);
         listener.addRouteFinders(dijkstrafinder, astarfinder);
         searchRoute.addActionListener(listener);
         panel.add(searchRoute);
         return panel;
     }
-    
+
     private JPanel createList() {
         JPanel panel = new JPanel();
         JLabel list = new JLabel();
@@ -93,15 +105,15 @@ public class FinderUI implements Runnable {
         panel.add(list, BorderLayout.CENTER);
         return panel;
     }
-    
+
     private void createLabel(String text, Container container) {
         JLabel label = new JLabel(text);
         container.add(label);
     }
-    
+
     public void setAlgorithms(DijkstraRoutefinder dikstrafinder, AstarRouteFinder astarfinder) {
         this.dijkstrafinder = dikstrafinder;
         this.astarfinder = astarfinder;
     }
-    
+
 }
