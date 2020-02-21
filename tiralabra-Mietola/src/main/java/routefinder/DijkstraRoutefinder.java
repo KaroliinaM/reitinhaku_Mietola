@@ -77,7 +77,7 @@ public class DijkstraRoutefinder {
 
         }
         Stop stop = mapdata.getStop(goal);
-        route.addTime(stop.getEstimate());
+        route.setTravelTimes(beginning.getEstimate(), stop.getEstimate());
         while (!stop.getGtfsId().equals(start)) {
             Connection c = stop.getPrevious();
             if (c == null) {

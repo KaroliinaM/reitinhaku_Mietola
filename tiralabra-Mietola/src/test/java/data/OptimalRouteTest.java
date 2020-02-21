@@ -39,14 +39,15 @@ public class OptimalRouteTest {
 
         List<Connection> connections
                 = Arrays.asList(new Connection("ekaLähtö", "ekaMaali", 0, 40, "13"),
-                        new Connection("tokaLähtö", "tokaMaali", 0, 50, "17"),
-                        new Connection("kolmasLähtö", "kolmasMaali", 0, 60, "17"),
-                        new Connection("neljäsLähtö", "neljäsMaali", 0, 70, "55"),
-                        new Connection("viidesLähtö", "viidesMaali", 0, 80, "30"));
+                        new Connection("tokaLähtö", "tokaMaali", 45, 50, "17"),
+                        new Connection("kolmasLähtö", "kolmasMaali", 55, 60, "17"),
+                        new Connection("neljäsLähtö", "neljäsMaali", 65, 70, "55"),
+                        new Connection("viidesLähtö", "viidesMaali", 75, 80, "30"));
         int time = 40;
         for (Connection c : connections) {
             optimalroute.addConnection(c);
-            optimalroute.addTime(time);
+            optimalroute.setTravelTimes(connections.get(0).getDepartureTime(), 
+                    connections.get(4).getArrivalTime());
             time += 10;
         }
         MyArrayList reitti = optimalroute.getConnections();
@@ -56,6 +57,6 @@ public class OptimalRouteTest {
             assertEquals(reitti.getObject(i), connections.get(i));
         }
         // assertEquals(reitti, connections);
-        assertEquals(optimalroute.getTime(), 300);
+        assertEquals(optimalroute.getTravelTime(), 80);
     }
 }

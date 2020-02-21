@@ -56,7 +56,7 @@ public class AstarTest {
         DistanceCalculator calculator = Mockito.mock(DistanceCalculator.class);
         finder.setDistanceCalculator(calculator);
         OptimalRoute route = finder.search("stop1", "stop5", 0);
-        assertEquals(route.getTime(), 36);
+        assertEquals(route.getTravelTime(), 36);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class AstarTest {
 
         finder.setDistanceCalculator(calculator);
         OptimalRoute route = finder.search("stop1", "stop5", 0);
-        assertEquals(route.getTime(), 36);
+        assertEquals(route.getTravelTime(), 36);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class AstarTest {
         Mockito.when(calculator.timeEstimate(stop8, stop5)).thenReturn(15);
         finder.setDistanceCalculator(calculator);
         OptimalRoute route = finder.search("stop1", "stop5", 0);
-        assertEquals(route.getTime(), 40);
+        assertEquals(route.getTravelTime(), 40);
     }
 
     public Mapdata createMapdata() {

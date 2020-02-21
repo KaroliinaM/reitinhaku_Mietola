@@ -40,6 +40,7 @@ public class PerformanceTest {
         Stop[] goals = new Stop[routesTotest];
         String[] dijkstraresult = new String[routesTotest];
         String[] astarresult = new String[routesTotest];
+        Stop[] coordinates = new Stop[100];
 
         Random random = new Random(1337);
         for (int i = 0; i < routesTotest; i++) {
@@ -60,8 +61,8 @@ public class PerformanceTest {
                 t += (loppu - alku);
             }
             long time = (t / timesForRoute) / 3600;
-            String thisResult = "dijkstralla haku pysäkiltä " + 
-                    starts[i].getName() + " pysäkille " + goals[i].getName()
+            String thisResult = "dijkstralla haku pysäkiltä "
+                    + starts[i].getName() + " pysäkille " + goals[i].getName()
                     + " vei aikaa " + (t / timesForRoute) / 1e9;
             dijkstraresult[i] = thisResult;
 
@@ -92,6 +93,16 @@ public class PerformanceTest {
         }
         for (int i = 0; i < routesTotest; i++) {
             System.out.println(astarresult[i]);
+        }
+
+        for (int i = 0; i < 100; i++) {
+            coordinates[i] = (Stop) stopdata.getObject(random.nextInt(n));
+        }
+
+        for (int i = 0; i < 100; i++) {
+            System.out.println(coordinates[i].getLat());
+            System.out.println(coordinates[i].getLon());
+            System.out.println();
         }
 
     }

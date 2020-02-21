@@ -19,7 +19,9 @@ public class OptimalRoute {
     //private List<Connection> connections = new ArrayList<>();
     private MyArrayList connections = new MyArrayList();
     Mapdata mapdata;
-    private int time = 0;
+    private int travelTime = 0;
+    private int departureTime = 0;
+    private int arrivalTime = 0;
     private boolean exist = true;
 
     public void setMapdata(Mapdata mapdata) {
@@ -30,12 +32,19 @@ public class OptimalRoute {
         connections.insertObject(c);
     }
 
-    public void addTime(int t) {
-        time += t;
+    /**
+     * @param departure}
+     *
+     * @param arrival
+     */
+    public void setTravelTimes(int departure, int arrival) {
+        this.departureTime = departure;
+        this.arrivalTime = arrival;
+        this.travelTime = arrivalTime - departureTime;
     }
 
-    public int getTime() {
-        return time;
+    public int getTravelTime() {
+        return travelTime;
     }
 
     public MyArrayList getConnections() {
@@ -68,7 +77,7 @@ public class OptimalRoute {
                     + " " + mapdata.getStop(c.getTargetStop()).getName() + "] reitti: "
                     + c.getRouteName() + "<br> ";
         }
-        ret += " on time " + time + "</html>";
+        ret += " on time " + travelTime + "</html>";
         return ret;
     }
 
@@ -79,7 +88,7 @@ public class OptimalRoute {
             Connection c = (Connection) connections.getObject(i);
             ret += " [" + c.getDepartureStop() + " - " + c.getTargetStop() + "] ";
         }
-        ret += " on time " + time;
+        ret += " on time " + travelTime;
         return ret;
     }
 

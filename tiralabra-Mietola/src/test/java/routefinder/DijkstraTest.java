@@ -103,34 +103,34 @@ public class DijkstraTest {
     @Test
     public void testRoute() {
         OptimalRoute r = finder.search("stop1", "stop7", 0);
-        assertEquals(r.getTime(), 45);
+        assertEquals(r.getTravelTime(), 45);
     }
 
     @Test
     public void testRoute3() {
         OptimalRoute r = finder.search("stop1", "stop9", 0);
-        assertEquals(r.getTime(), 48);
+        assertEquals(r.getTravelTime(), 48);
         //48
     }
 
     @Test
     public void testRoute4() {
         OptimalRoute r = finder.search("stop1", "stop4", 0);
-        assertEquals(r.getTime(), 48);
+        assertEquals(r.getTravelTime(), 48);
         //48
     }
 
     @Test
     public void testRoute5() {
         OptimalRoute r = finder2.search("stop11", "stop17", 0);
-        assertEquals(r.getTime(), 21);
+        assertEquals(r.getTravelTime(), 21);
         //  finder2.search("stop11", "stop15", 0);
     }
 
     @Test
     public void testRoute6() {
         OptimalRoute r = finder2.search("stop11", "stop13", 0);
-        assertEquals(r.getTime(), 18);
+        assertEquals(r.getTravelTime(), 18);
     }
 
     public Stop createStop(String gtfsId, String name, List<Connection> connections) {
