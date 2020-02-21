@@ -5,7 +5,6 @@
  */
 package ui;
 
-
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -21,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import api.ExecuteQuery;
 import data.Stop;
+import datastructures.MyArrayList;
+import javax.swing.JComboBox;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
@@ -31,20 +32,22 @@ import utils.DistanceCalculator;
  * @author k
  */
 public class FinderUI implements Runnable {
-
+    
     private JFrame frame;
     private DijkstraRoutefinder dijkstrafinder;
     private AstarRouteFinder astarfinder;
     private SearchListener listener = new SearchListener();
+    HashMap<String, Stop> stopnames;
 
     /**
      * a swing UI, in progress. The output is printed on the console.
      */
     public void run() {
-
+        
     }
-
-    public void runUI() {
+    
+    public void runUI(HashMap<String, Stop> stopnames) {
+        this.stopnames = stopnames;
         frame = new JFrame("otsikko");
         frame.setPreferredSize(new Dimension(800, 800));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -52,12 +55,12 @@ public class FinderUI implements Runnable {
         frame.pack();
         frame.setVisible(true);
     }
-
+    
     public void createUIComponents(Container container) {
         container.add(createInputPanel(), BorderLayout.NORTH);
         container.add(createList(), BorderLayout.CENTER);
     }
-
+    
     private JPanel createInputPanel() {
         JPanel panel = new JPanel();
         GridLayout layout = new GridLayout(4, 2);
@@ -65,20 +68,24 @@ public class FinderUI implements Runnable {
         createLabel("Reittiopas", panel);
         createLabel("", panel);
         createLabel("Lähtöpysäkki", panel);
-        JTextField departureStop = new JTextField();
+        //JTextField departureStop = new JTextField();
+        JComboBox departureStop = new JComboBox(stopnames.keySet().toArray());
+        departureStop.setEditable(true);
         panel.add(departureStop);
         createLabel("kohdepysäkki", panel);
-        JTextField targetStop = new JTextField();
+        JComboBox targetStop = new JComboBox(stopnames.keySet().toArray());
+        //  JTextField targetStop = new JTextField();
         panel.add(targetStop);
         createLabel("", panel);
         JButton searchRoute = new JButton("Hae reitti");
         listener.addInputFields(departureStop, targetStop);
+        listener.addStoplist(stopnames);
         listener.addRouteFinders(dijkstrafinder, astarfinder);
         searchRoute.addActionListener(listener);
         panel.add(searchRoute);
         return panel;
     }
-
+    
     private JPanel createList() {
         JPanel panel = new JPanel();
         JLabel list = new JLabel();
@@ -86,15 +93,15 @@ public class FinderUI implements Runnable {
         panel.add(list, BorderLayout.CENTER);
         return panel;
     }
-
+    
     private void createLabel(String text, Container container) {
         JLabel label = new JLabel(text);
         container.add(label);
     }
-
+    
     public void setAlgorithms(DijkstraRoutefinder dikstrafinder, AstarRouteFinder astarfinder) {
         this.dijkstrafinder = dikstrafinder;
         this.astarfinder = astarfinder;
     }
-
+    
 }

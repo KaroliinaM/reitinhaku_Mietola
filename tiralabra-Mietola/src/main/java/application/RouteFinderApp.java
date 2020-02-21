@@ -11,6 +11,7 @@ import java.util.Map;
 import api.ExecuteQuery;
 import data.Stop;
 import datastructures.MyArrayList;
+import java.util.HashMap;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
@@ -37,8 +38,10 @@ public class RouteFinderApp {
         DistanceCalculator calculator = new DistanceCalculator();
         //    List<Stop> stops = new ArrayList<>(stopdata.values());
         MyArrayList stops = new MyArrayList();
+        HashMap<String, Stop> stopNames = new HashMap();
         for (Stop s : stopdata.values()) {
             stops.insertObject(s);
+            stopNames.put(s.getGtfsId() + " " + s.getName(), s);
         }
         maps.setStops(stops);
         DijkstraRoutefinder dikstrafinder = new DijkstraRoutefinder();
@@ -46,14 +49,14 @@ public class RouteFinderApp {
         astarfinder.setDistanceCalculator(calculator);
         dikstrafinder.setMapdata(maps);
         astarfinder.setMapdata(maps);
-        PerformanceTest test = new PerformanceTest();
-        test.setData(dikstrafinder, astarfinder, stops);
-        test.run();
-        /**
-         * FinderUI ui = new FinderUI(); ui.setAlgorithms(dikstrafinder,
-         * astarfinder); ui.runUI(); // finder.search("HSL:1434114",
-         * "HSL:1453114", 23520); *
-         */
+        //  PerformanceTest test = new PerformanceTest();
+        //  test.setData(dikstrafinder, astarfinder, stops);
+        //  test.run();
+
+        FinderUI ui = new FinderUI();
+        ui.setAlgorithms(dikstrafinder, astarfinder);
+        ui.runUI(stopNames);
+        //finder.search("HSL:1434114", "HSL:1453114", 23520); **/
     }
 
 }

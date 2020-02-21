@@ -12,6 +12,9 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import data.Connection;
 import data.OptimalRoute;
+import data.Stop;
+import java.util.HashMap;
+import javax.swing.JComboBox;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
 
@@ -21,13 +24,15 @@ import routefinder.DijkstraRoutefinder;
  */
 public class SearchListener implements ActionListener {
 
-    private JTextField departure;
-    private JTextField target;
+    //private JTextField departure;
+    private JComboBox departure;
+    private JComboBox target;
     private JLabel outputList;
     public AstarRouteFinder astarfinder;
     public DijkstraRoutefinder dijkstrafinder;
+    public HashMap<String, Stop> stopList;
 
-    public void addInputFields(JTextField departure, JTextField target) {
+    public void addInputFields(JComboBox departure, JComboBox target) {
         this.departure = departure;
         this.target = target;
     }
@@ -41,9 +46,18 @@ public class SearchListener implements ActionListener {
         this.astarfinder = astarFinder;
     }
 
+    public void addStoplist(HashMap<String, Stop> stopList) {
+        this.stopList = stopList;
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        OptimalRoute route = astarfinder.search(departure.getText(), target.getText(), 0);
+        Stop dep = stopList.get(departure.getSelectedItem());
+        System.out.println(dep.getGtfsId());
+        System.out.println(stopList.get(target.getSelectedItem()).getGtfsId());
+        OptimalRoute route = astarfinder.search(stopList.get(departure.getSelectedItem())
+                .getGtfsId(),
+                stopList.get(target.getSelectedItem()).getGtfsId(), 0);
         outputList.setText(route.toUiString());
     }
 }
