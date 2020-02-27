@@ -82,7 +82,7 @@ public class ExecuteQuery {
                         Stop stop = stops.get(previous.getStop().getGtfsId());
                         //         System.out.println(stop.getGtfsId());
                         stop.addConnection(new Connection(previous.getStop().getGtfsId(), 
-                                s.getStop().getGtfsId(), s.getScheduledDeparture(),
+                                s.getStop().getGtfsId(), previous.getScheduledDeparture(),
                                 s.getScheduledArrival(), r.getShortName()));
                         //           System.out.println("pysäkiltä " + 
                         //previous.getStop().getGtfsId() +  

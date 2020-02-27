@@ -21,11 +21,16 @@ import javax.swing.WindowConstants;
 import api.ExecuteQuery;
 import data.Stop;
 import datastructures.MyArrayList;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
 import utils.DistanceCalculator;
+import utils.PerformanceTest;
 
 /**
  *
@@ -39,17 +44,19 @@ public class FinderUI implements Runnable {
     private SearchListener listener = new SearchListener();
     HashMap<String, Stop> stopnames;
     MyArrayList stopdata;
+    PerformanceTest test;
 
     /**
-     * a swing UI, in progress. The output is printed on the console.
+     * a swing UI, in progress.
      */
     public void run() {
 
     }
 
-    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata) {
+    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata, PerformanceTest test) {
         this.stopdata = stopdata;
         this.stopnames = stopnames;
+        this.test=test;
         frame = new JFrame("otsikko");
         frame.setPreferredSize(new Dimension(800, 1000));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -65,10 +72,15 @@ public class FinderUI implements Runnable {
 
     private JPanel createInputPanel() {
         JPanel panel = new JPanel();
-        GridLayout layout = new GridLayout(5, 2);
+        GridLayout layout = new GridLayout(6, 2);
         panel.setLayout(layout);
         createLabel("Reittiopas", panel);
         createLabel("", panel);
+        JCheckBox tests=new JCheckBox("aja suorituskykytestit");
+        panel.add(tests);
+        JRadioButton dijkstrabutton=new JRadioButton("Dijkstra");
+        JRadioButton astarbutton=new JRadioButton("A*");
+        setRadioButtons(dijkstrabutton, astarbutton, panel);
         createLabel("Lähtöpysäkki", panel);
         //JTextField departureStop = new JTextField();
         JComboBox departureStop = new JComboBox(stopnames.keySet().toArray());
@@ -89,20 +101,21 @@ public class FinderUI implements Runnable {
         panel.add(timepanel);
         createLabel("", panel);
         JButton searchRoute = new JButton("Hae reitti");
-        listener.addInputFields(departureStop, targetStop, hours, minutes);
+        listener.addInputFields(departureStop, targetStop, hours, minutes, dijkstrabutton, astarbutton, tests);
         listener.addStoplist(stopnames);
         listener.addStopData(stopdata);
+        listener.addTest(test);
         listener.addRouteFinders(dijkstrafinder, astarfinder);
         searchRoute.addActionListener(listener);
         panel.add(searchRoute);
         return panel;
     }
 
-    private JPanel createList() {
-        JPanel panel = new JPanel();
+    private JScrollPane createList() {
+        
         JLabel list = new JLabel();
         listener.addTargetList(list);
-        panel.add(list, BorderLayout.CENTER);
+        JScrollPane panel = new JScrollPane(list);
         return panel;
     }
 
@@ -114,6 +127,18 @@ public class FinderUI implements Runnable {
     public void setAlgorithms(DijkstraRoutefinder dikstrafinder, AstarRouteFinder astarfinder) {
         this.dijkstrafinder = dikstrafinder;
         this.astarfinder = astarfinder;
+    }
+    
+    public void setRadioButtons(JRadioButton dijkstrabutton, JRadioButton astarbutton, JPanel panel) {
+        JPanel buttonPanel=new JPanel();
+        GridLayout layout = new GridLayout(1, 2);
+        buttonPanel.setLayout(layout);
+        ButtonGroup group=new ButtonGroup();
+        group.add(dijkstrabutton);
+        group.add(astarbutton);
+        buttonPanel.add(dijkstrabutton);
+        buttonPanel.add(astarbutton);
+        panel.add(buttonPanel);
     }
 
 }

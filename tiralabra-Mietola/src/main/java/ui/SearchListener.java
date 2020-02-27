@@ -15,10 +15,13 @@ import data.OptimalRoute;
 import data.Stop;
 import datastructures.MyArrayList;
 import java.util.HashMap;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
+import utils.PerformanceTest;
 
 /**
  *
@@ -29,6 +32,8 @@ public class SearchListener implements ActionListener {
     //private JTextField departure;
     private JComboBox departure;
     private JComboBox target;
+    private JRadioButton dijkstra;
+    private JRadioButton astar;
     private JLabel outputList;
     public AstarRouteFinder astarfinder;
     public DijkstraRoutefinder dijkstrafinder;
@@ -37,13 +42,18 @@ public class SearchListener implements ActionListener {
     private MyArrayList stopdata;
     JTextField hours;
     JTextField minutes;
+    JCheckBox tests;
+    PerformanceTest performancetest;
 
     public void addInputFields(JComboBox departure, JComboBox target, 
-            JTextField hours, JTextField minutes) {
+        JTextField hours, JTextField minutes, JRadioButton dijkstra, JRadioButton astar, JCheckBox tests) {
         this.departure = departure;
         this.target = target;
         this.hours = hours;
         this.minutes = minutes;
+        this.dijkstra=dijkstra;
+        this.astar=astar;
+        this.tests=tests;
     }
 
     public void addTargetList(JLabel outputList) {
@@ -59,6 +69,10 @@ public class SearchListener implements ActionListener {
     public void addStoplist(HashMap<String, Stop> stopList) {
         this.stopList = stopList;
     }
+    
+    public void addTest(PerformanceTest test) {
+        this.performancetest = test;
+    }
 
     public void addStopData(MyArrayList stopdata) {
         this.stopdata = stopdata;
@@ -66,9 +80,12 @@ public class SearchListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        mapdata.setStops(stopdata);
-        astarfinder.setMapdata(mapdata);
         outputList.setText("Haetaan...");
+        mapdata.setStops(stopdata);
+        if(tests.isSelected()) performancetest.run();
+
+        
+
         Stop dep = stopList.get(departure.getSelectedItem());
         System.out.println(dep.getGtfsId());
         System.out.println(stopList.get(target.getSelectedItem()).getGtfsId());
@@ -78,9 +95,19 @@ public class SearchListener implements ActionListener {
         int time = (Integer.parseInt(hours.getText()) * 3600) + 
                 (Integer.parseInt(minutes.getText()) * 60);
         System.out.println(time);
-        OptimalRoute route = astarfinder.search(stopList.get(departure.getSelectedItem())
+        OptimalRoute route=null;
+        if(astar.isSelected()) {
+            astarfinder.setMapdata(mapdata);
+            route = astarfinder.search(stopList.get(departure.getSelectedItem())
                 .getGtfsId(),
                 stopList.get(target.getSelectedItem()).getGtfsId(), time);
+        } else {
+           dijkstrafinder.setMapdata(mapdata);
+            route = dijkstrafinder.search(stopList.get(departure.getSelectedItem())
+                .getGtfsId(),
+                stopList.get(target.getSelectedItem()).getGtfsId(), time); 
+        }
+        
         outputList.setText(route.toUiString());
     }
 }
