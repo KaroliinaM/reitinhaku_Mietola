@@ -17,12 +17,19 @@ lisäsin käyttöliittymään nyt mahdollisuuden vaihtaa algoritmia sekä ajaa s
 Rajasin myös koodikattavuusraporttia ja kirjoitin lisää testejä.
 
 18.2 2h hashmapin koodausta
+
 19.2 6h hashmap ja hashset sekä yksikkötestit ja käyttöönotto
+
 20.2 6h algoritmien käyttöönottoa ja suorituskykytestejä
+
 21.2 6h käyttöjärjestelmän muokkausta
+
 25.2 1h suorituskykytestejä
+
 26.2 4h käyttöliittymää ja suorituskykytestejä
+
 27.2 3h käyttöliittymää ja suorituskykytestejä
+
 28.2 5h vertaisarviointi, kattavuusraportin säätöä ja testejä
 
 
