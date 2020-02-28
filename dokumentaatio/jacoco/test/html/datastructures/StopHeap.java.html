@@ -9,7 +9,7 @@ import data.Stop;
 
 /**
  * A heap structure for Stop objects.
- * 
+ *
  * @author k
  */
 <span class="fc" id="L15">public class StopHeap {</span>
@@ -55,8 +55,8 @@ import data.Stop;
 <span class="fc bfc" id="L55" title="All 2 branches covered.">            if (pointer == place * 2 + 1) {</span>
 <span class="fc" id="L56">                minPlace = place * 2;</span>
             } else {
-<span class="fc bfc" id="L58" title="All 2 branches covered.">                minPlace = stops[place * 2].getEstimate() &lt; stops[place * 2 + 1].getEstimate() ? </span>
-                        place * 2 : place * 2 + 1;
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                minPlace = stops[place * 2].getEstimate() &lt; stops[place * 2 + 1].getEstimate()</span>
+                        ? place * 2 : place * 2 + 1;
             }
 <span class="fc bfc" id="L61" title="All 2 branches covered.">            if (stops[minPlace].getEstimate() &gt;= stops[place].getEstimate()) {</span>
 <span class="fc" id="L62">                break;</span>
@@ -66,8 +66,13 @@ import data.Stop;
 <span class="fc" id="L66">            stops[minPlace] = apu;</span>
 <span class="fc" id="L67">            place = minPlace;</span>
 <span class="fc" id="L68">        }</span>
-<span class="fc" id="L69">        return closest;</span>
+<span class="fc" id="L69">        pointer--;</span>
+<span class="fc" id="L70">        return closest;</span>
+    }
+
+    public boolean isEmpty() {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        return pointer == 1;</span>
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

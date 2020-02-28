@@ -1,7 +1,11 @@
+plugins {
+  id 'com.github.johnrengelman.shadow' version '5.1.0'
+}
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'application'
 apply plugin: 'checkstyle'
+
 
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -17,6 +21,13 @@ mainClassName = 'application/NewMain'
 if (!hasProperty('mainClass')) {
     ext.mainClass = ''
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'application.NewMain'
+    }
+}
+
 
 repositories {
     mavenCentral()
@@ -43,6 +54,11 @@ jacocoTestReport {
     reports {
         xml.enabled = true
         html.enabled = true
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['api/**', 'ui/**', 'application/**', 'utils/PerformanceTest*'])
+        })
     }
 }
 

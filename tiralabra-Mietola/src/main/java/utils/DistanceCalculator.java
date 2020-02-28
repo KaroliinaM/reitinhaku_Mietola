@@ -6,7 +6,6 @@
 package utils;
 
 import data.Stop;
-import datastructures.MathFunc;
 
 /**
  * The distances for the a* heuristics.

@@ -14,11 +14,13 @@ import data.Stop;
  */
 <span class="fc" id="L15">public class DistanceCalculator {</span>
 
+    //MathFunc math = new MathFunc();
+
     public int timeEstimate(Stop current, Stop dest) {
-<span class="fc" id="L18">        Double distance = distFrom(current.getLat(), current.getLon(), dest.getLat()</span>
-<span class="fc" id="L19">                , dest.getLon());</span>
-<span class="fc" id="L20">        int estimate = timeForDist(distance);</span>
-<span class="fc" id="L21">        return estimate;</span>
+<span class="fc" id="L20">        Double distance = distFrom(current.getLat(), current.getLon(), </span>
+<span class="fc" id="L21">                dest.getLat(), dest.getLon());</span>
+<span class="fc" id="L22">        int estimate = timeForDist(distance);</span>
+<span class="fc" id="L23">        return estimate;</span>
     }
 
     /**
@@ -31,26 +33,37 @@ import data.Stop;
      * @return the distance as meters
      */
     public double distFrom(double lat1, double lng1, double lat2, double lng2) {
-<span class="fc" id="L34">        double earthRadius = 6371000; //meters</span>
-<span class="fc" id="L35">        double dLat = Math.toRadians(lat2 - lat1);</span>
-<span class="fc" id="L36">        double dLng = Math.toRadians(lng2 - lng1);</span>
-<span class="fc" id="L37">        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)</span>
-<span class="fc" id="L38">                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))</span>
-<span class="fc" id="L39">                * Math.sin(dLng / 2) * Math.sin(dLng / 2);</span>
-<span class="fc" id="L40">        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</span>
-<span class="fc" id="L41">        double dist = earthRadius * c;</span>
+<span class="fc" id="L36">        double earthRadius = 6371000; //meters</span>
+<span class="fc" id="L37">        double dLat = Math.toRadians(lat2 - lat1);</span>
+<span class="fc" id="L38">        double dLng = Math.toRadians(lng2 - lng1);</span>
+        // double dLat = Math.toRadians(lat2 - lat1);
+        // double dLng = Math.toRadians(lng2 - lng1);
+<span class="fc" id="L41">        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)</span>
+<span class="fc" id="L42">                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))</span>
+<span class="fc" id="L43">                * Math.sin(dLng / 2) * Math.sin(dLng / 2);</span>
 
-<span class="fc" id="L43">        return dist;</span>
+        /**
+         * double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+         * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+         * Math.sin(dLng / 2) * Math.sin(dLng / 2);*
+         */
+<span class="fc" id="L50">        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</span>
+<span class="fc" id="L51">        double dist = earthRadius * c;</span>
+
+<span class="fc" id="L53">        return dist;</span>
     }
+
     /**
      * Converts the distance as travel time.
+     *
      * @param meters
      * @return minutes
      */
     public int timeForDist(double meters) {
-<span class="fc" id="L51">        double ratio = 2000 / 6;</span>
-<span class="fc" id="L52">        int time = (int) (meters / ratio);</span>
-<span class="fc" id="L53">        return time;</span>
+<span class="fc" id="L63">        double ratio = 2000 / 6;</span>
+<span class="fc" id="L64">        int time = (int) (meters / ratio);</span>
+<span class="fc" id="L65">        return time;</span>
     }
+
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

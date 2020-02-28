@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyHashMap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">datastructures</a> &gt; <span class="el_source">MyHashMap.java</span></div><h1>MyHashMap.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datastructures;
+
+import data.Stop;
+import utils.HashFunction;
+
+/**
+ * HashMap structure.
+ * @author k
+ */
+public class MyHashMap {
+
+<span class="fc" id="L17">    HashFunction hasher = new HashFunction();</span>
+<span class="fc" id="L18">    private int n = 10000;</span>
+<span class="fc" id="L19">    private MyArrayList[] entries = new MyArrayList[n];</span>
+
+<span class="fc" id="L21">    public MyHashMap(HashFunction function) {</span>
+<span class="fc" id="L22">        hasher = function;</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc" id="L24">            entries[i] = new MyArrayList();</span>
+        }
+<span class="fc" id="L26">    }</span>
+
+    // refactor
+    public void put(String key, Stop value) {
+<span class="fc" id="L30">        MyArrayList selected = entries[hasher.polynomialHash(key, n)];</span>
+<span class="fc" id="L31">        int entryIndex = getExistingIndex(key, selected);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (entryIndex &gt; -1) {</span>
+<span class="fc" id="L33">            selected.removeObject(entryIndex);</span>
+        }
+<span class="fc" id="L35">        selected.insertObject(new Entry(key, value));</span>
+
+<span class="fc" id="L37">    }</span>
+
+    public Stop get(String key) {
+        //   MyArrayList entriesWithKey= entries[hashString(key)];
+<span class="fc" id="L41">        MyArrayList entriesWithKey = entries[hasher.polynomialHash(key, n)];</span>
+<span class="fc" id="L42">        int entryIndex = getExistingIndex(key, entriesWithKey);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (entryIndex &lt; 0) {</span>
+<span class="fc" id="L44">            return null;</span>
+        }
+<span class="fc" id="L46">        Entry entry = (Entry) entriesWithKey.getObject(entryIndex);</span>
+<span class="fc" id="L47">        return entry.getValue();</span>
+    }
+
+    /**
+     * Hash function from Tirakirja.
+     *
+     * @param s String to be hashed.
+     */
+    /*  private int hashString(String s) {
+        int h=0;
+        for(int i=0; i&lt;s.length(); i++) {
+            h=(h*s.length()+ (int)s.charAt(i))%n;
+        }
+        return h;
+    }**/
+    private int getExistingIndex(String key, MyArrayList entriesWithKey) {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        for (int i = 0; i &lt; entriesWithKey.returnObjLength(); i++) {</span>
+<span class="fc" id="L64">            Entry entry = (Entry) entriesWithKey.getObject(i);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            if (entry.getKey().equals(key)) {</span>
+<span class="fc" id="L66">                return i;</span>
+            }
+        }
+<span class="fc" id="L69">        return -1;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

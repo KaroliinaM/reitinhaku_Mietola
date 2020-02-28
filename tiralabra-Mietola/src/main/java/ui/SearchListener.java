@@ -45,22 +45,23 @@ public class SearchListener implements ActionListener {
     JCheckBox tests;
     PerformanceTest performancetest;
 
-    public void addInputFields(JComboBox departure, JComboBox target, 
-        JTextField hours, JTextField minutes, JRadioButton dijkstra, JRadioButton astar, JCheckBox tests) {
+    public void addInputFields(JComboBox departure, JComboBox target,
+            JTextField hours, JTextField minutes, JRadioButton dijkstra, 
+            JRadioButton astar, JCheckBox tests) {
         this.departure = departure;
         this.target = target;
         this.hours = hours;
         this.minutes = minutes;
-        this.dijkstra=dijkstra;
-        this.astar=astar;
-        this.tests=tests;
+        this.dijkstra = dijkstra;
+        this.astar = astar;
+        this.tests = tests;
     }
 
     public void addTargetList(JLabel outputList) {
         this.outputList = outputList;
     }
 
-    public void addRouteFinders(DijkstraRoutefinder dijkstraFinder, 
+    public void addRouteFinders(DijkstraRoutefinder dijkstraFinder,
             AstarRouteFinder astarFinder) {
         this.dijkstrafinder = dijkstraFinder;
         this.astarfinder = astarFinder;
@@ -69,7 +70,7 @@ public class SearchListener implements ActionListener {
     public void addStoplist(HashMap<String, Stop> stopList) {
         this.stopList = stopList;
     }
-    
+
     public void addTest(PerformanceTest test) {
         this.performancetest = test;
     }
@@ -82,9 +83,9 @@ public class SearchListener implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         outputList.setText("Haetaan...");
         mapdata.setStops(stopdata);
-        if(tests.isSelected()) performancetest.run();
-
-        
+        if (tests.isSelected()) {
+            performancetest.run();
+        }
 
         Stop dep = stopList.get(departure.getSelectedItem());
         System.out.println(dep.getGtfsId());
@@ -92,22 +93,22 @@ public class SearchListener implements ActionListener {
         System.out.println(Integer.parseInt(hours.getText()));
         System.out.println(Integer.parseInt(minutes.getText()));
 
-        int time = (Integer.parseInt(hours.getText()) * 3600) + 
-                (Integer.parseInt(minutes.getText()) * 60);
+        int time = (Integer.parseInt(hours.getText()) * 3600)
+                + (Integer.parseInt(minutes.getText()) * 60);
         System.out.println(time);
-        OptimalRoute route=null;
-        if(astar.isSelected()) {
+        OptimalRoute route = null;
+        if (astar.isSelected()) {
             astarfinder.setMapdata(mapdata);
             route = astarfinder.search(stopList.get(departure.getSelectedItem())
-                .getGtfsId(),
-                stopList.get(target.getSelectedItem()).getGtfsId(), time);
+                    .getGtfsId(),
+                    stopList.get(target.getSelectedItem()).getGtfsId(), time);
         } else {
-           dijkstrafinder.setMapdata(mapdata);
+            dijkstrafinder.setMapdata(mapdata);
             route = dijkstrafinder.search(stopList.get(departure.getSelectedItem())
-                .getGtfsId(),
-                stopList.get(target.getSelectedItem()).getGtfsId(), time); 
+                    .getGtfsId(),
+                    stopList.get(target.getSelectedItem()).getGtfsId(), time);
         }
-        
+
         outputList.setText(route.toUiString());
     }
 }

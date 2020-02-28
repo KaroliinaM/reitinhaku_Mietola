@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="8.12">
+<checkstyle version="8.17">
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Data.java">
-<error line="4" severity="warning" message="Wrong order for &apos;java.io.Serializable&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/ExecuteQuery.java">
-<error line="10" severity="warning" message="Wrong order for &apos;org.apache.http.client.methods.CloseableHttpResponse&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="20" severity="warning" message="Wrong order for &apos;java.io.FileInputStream&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/HelloWorld.java">
-<error line="4" severity="warning" message="Wrong order for &apos;data.Connection&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="6" severity="warning" message="Wrong order for &apos;java.io.BufferedReader&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Route.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Stopdata.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Stoptime.java">
-<error line="9" severity="warning" message="Wrong order for &apos;java.io.Serializable&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Trip.java">
 </file>
@@ -25,20 +19,26 @@
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/application/NewMain.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/application/RouteFinderApp.java">
-<error line="11" severity="warning" message="Wrong order for &apos;java.util.ArrayList&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="15" severity="warning" message="Wrong order for &apos;java.util.HashMap&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/application/package-info.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Connection.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/OptimalRoute.java">
+<error line="88" column="30" severity="warning" message="Name &apos;TravelTime&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Stop.java">
-<error line="4" severity="warning" message="Wrong order for &apos;java.io.Serializable&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/package-info.java">
 </file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/datastructures/Entry.java">
+</file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/datastructures/MyArrayList.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/datastructures/MyHashMap.java">
+</file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/datastructures/MyHashSet.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/datastructures/StopHeap.java">
 </file>
@@ -49,25 +49,24 @@
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/network/package-info.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/AstarRouteFinder.java">
-<error line="12" severity="warning" message="Wrong order for &apos;java.util.*&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/DijkstraRoutefinder.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/package-info.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/FinderUI.java">
-<error line="10" severity="warning" message="Wrong order for &apos;java.awt.BorderLayout&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="16" severity="warning" message="Wrong order for &apos;java.awt.Container&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="24" severity="warning" message="Wrong order for &apos;javax.swing.ButtonGroup&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/SearchListener.java">
-<error line="10" severity="warning" message="Wrong order for &apos;java.awt.event.ActionEvent&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="17" severity="warning" message="Wrong order for &apos;java.util.HashMap&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/package-info.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/DistanceCalculator.java">
 </file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/HashFunction.java">
+</file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/PerformanceTest.java">
-<error line="11" severity="warning" message="Wrong order for &apos;java.util.Random&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/package-info.java">
 </file>

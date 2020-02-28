@@ -8,14 +8,17 @@ package network;
 import java.util.*;
 import data.Stop;
 import datastructures.MyArrayList;
+import datastructures.MyHashMap;
+import utils.HashFunction;
 
 /**
  *
  * @author k
  */
-<span class="fc" id="L16">public class Mapdata {</span>
+<span class="fc" id="L18">public class Mapdata {</span>
 
-<span class="fc" id="L18">    private Map&lt;String, Stop&gt; stops = new HashMap();</span>
+    //private Map&lt;String, Stop&gt; stops = new HashMap();
+<span class="fc" id="L21">    private MyHashMap stops = new MyHashMap(new HashFunction());</span>
 
     /**
      * Sets the stop data fetched from api to hashmap. Separate class, because
@@ -25,12 +28,13 @@ import datastructures.MyArrayList;
      * @param stopData List of stops
      */
     public void setStops(MyArrayList stopData) {
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int i = 0; i &lt; stopData.returnObjLength(); i++) {</span>
-<span class="fc" id="L29">            Stop s = (Stop) stopData.getObject(i);</span>
-<span class="fc" id="L30">            s.setEstimate(1999999999);</span>
-<span class="fc" id="L31">            stops.put(s.getGtfsId(), s);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        for (int i = 0; i &lt; stopData.returnObjLength(); i++) {</span>
+<span class="fc" id="L32">            Stop s = (Stop) stopData.getObject(i);</span>
+<span class="fc" id="L33">            s.setEstimate(1999999999);</span>
+<span class="fc" id="L34">            s.setPrevious(null);</span>
+<span class="fc" id="L35">            stops.put(s.getGtfsId(), s);</span>
         }
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L37">    }</span>
 
     /**
      * Get a stop by stop id.
@@ -39,8 +43,8 @@ import datastructures.MyArrayList;
      * @return stop object
      */
     public Stop getStop(String id) {
-<span class="fc" id="L42">        return stops.get(id);</span>
+<span class="fc" id="L46">        return stops.get(id);</span>
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

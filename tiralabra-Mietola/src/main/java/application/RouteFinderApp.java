@@ -21,10 +21,10 @@ import utils.DistanceCalculator;
 import utils.PerformanceTest;
 
 /**
- * step 1: Comment all the other code out, except the lines 26 and 27, this will
+ * step 1: Comment all the other code out, except the lines 34 and 35, this will
  * download the data from digitransit api, and save it locally.. Takes about 10
- * minutes, sorry :( step 2: Comment the line 30 out, and uncomment the rest.
- * The data is now loaded from a file. ui works only with dijkstra yet
+ * minutes, sorry :( step 2: Comment the line 35 out, and uncomment the rest.
+ * The data is now loaded from a file. Should work from ui now
  *
  * @author k
  */

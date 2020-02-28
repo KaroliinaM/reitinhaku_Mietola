@@ -52,10 +52,10 @@ public class AstarRouteFinder {
             if (done.contains(s.getGtfsId())) {
                 continue;
             }
-         //   System.out.println("solmu " + s.getGtfsId() + " " + s.getEstimate());
+            //   System.out.println("solmu " + s.getGtfsId() + " " + s.getEstimate());
             done.add(s.getGtfsId());
-            if (s.getEstimate()-distancecalculator.timeEstimate(s, destination) > time) {
-                time = s.getEstimate()-distancecalculator.timeEstimate(s, destination);
+            if (s.getEstimate() - distancecalculator.timeEstimate(s, destination) > time) {
+                time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
             }
             //  List<Connection> edges = s.getConnections();
             MyArrayList edges = s.getConnections();

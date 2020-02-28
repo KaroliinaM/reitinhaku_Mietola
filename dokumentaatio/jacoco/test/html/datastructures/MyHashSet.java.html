@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyHashSet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tiralabra-Mietola</a> &gt; <a href="index.source.html" class="el_package">datastructures</a> &gt; <span class="el_source">MyHashSet.java</span></div><h1>MyHashSet.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datastructures;
+
+import utils.HashFunction;
+
+/**
+ *
+ * @author k
+ */
+public class MyHashSet {
+    
+<span class="fc" id="L16">    private int n = 10000;</span>
+<span class="fc" id="L17">    private MyArrayList[] entries = new MyArrayList[n];</span>
+    private HashFunction hashfunction;
+    
+<span class="fc" id="L20">    public MyHashSet(HashFunction function) {</span>
+<span class="fc" id="L21">        hashfunction = function;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc" id="L23">            entries[i] = new MyArrayList();</span>
+        }
+<span class="fc" id="L25">    }</span>
+    
+    public void add(String s) {
+<span class="fc" id="L28">        MyArrayList entryList = entries[hashfunction.polynomialHash(s, n)];</span>
+<span class="fc" id="L29">        int ifExist = getEntryIndex(s, entryList);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (ifExist &lt; 0) {</span>
+<span class="fc" id="L31">            entryList.insertString(s);</span>
+        }
+<span class="fc" id="L33">    }</span>
+    
+    public boolean contains(String s) {
+<span class="fc" id="L36">        MyArrayList entryList = entries[hashfunction.polynomialHash(s, n)];</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        boolean exist = getEntryIndex(s, entryList) &gt; -1;</span>
+<span class="fc" id="L38">        return exist;</span>
+    }
+    
+    public void remove(String s) {
+<span class="fc" id="L42">        MyArrayList entryList = entries[hashfunction.polynomialHash(s, n)];</span>
+<span class="fc" id="L43">        int entry = getEntryIndex(s, entryList);</span>
+<span class="fc" id="L44">        entryList.removeString(entry);</span>
+<span class="fc" id="L45">    }</span>
+    
+    public int getEntryIndex(String s, MyArrayList list) {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for (int i = 0; i &lt; list.returnStringLength(); i++) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">            if (list.getString(i).equals(s)) {</span>
+<span class="fc" id="L50">                return i;</span>
+            }
+        }
+<span class="fc" id="L53">        return -1;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

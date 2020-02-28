@@ -53,10 +53,11 @@ public class FinderUI implements Runnable {
 
     }
 
-    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata, PerformanceTest test) {
+    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata, 
+            PerformanceTest test) {
         this.stopdata = stopdata;
         this.stopnames = stopnames;
-        this.test=test;
+        this.test = test;
         frame = new JFrame("otsikko");
         frame.setPreferredSize(new Dimension(800, 1000));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -76,10 +77,10 @@ public class FinderUI implements Runnable {
         panel.setLayout(layout);
         createLabel("Reittiopas", panel);
         createLabel("", panel);
-        JCheckBox tests=new JCheckBox("aja suorituskykytestit");
+        JCheckBox tests = new JCheckBox("aja suorituskykytestit");
         panel.add(tests);
-        JRadioButton dijkstrabutton=new JRadioButton("Dijkstra");
-        JRadioButton astarbutton=new JRadioButton("A*");
+        JRadioButton dijkstrabutton = new JRadioButton("Dijkstra");
+        JRadioButton astarbutton = new JRadioButton("A*");
         setRadioButtons(dijkstrabutton, astarbutton, panel);
         createLabel("Lähtöpysäkki", panel);
         //JTextField departureStop = new JTextField();
@@ -101,7 +102,8 @@ public class FinderUI implements Runnable {
         panel.add(timepanel);
         createLabel("", panel);
         JButton searchRoute = new JButton("Hae reitti");
-        listener.addInputFields(departureStop, targetStop, hours, minutes, dijkstrabutton, astarbutton, tests);
+        listener.addInputFields(departureStop, targetStop, hours, minutes, 
+                dijkstrabutton, astarbutton, tests);
         listener.addStoplist(stopnames);
         listener.addStopData(stopdata);
         listener.addTest(test);
@@ -112,7 +114,7 @@ public class FinderUI implements Runnable {
     }
 
     private JScrollPane createList() {
-        
+
         JLabel list = new JLabel();
         listener.addTargetList(list);
         JScrollPane panel = new JScrollPane(list);
@@ -128,12 +130,13 @@ public class FinderUI implements Runnable {
         this.dijkstrafinder = dikstrafinder;
         this.astarfinder = astarfinder;
     }
-    
-    public void setRadioButtons(JRadioButton dijkstrabutton, JRadioButton astarbutton, JPanel panel) {
-        JPanel buttonPanel=new JPanel();
+
+    public void setRadioButtons(JRadioButton dijkstrabutton, 
+            JRadioButton astarbutton, JPanel panel) {
+        JPanel buttonPanel = new JPanel();
         GridLayout layout = new GridLayout(1, 2);
         buttonPanel.setLayout(layout);
-        ButtonGroup group=new ButtonGroup();
+        ButtonGroup group = new ButtonGroup();
         group.add(dijkstrabutton);
         group.add(astarbutton);
         buttonPanel.add(dijkstrabutton);
