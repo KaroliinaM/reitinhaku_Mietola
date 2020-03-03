@@ -29,9 +29,8 @@ import utils.PerformanceTest;
  */
 public class SearchListener implements ActionListener {
 
-    //private JTextField departure;
-    private JComboBox departure;
-    private JComboBox target;
+    private JTextField departure;
+    private JTextField target;
     private JRadioButton dijkstra;
     private JRadioButton astar;
     private JLabel outputList;
@@ -45,7 +44,7 @@ public class SearchListener implements ActionListener {
     JCheckBox tests;
     PerformanceTest performancetest;
 
-    public void addInputFields(JComboBox departure, JComboBox target,
+    public void addInputFields(JTextField departure, JTextField target,
             JTextField hours, JTextField minutes, JRadioButton dijkstra, 
             JRadioButton astar, JCheckBox tests) {
         this.departure = departure;
@@ -87,9 +86,9 @@ public class SearchListener implements ActionListener {
             performancetest.run();
         }
 
-        Stop dep = stopList.get(departure.getSelectedItem());
-        System.out.println(dep.getGtfsId());
-        System.out.println(stopList.get(target.getSelectedItem()).getGtfsId());
+    //    Stop dep = stopList.get(departure.getSelectedItem());
+    //    System.out.println(dep.getGtfsId());
+    //    System.out.println(stopList.get(target.getSelectedItem()).getGtfsId());
         System.out.println(Integer.parseInt(hours.getText()));
         System.out.println(Integer.parseInt(minutes.getText()));
 
@@ -99,14 +98,12 @@ public class SearchListener implements ActionListener {
         OptimalRoute route = null;
         if (astar.isSelected()) {
             astarfinder.setMapdata(mapdata);
-            route = astarfinder.search(stopList.get(departure.getSelectedItem())
-                    .getGtfsId(),
-                    stopList.get(target.getSelectedItem()).getGtfsId(), time);
+            route = astarfinder.search(departure.getText(),
+                    target.getText(), time);
         } else {
             dijkstrafinder.setMapdata(mapdata);
-            route = dijkstrafinder.search(stopList.get(departure.getSelectedItem())
-                    .getGtfsId(),
-                    stopList.get(target.getSelectedItem()).getGtfsId(), time);
+            route = dijkstrafinder.search(departure.getText(),
+                    target.getText(), time);
         }
 
         outputList.setText(route.toUiString());

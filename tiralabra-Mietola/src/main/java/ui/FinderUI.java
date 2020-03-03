@@ -83,13 +83,10 @@ public class FinderUI implements Runnable {
         JRadioButton astarbutton = new JRadioButton("A*");
         setRadioButtons(dijkstrabutton, astarbutton, panel);
         createLabel("Lähtöpysäkki", panel);
-        //JTextField departureStop = new JTextField();
-        JComboBox departureStop = new JComboBox(stopnames.keySet().toArray());
-        departureStop.setEditable(true);
+        JTextField departureStop = new JTextField();
         panel.add(departureStop);
         createLabel("kohdepysäkki", panel);
-        JComboBox targetStop = new JComboBox(stopnames.keySet().toArray());
-        //  JTextField targetStop = new JTextField();
+        JTextField targetStop = new JTextField();
         panel.add(targetStop);
         createLabel("lähtöaika", panel);
         JPanel timepanel = new JPanel();
