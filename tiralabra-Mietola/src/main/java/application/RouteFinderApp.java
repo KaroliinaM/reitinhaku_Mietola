@@ -32,34 +32,36 @@ public class RouteFinderApp {
 
     public void run() {
         ExecuteQuery query = new ExecuteQuery();
-     //   query.saveStopData();
+        //   query.saveStopData();
         Map<String, Stop> stopdata = query.loadStopData();
-        System.out.println("haettu");
-        Mapdata maps = new Mapdata();
-        DistanceCalculator calculator = new DistanceCalculator();
-        //    List<Stop> stops = new ArrayList<>(stopdata.values());
-        MyArrayList stops = new MyArrayList();
-        HashMap<String, Stop> stopNames = new HashMap();
-        for (Stop s : stopdata.values()) {
-            stops.insertObject(s);
-            stopNames.put(s.getGtfsId() + " " + s.getName(), s);
-        }
-        maps.setStops(stops);
-        DijkstraRoutefinder dikstrafinder = new DijkstraRoutefinder();
-        AstarRouteFinder astarfinder = new AstarRouteFinder();
-        astarfinder.setDistanceCalculator(calculator);
-        dikstrafinder.setMapdata(maps);
-        astarfinder.setMapdata(maps);
-        PerformanceTest test = new PerformanceTest();
-        test.setData(dikstrafinder, astarfinder, stops);
-      //   test.run();
+        if (stopdata != null) {
+            System.out.println("haettu");
+            Mapdata maps = new Mapdata();
+            DistanceCalculator calculator = new DistanceCalculator();
+            //    List<Stop> stops = new ArrayList<>(stopdata.values());
+            MyArrayList stops = new MyArrayList();
+            HashMap<String, Stop> stopNames = new HashMap();
+            for (Stop s : stopdata.values()) {
+                stops.insertObject(s);
+                stopNames.put(s.getGtfsId() + " " + s.getName(), s);
+            }
+            maps.setStops(stops);
+            DijkstraRoutefinder dikstrafinder = new DijkstraRoutefinder();
+            AstarRouteFinder astarfinder = new AstarRouteFinder();
+            astarfinder.setDistanceCalculator(calculator);
+            dikstrafinder.setMapdata(maps);
+            astarfinder.setMapdata(maps);
+            PerformanceTest test = new PerformanceTest();
+            test.setData(dikstrafinder, astarfinder, stops);
+            //   test.run();
 
-        FinderUI ui = new FinderUI();
-        ui.setAlgorithms(dikstrafinder, astarfinder);
-        ui.runUI(stopNames, stops, test);
-       // OptimalRoute route=astarfinder.search("HSL:6050208", "HSL:9204213", 0); 
-       // OptimalRoute route=dikstrafinder.search("HSL:6050208", "HSL:9204213", 0);
-       // System.out.println(route.toString());**/
+            FinderUI ui = new FinderUI();
+            ui.setAlgorithms(dikstrafinder, astarfinder);
+            ui.runUI(stopNames, stops, test);
+            // OptimalRoute route=astarfinder.search("HSL:6050208", "HSL:9204213", 0); 
+            // OptimalRoute route=dikstrafinder.search("HSL:6050208", "HSL:9204213", 0);
+            // System.out.println(route.toString());**/
+        }
     }
 
 }

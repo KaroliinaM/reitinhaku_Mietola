@@ -53,7 +53,7 @@ public class FinderUI implements Runnable {
 
     }
 
-    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata, 
+    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata,
             PerformanceTest test) {
         this.stopdata = stopdata;
         this.stopnames = stopnames;
@@ -99,7 +99,7 @@ public class FinderUI implements Runnable {
         panel.add(timepanel);
         createLabel("", panel);
         JButton searchRoute = new JButton("Hae reitti");
-        listener.addInputFields(departureStop, targetStop, hours, minutes, 
+        listener.addInputFields(departureStop, targetStop, hours, minutes,
                 dijkstrabutton, astarbutton, tests);
         listener.addStoplist(stopnames);
         listener.addStopData(stopdata);
@@ -128,7 +128,7 @@ public class FinderUI implements Runnable {
         this.astarfinder = astarfinder;
     }
 
-    public void setRadioButtons(JRadioButton dijkstrabutton, 
+    public void setRadioButtons(JRadioButton dijkstrabutton,
             JRadioButton astarbutton, JPanel panel) {
         JPanel buttonPanel = new JPanel();
         GridLayout layout = new GridLayout(1, 2);
@@ -140,5 +140,4 @@ public class FinderUI implements Runnable {
         buttonPanel.add(astarbutton);
         panel.add(buttonPanel);
     }
-
 }

@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import data.Connection;
 import data.Stop;
+import java.io.File;
 
 /**
  *
@@ -34,9 +35,17 @@ public class ExecuteQuery {
     private static final String filepath = "./obj";
 
     public HashMap<String, Stop> loadStopData() {
-        HashMap<String, Stop> st = (HashMap<String, Stop>) readObjectFromFile(filepath);
-  //      System.out.println(st.get("HSL:1293150").getConnections().size());
-        return st;
+        File datafile = new File(filepath);
+        System.out.println(datafile.exists());
+        if (datafile.exists()) {
+            HashMap<String, Stop> st = (HashMap<String, Stop>) readObjectFromFile(filepath);
+            //      System.out.println(st.get("HSL:1293150").getConnections().size());
+            return st;
+        } else {
+            saveStopData();
+            return null;
+        }
+
     }
 
     public void saveStopData() {
@@ -67,7 +76,7 @@ public class ExecuteQuery {
         for (Route r : routes) {
             System.out.println(r.getGtfsId());
             String queryString2 = "{route(id:\"" + r.getGtfsId() + "\") "
-                    + "{ shortName trips {gtfsId stoptimes { stop {gtfsId name} " 
+                    + "{ shortName trips {gtfsId stoptimes { stop {gtfsId name} "
                     + "scheduledDeparture scheduledArrival serviceDay } } } }";
             Data data2 = query.callApi(url, queryString2, stopdata);
             List<Trip> trips = data2.getRoute().getTrips();
@@ -81,7 +90,7 @@ public class ExecuteQuery {
                     if (previous != null) {
                         Stop stop = stops.get(previous.getStop().getGtfsId());
                         //         System.out.println(stop.getGtfsId());
-                        stop.addConnection(new Connection(previous.getStop().getGtfsId(), 
+                        stop.addConnection(new Connection(previous.getStop().getGtfsId(),
                                 s.getStop().getGtfsId(), previous.getScheduledDeparture(),
                                 s.getScheduledArrival(), r.getShortName()));
                         //           System.out.println("pysäkiltä " + 
@@ -95,8 +104,8 @@ public class ExecuteQuery {
             //    i--;
             //    if(i<0) break;
         }
-    //    System.out.println(stops.get("HSL:1293150").getConnections().size());
-    //    System.out.println(stops.get("HSL:2643225").getConnections().size());
+        //    System.out.println(stops.get("HSL:1293150").getConnections().size());
+        //    System.out.println(stops.get("HSL:2643225").getConnections().size());
         System.out.println("saving...");
         writeObjectToFile(stops);
     }
