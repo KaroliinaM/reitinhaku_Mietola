@@ -59,6 +59,7 @@ public class AstarRouteFinder {
             }
             //   System.out.println("solmu " + s.getGtfsId() + " " + s.getEstimate());
             done.add(s.getGtfsId());
+            if(s.getEstimate()> mapdata.getStop(goal).getEstimate()) continue;
             //  if (s.getEstimate() - distancecalculator.timeEstimate(s, destination) > time) {
             time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
             //  }

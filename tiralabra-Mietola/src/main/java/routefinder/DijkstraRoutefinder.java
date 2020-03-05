@@ -54,10 +54,12 @@ public class DijkstraRoutefinder {
             if (done.contains(s.getGtfsId())) {
                 continue;
             }
+            if(s.getGtfsId().equals(goal)) break;
             done.add(s.getGtfsId());
          //   if (s.getEstimate() > time) {
                 time = s.getEstimate();
           //  }
+            if(time>mapdata.getStop(goal).getEstimate()) continue;
             MyArrayList edges = s.getConnections();
             //   List<Connection> edges = s.getConnections();
             //   for (Connection e : edges) {
