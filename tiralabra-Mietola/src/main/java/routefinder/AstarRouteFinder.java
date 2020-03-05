@@ -24,7 +24,7 @@ public class AstarRouteFinder {
 
     // PriorityQueue<Stop> queue = new PriorityQueue();
     StopHeap queue;
-    // HashSet<String> done = new HashSet<>();
+    //HashSet<String> done;
     MyHashSet done;
     Mapdata mapdata;
     private OptimalRoute route;
@@ -42,7 +42,9 @@ public class AstarRouteFinder {
 
     public OptimalRoute search(String start, String goal, int time) {
         queue = new StopHeap();
+        //   done = new MyHashSet(new HashFunction());
         done = new MyHashSet(new HashFunction());
+        //done = new HashSet<>();
         Stop beginning = mapdata.getStop(start);
         Stop destination = mapdata.getStop(goal);
         beginning.setEstimate(time);
@@ -52,11 +54,14 @@ public class AstarRouteFinder {
             if (done.contains(s.getGtfsId())) {
                 continue;
             }
+            if (s.getGtfsId().equals(goal)) {
+                break;
+            }
             //   System.out.println("solmu " + s.getGtfsId() + " " + s.getEstimate());
             done.add(s.getGtfsId());
-            if (s.getEstimate() - distancecalculator.timeEstimate(s, destination) > time) {
-                time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
-            }
+            //  if (s.getEstimate() - distancecalculator.timeEstimate(s, destination) > time) {
+            time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
+            //  }
             //  List<Connection> edges = s.getConnections();
             MyArrayList edges = s.getConnections();
             //for (Connection e : edges) {

@@ -46,6 +46,7 @@ public class StopHeap {
     public Stop poll() {
         Stop closest = stops[1];
         stops[1] = stops[pointer - 1];
+        pointer--;
         int place = 1;
         while (true) {
             if (pointer <= place * 2) {
@@ -66,7 +67,7 @@ public class StopHeap {
             stops[minPlace] = apu;
             place = minPlace;
         }
-        pointer--;
+       // pointer--;
         return closest;
     }
 

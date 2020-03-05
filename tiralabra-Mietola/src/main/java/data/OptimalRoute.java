@@ -75,10 +75,10 @@ public class OptimalRoute {
         for (int i = 0; i < connections.returnObjLength(); i++) {
             Connection c = (Connection) connections.getObject(i);
             ret += " [" + c.getDepartureStop() + " "
-                    + mapdata.getStop(c.getDepartureStop()).getName() + " klo " + 
-                    toTime(c.getDepartureTime()) + " - " + c.getTargetStop()
-                    + " " + mapdata.getStop(c.getTargetStop()).getName() + " klo " + 
-                    toTime(c.getArrivalTime()) + "] reitti: "
+                    + mapdata.getStop(c.getDepartureStop()).getName() + " klo "
+                    + toTime(c.getDepartureTime()) + " - " + c.getTargetStop()
+                    + " " + mapdata.getStop(c.getTargetStop()).getName() + " klo "
+                    + toTime(c.getArrivalTime()) + "] reitti: "
                     + c.getRouteName() + "<br> ";
         }
         ret += " on time " + toTime(travelTime) + "</html>";
@@ -86,7 +86,6 @@ public class OptimalRoute {
     }
 
     public String toTime(int TravelTime) {
-        System.out.println("time " + TravelTime);
         int hours = TravelTime / 3600;
         int minutes = (TravelTime % 3600) / 60;
         return hours + ":" + minutes;
