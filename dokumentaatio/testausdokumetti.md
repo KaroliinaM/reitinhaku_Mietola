@@ -34,7 +34,9 @@ Näissä on näkyvissä se, että pysäkkimääränn kasvaessa myös matka-aika 
 
 Matkan kestolla ei ollut huoomattavia eroja, Dijkstran hakema reitti erosi A* hakemasta 11 testatuista 94 reitistä
 
+Lopuksi vielä Dijkstra ja A* samassa graafissa
 
+![Dikstra vs A*](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/astar_pysakit.png)
 
 
 
