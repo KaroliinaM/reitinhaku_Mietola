@@ -48,6 +48,7 @@ public class AstarRouteFinder {
         Stop beginning = mapdata.getStop(start);
         Stop destination = mapdata.getStop(goal);
         beginning.setEstimate(time);
+        beginning.setEstimatedDistance(distancecalculator.timeEstimate(beginning, destination));
         queue.add(beginning);
         while (!queue.isEmpty()) {
             Stop s = queue.poll();
@@ -59,9 +60,12 @@ public class AstarRouteFinder {
             }
             //   System.out.println("solmu " + s.getGtfsId() + " " + s.getEstimate());
             done.add(s.getGtfsId());
-            if(s.getEstimate()> mapdata.getStop(goal).getEstimate()) continue;
+            if (s.getEstimate() > mapdata.getStop(goal).getEstimate()) {
+                continue;
+            }
             //  if (s.getEstimate() - distancecalculator.timeEstimate(s, destination) > time) {
-            time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
+            time = s.getEstimate() - s.getEstimatedDistance();
+            // time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
             //  }
             //  List<Connection> edges = s.getConnections();
             MyArrayList edges = s.getConnections();
@@ -74,8 +78,13 @@ public class AstarRouteFinder {
                 }
                 Stop t = mapdata.getStop(e.getTargetStop());
                 int currentDistance = t.getEstimate();
-                int heuristictime = distancecalculator.timeEstimate(t, destination);
-                int newDistance = e.getArrivalTime() + heuristictime;
+                if (t.getEstimatedDistance() < 0) {
+                    int heuristictime = distancecalculator.timeEstimate(t, destination);
+                    t.setEstimatedDistance(heuristictime);
+                }
+                // int heuristictime = distancecalculator.timeEstimate(t, destination);
+                int newDistance = e.getArrivalTime() + t.getEstimatedDistance();
+                // int newDistance = e.getArrivalTime() + heuristictime;
                 if (newDistance < currentDistance) {
                     t.setEstimate(newDistance);
                     t.setPrevious(e);

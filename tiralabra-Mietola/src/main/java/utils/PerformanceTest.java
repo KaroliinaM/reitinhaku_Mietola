@@ -175,7 +175,7 @@ public class PerformanceTest {
         double distance = calculator.distFrom(start.getLat(), start.getLon(),
                 end.getLat(), end.getLon());
         dijkstraByDistance.put(distance, (t / timesForRoute) / 1e9);
-        dijkstraByStops.put(route.getConnections().returnObjLength(), distance);
+        dijkstraByStops.put(route.getConnections().returnObjLength(), (t / timesForRoute) / 1e9);
         distances.add(String.valueOf(route.getTravelTime()) + " " + start.getGtfsId() 
                 + " " + end.getGtfsId());
         System.out.println("dijkstra " + (t / timesForRoute) / 1e9);

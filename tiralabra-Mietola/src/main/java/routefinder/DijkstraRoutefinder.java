@@ -21,9 +21,9 @@ import utils.HashFunction;
  */
 public class DijkstraRoutefinder {
 
- //   PriorityQueue<Stop> queue;
+    //   PriorityQueue<Stop> queue;
     StopHeap queue;
-  //  HashSet<String> done;
+    //  HashSet<String> done;
     MyHashSet done;
     Mapdata mapdata;
     private OptimalRoute route;
@@ -43,9 +43,9 @@ public class DijkstraRoutefinder {
      */
     public OptimalRoute search(String start, String goal, int time) {
         queue = new StopHeap();
-   //  queue = new PriorityQueue();
+        //  queue = new PriorityQueue();
         done = new MyHashSet(new HashFunction());
-    //done = new HashSet<>();
+        //done = new HashSet<>();
         Stop beginning = mapdata.getStop(start);
         beginning.setEstimate(time);
         queue.add(beginning);
@@ -54,12 +54,16 @@ public class DijkstraRoutefinder {
             if (done.contains(s.getGtfsId())) {
                 continue;
             }
-            if(s.getGtfsId().equals(goal)) break;
+            if (s.getGtfsId().equals(goal)) {
+                break;
+            }
             done.add(s.getGtfsId());
-         //   if (s.getEstimate() > time) {
-                time = s.getEstimate();
-          //  }
-            if(time>mapdata.getStop(goal).getEstimate()) continue;
+            //   if (s.getEstimate() > time) {
+            time = s.getEstimate();
+            //  }
+            if (time > mapdata.getStop(goal).getEstimate()) {
+                continue;
+            }
             MyArrayList edges = s.getConnections();
             //   List<Connection> edges = s.getConnections();
             //   for (Connection e : edges) {

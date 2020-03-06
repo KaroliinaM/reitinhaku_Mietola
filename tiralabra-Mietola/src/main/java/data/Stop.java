@@ -3,14 +3,16 @@ package data;
 import java.io.Serializable;
 import java.util.*;
 import datastructures.MyArrayList;
+import utils.DistanceCalculator;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 /**
- * The network nodes. The Stop object stores it's location in latituude and longitude 
- * and also the connection information between stops.
+ * The network nodes. The Stop object stores it's location in latituude and
+ * longitude and also the connection information between stops.
  *
  * @author k
  */
@@ -25,6 +27,7 @@ public class Stop implements Comparable<Stop>, Serializable {
 //    List<Connection> connections = new ArrayList<>();
     private int timeEstimate;
     private Connection previous;
+    private int estimatedDistance = -1;
 
     public String getGtfsId() {
         return gtfsId;
@@ -88,6 +91,14 @@ public class Stop implements Comparable<Stop>, Serializable {
 
     public Connection getPrevious() {
         return previous;
+    }
+
+    public int getEstimatedDistance() {
+        return estimatedDistance;
+    }
+
+    public void setEstimatedDistance(int distance) {
+        this.estimatedDistance = distance;
     }
 
     @Override

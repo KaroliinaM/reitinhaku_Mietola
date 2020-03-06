@@ -138,6 +138,7 @@ public class DijkstraTest {
         stop.setGtfsId(gtfsId);
         stop.setName(name);
         stop.setEstimate(1999999999);
+        stop.setEstimatedDistance(-1);
         connections.stream().forEach((c) -> {
             stop.addConnection(c);
         });
