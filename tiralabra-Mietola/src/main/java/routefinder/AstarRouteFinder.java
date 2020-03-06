@@ -22,9 +22,7 @@ import utils.HashFunction;
  */
 public class AstarRouteFinder {
 
-    // PriorityQueue<Stop> queue = new PriorityQueue();
     StopHeap queue;
-    //HashSet<String> done;
     MyHashSet done;
     Mapdata mapdata;
     private OptimalRoute route;
@@ -42,9 +40,7 @@ public class AstarRouteFinder {
 
     public OptimalRoute search(String start, String goal, int time) {
         queue = new StopHeap();
-        //   done = new MyHashSet(new HashFunction());
         done = new MyHashSet(new HashFunction());
-        //done = new HashSet<>();
         Stop beginning = mapdata.getStop(start);
         Stop destination = mapdata.getStop(goal);
         beginning.setEstimate(time);
@@ -58,18 +54,12 @@ public class AstarRouteFinder {
             if (s.getGtfsId().equals(goal)) {
                 break;
             }
-            //   System.out.println("solmu " + s.getGtfsId() + " " + s.getEstimate());
             done.add(s.getGtfsId());
             if (s.getEstimate() > mapdata.getStop(goal).getEstimate()) {
                 continue;
             }
-            //  if (s.getEstimate() - distancecalculator.timeEstimate(s, destination) > time) {
             time = s.getEstimate() - s.getEstimatedDistance();
-            // time = s.getEstimate() - distancecalculator.timeEstimate(s, destination);
-            //  }
-            //  List<Connection> edges = s.getConnections();
             MyArrayList edges = s.getConnections();
-            //for (Connection e : edges) {
             Connection e = null;
             for (int i = 0; i < edges.returnObjLength(); i++) {
                 e = (Connection) edges.getObject(i);
@@ -82,9 +72,7 @@ public class AstarRouteFinder {
                     int heuristictime = distancecalculator.timeEstimate(t, destination);
                     t.setEstimatedDistance(heuristictime);
                 }
-                // int heuristictime = distancecalculator.timeEstimate(t, destination);
                 int newDistance = e.getArrivalTime() + t.getEstimatedDistance();
-                // int newDistance = e.getArrivalTime() + heuristictime;
                 if (newDistance < currentDistance) {
                     t.setEstimate(newDistance);
                     t.setPrevious(e);

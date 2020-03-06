@@ -80,6 +80,7 @@ public class FinderUI implements Runnable {
         JCheckBox tests = new JCheckBox("aja suorituskykytestit");
         panel.add(tests);
         JRadioButton dijkstrabutton = new JRadioButton("Dijkstra");
+        dijkstrabutton.setSelected(true);
         JRadioButton astarbutton = new JRadioButton("A*");
         setRadioButtons(dijkstrabutton, astarbutton, panel);
         createLabel("Lähtöpysäkki", panel);

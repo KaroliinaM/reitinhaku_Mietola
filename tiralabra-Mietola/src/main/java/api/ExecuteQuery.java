@@ -36,7 +36,9 @@ public class ExecuteQuery {
 
     public HashMap<String, Stop> loadStopData() {
         File datafile = new File(filepath);
-        System.out.println(datafile.exists());
+        String sanoma = datafile.exists() ? "käynnistetään, hetki"
+                : "Ladataan aineistoa, käynnistä ohjelma uusiksi latauksen jälkeen";
+        System.out.println(sanoma);
         if (datafile.exists()) {
             HashMap<String, Stop> st = (HashMap<String, Stop>) readObjectFromFile(filepath);
             //      System.out.println(st.get("HSL:1293150").getConnections().size());

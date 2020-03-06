@@ -45,7 +45,7 @@ public class SearchListener implements ActionListener {
     PerformanceTest performancetest;
 
     public void addInputFields(JTextField departure, JTextField target,
-            JTextField hours, JTextField minutes, JRadioButton dijkstra, 
+            JTextField hours, JTextField minutes, JRadioButton dijkstra,
             JRadioButton astar, JCheckBox tests) {
         this.departure = departure;
         this.target = target;
@@ -80,32 +80,26 @@ public class SearchListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        outputList.setText("Haetaan...");
         mapdata.setStops(stopdata);
         if (tests.isSelected()) {
             performancetest.run();
         }
 
-    //    Stop dep = stopList.get(departure.getSelectedItem());
-    //    System.out.println(dep.getGtfsId());
-    //    System.out.println(stopList.get(target.getSelectedItem()).getGtfsId());
-        System.out.println(Integer.parseInt(hours.getText()));
-        System.out.println(Integer.parseInt(minutes.getText()));
-
         int time = (Integer.parseInt(hours.getText()) * 3600)
                 + (Integer.parseInt(minutes.getText()) * 60);
-        System.out.println(time);
         OptimalRoute route = null;
-        if (astar.isSelected()) {
-            astarfinder.setMapdata(mapdata);
-            route = astarfinder.search(departure.getText(),
-                    target.getText(), time);
-        } else {
-            dijkstrafinder.setMapdata(mapdata);
-            route = dijkstrafinder.search(departure.getText(),
-                    target.getText(), time);
+        if (departure.getText().length() > 0 && target.getText().length() > 0) {
+            if (astar.isSelected()) {
+                astarfinder.setMapdata(mapdata);
+                route = astarfinder.search(departure.getText(),
+                        target.getText(), time);
+            } else {
+                dijkstrafinder.setMapdata(mapdata);
+                route = dijkstrafinder.search(departure.getText(),
+                        target.getText(), time);
+            }
+            outputList.setText(route.toUiString());
         }
-
-        outputList.setText(route.toUiString());
+        outputList.setText("Syötä lähtö -ja kohdepysäkit");
     }
 }
