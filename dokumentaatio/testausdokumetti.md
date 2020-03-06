@@ -14,6 +14,24 @@ Yksikkötestit voidaan toistaa junitin kautta ja ne ajetaan myös buildissa. Suo
 
 ## testauksen tulokset
 
+Alla on graafinen esitys sekä Dijkstran algoritmista että A*:sta, jossa hakuihi köäytetty aika on järjestetty etäisyyksittäin
+
+![dijkstra etäisyyksittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/dijkstra_etaisyys.png)
+
+![A* etäisyyksittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/astar_etaisyys.png)
+
+Molemmissa tulokset ovat hyvin hajallaan. Tätä selittänee se, että satunnaisesti arvotut pysäkit voivat olla kumpaan suuntaan meneviä linjoja, jolloin todellisesta matkasta tulee huomattavasti pidempi. Graafeissa on havaittavissa paljon samankaltaisuuksia, poikkeamat ovat samoissa kodin.
+
+Näissä graafeissa hakuihin kuluneet ajat on järjestetty pysäkeittäin
+
+![dijkstra pysäkeittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/dijkstra_pysakit.png)
+
+![A* pysäkeittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/astar_pysakit.png)
+
+Näissä on selvästi näkysvissä se, että pysäkkimääränn kasvaessa myös matka-aika kasvaa, vaikka hajontaa on näissäkin reippaasti
+
+Matkan kestolla ei ollut huoomattavia eroja, Dijkstran hakema reitti erosi A* hakemasta 11 testatuista 94 reitistä
+
 
 
 
