@@ -14,7 +14,7 @@ Yksikkötestit voidaan toistaa junitin kautta ja ne ajetaan myös buildissa. Suo
 
 ## testauksen tulokset
 
-Alla on graafinen esitys sekä Dijkstran algoritmista että A*:sta, jossa hakuihi köäytetty aika on järjestetty etäisyyksittäin
+Alla on graafinen esitys sekä Dijkstran algoritmista että A*:sta, jossa hakuihin käytetty aika on järjestetty etäisyyksittäin
 
 ![dijkstra etäisyyksittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/dijkstra_etaisyys.png)
 
