@@ -13,3 +13,5 @@
 [Viikkoraportti 5](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/viikkoraportti_5.md)
 
 [Viikkoraportti 6](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/viikkoraportti_6.md)
+
+[Viikkoraportti 7](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/viikkoraportti_7.md)
