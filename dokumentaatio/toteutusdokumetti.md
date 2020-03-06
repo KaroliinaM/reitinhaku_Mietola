@@ -2,11 +2,15 @@
 
 ## Ohjelman yleisrakenne
 
-Ohjelmassa on main -luokan lisksi pääluokka, jossa haetaan karttadata apista, alustetaan hakutoiminnallisuus karttadatalla ja välitetään toiminnallisuus käyttöliittymälle. 
+Ohjelmassa on main -luokan lisäksi pääluokka, jossa haetaan karttadata apista, alustetaan hakutoiminnallisuus karttadatalla ja välitetään toiminnallisuus käyttöliittymälle. 
 
 Datan haku tapahtuu api-pakkauksessa. Se suorittaa useamman graphql-kyselyn digitransitin apiin, ja palauttaa listan pysäkkejä, joihin on tallennettu tiedot kulloiseenkin aikaan pysäkiltä lähtevistä linjoista. 
 
 käyttöliittymässä on luokka jossa alustetaan käyttöliittymäkomponentit sekä tapahtumankuuntelija, joka toteuttaa käyttöliittymän kontrollien toiminnallisuuden.
+
+Kuuntelija kutsuu algoritmeja tarvittavilla parametreilla ja saa palautteena reittiolion, jonka tiedot se tulostaa käyttöliittymään.
+
+Lisäksi käyttöliittymästä voi ajaa suorituskykytestit, jotka tulostuvat konsoliin.
 
 ## Saavutetut aika -ja tilavaativuudet
 
@@ -20,7 +24,7 @@ Hashrakenteet toimivat alle O(n) n on solmujen määrä, uskaltaisin melkein luv
 
 Funktioista sin, cos ja toRadian näkyisivät toimivan vakioajassa, koska syötteen koko ei vaikuta kierrosten määrään for-rakenteissa. Pow on O(n), n on eksponentti. Sqrt on O(log n) varmaankin, koska tulos jakautuu aina kahtia.
 
-Djikstran tilavaativuus on O(n^2) koska se tallentaa solmuja kekoon pahimmillaan n * n kappaletta, A* tilavaativuus on O(b^d), koska se ei tallenna tietoa solmuista, jotka ovat tietyn matkan päässä reitistä. Keko on O(n^2). Hashrakenteet ovat O(n)
+Djikstran tilavaativuus on O(n^2) koska se tallentaa solmuja kekoon pahimmillaan n * n kappaletta, A* tilavaativuus on O(b^d), koska se ei tallenna tietoa solmuista, jotka ovat tietyn matkan päässä reitistä. Keko on O(n^2). Hashrakenteet ovat O(n) pahimmillaan, todennäkäöisenmmin O(1) mikäli hashfunktio jakaa ne tasaisesti. 
 
 ## Suorituskyky ja O-analyysivertailu
 

@@ -22,6 +22,11 @@ public class MyArrayList implements Serializable {
     int stringPointer = 0;
     int objectPointer = 0;
 
+    /**
+     * insert an integer to the list
+     *
+     * @param integer the integer to be stored
+     */
     public void insertInt(int integer) {
         if (intPointer == integers.length) {
             int[] newInts = new int[integers.length + 50];
@@ -34,6 +39,11 @@ public class MyArrayList implements Serializable {
         intPointer++;
     }
 
+    /**
+     * insert a String to the list.
+     *
+     * @param String
+     */
     public void insertString(String newString) {
         if (stringPointer == strings.length) {
             String[] newStrings = new String[strings.length + 50];
@@ -46,6 +56,11 @@ public class MyArrayList implements Serializable {
         stringPointer++;
     }
 
+    /**
+     * insert an object to the list
+     *
+     * @param object
+     */
     public void insertObject(Object object) {
         if (objectPointer == objects.length) {
             Object[] newObjects = new Object[objects.length + 50];
@@ -58,18 +73,41 @@ public class MyArrayList implements Serializable {
         objectPointer++;
     }
 
+    /**
+     * get a string from the list
+     *
+     * @param i index of the string
+     * @return String
+     */
     public String getString(int i) {
         return this.strings[i];
     }
 
+    /**
+     * get a nteger value from the list
+     *
+     * @param i index of the integer
+     * @return the integer
+     */
     public int getInt(int i) {
         return this.integers[i];
     }
 
+    /**
+     * return a object from the list
+     *
+     * @param i index of the object
+     * @return object
+     */
     public Object getObject(int i) {
         return this.objects[i];
     }
 
+    /**
+     * remove an object from the list
+     *
+     * @param x index of the object
+     */
     public void removeObject(int x) {
         for (int i = x; i < this.objects.length - 1; i++) {
             this.objects[i] = this.objects[i + 1];
@@ -77,6 +115,11 @@ public class MyArrayList implements Serializable {
         objectPointer--;
     }
 
+    /**
+     * remove a string from the list
+     *
+     * @param x index of the string
+     */
     public void removeString(int x) {
         for (int i = x; i < strings.length - 1; i++) {
             strings[i] = strings[i + 1];
@@ -84,18 +127,36 @@ public class MyArrayList implements Serializable {
         stringPointer--;
     }
 
+    /**
+     * return the amount of integers
+     *
+     * @return int
+     */
     public int returnIntLength() {
         return intPointer;
     }
 
+    /**
+     * return the amount of string
+     *
+     * @return int
+     */
     public int returnStringLength() {
         return stringPointer;
     }
 
+    /**
+     * return the amount of objects on the list
+     *
+     * @return int
+     */
     public int returnObjLength() {
         return objectPointer;
     }
 
+    /**
+     * reverse list order
+     */
     public void reverseObject() {
         for (int i = 0; i < this.objectPointer / 2; i++) {
             Object temp = objects[i];

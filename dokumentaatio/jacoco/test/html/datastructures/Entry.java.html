@@ -8,7 +8,7 @@ package datastructures;
 import data.Stop;
 
 /**
- *
+ * Entry pojo for the hashmap.
  * @author k
  */
 public class Entry {

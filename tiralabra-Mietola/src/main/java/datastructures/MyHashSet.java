@@ -8,7 +8,7 @@ package datastructures;
 import utils.HashFunction;
 
 /**
- * A hashset implementation.
+ * A hashset implementation. Works only with string
  * @author k
  */
 public class MyHashSet {
@@ -24,6 +24,10 @@ public class MyHashSet {
         }
     }
     
+    /**
+     * Add a string to the set
+     * @param s String
+     */
     public void add(String s) {
         MyArrayList entryList = entries[hashfunction.polynomialHash(s, n)];
         int ifExist = getEntryIndex(s, entryList);
@@ -32,6 +36,11 @@ public class MyHashSet {
         }
     }
     
+    /**
+     * Check if the set contains a string
+     * @param s the string 
+     * @return boolean
+     */
     public boolean contains(String s) {
         MyArrayList entryList = entries[hashfunction.polynomialHash(s, n)];
         boolean exist = getEntryIndex(s, entryList) > -1;

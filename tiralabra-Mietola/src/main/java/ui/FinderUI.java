@@ -36,7 +36,6 @@ public class FinderUI implements Runnable {
     private DijkstraRoutefinder dijkstrafinder;
     private AstarRouteFinder astarfinder;
     private SearchListener listener = new SearchListener();
-    HashMap<String, Stop> stopnames;
     MyArrayList stopdata;
     PerformanceTest test;
 
@@ -47,10 +46,9 @@ public class FinderUI implements Runnable {
 
     }
 
-    public void runUI(HashMap<String, Stop> stopnames, MyArrayList stopdata,
+    public void runUI(MyArrayList stopdata,
             PerformanceTest test) {
         this.stopdata = stopdata;
-        this.stopnames = stopnames;
         this.test = test;
         frame = new JFrame("otsikko");
         frame.setPreferredSize(new Dimension(800, 1000));
@@ -96,7 +94,6 @@ public class FinderUI implements Runnable {
         JButton searchRoute = new JButton("Hae reitti");
         listener.addInputFields(departureStop, targetStop, hours, minutes,
                 dijkstrabutton, astarbutton, tests);
-        listener.addStoplist(stopnames);
         listener.addStopData(stopdata);
         listener.addTest(test);
         listener.addRouteFinders(dijkstrafinder, astarfinder);

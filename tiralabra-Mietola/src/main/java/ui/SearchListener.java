@@ -36,7 +36,6 @@ public class SearchListener implements ActionListener {
     private JLabel outputList;
     public AstarRouteFinder astarfinder;
     public DijkstraRoutefinder dijkstrafinder;
-    public HashMap<String, Stop> stopList;
     Mapdata mapdata = new Mapdata();
     private MyArrayList stopdata;
     JTextField hours;
@@ -64,10 +63,6 @@ public class SearchListener implements ActionListener {
             AstarRouteFinder astarFinder) {
         this.dijkstrafinder = dijkstraFinder;
         this.astarfinder = astarFinder;
-    }
-
-    public void addStoplist(HashMap<String, Stop> stopList) {
-        this.stopList = stopList;
     }
 
     public void addTest(PerformanceTest test) {

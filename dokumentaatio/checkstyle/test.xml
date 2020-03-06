@@ -3,7 +3,6 @@
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/ConnectionTest.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/OptimalRouteTest.java">
-<error line="17" severity="warning" message="Wrong order for &apos;org.mockito.Mockito&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/test/java/data/StopTest.java">
 </file>

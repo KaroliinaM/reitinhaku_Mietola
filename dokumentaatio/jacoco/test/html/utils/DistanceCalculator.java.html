@@ -14,7 +14,7 @@ import data.Stop;
  */
 <span class="fc" id="L15">public class DistanceCalculator {</span>
 
-    //MathFunc math = new MathFunc();
+<span class="fc" id="L17">    MathFunc math = new MathFunc();</span>
 
     public int timeEstimate(Stop current, Stop dest) {
 <span class="fc" id="L20">        Double distance = distFrom(current.getLat(), current.getLon(), </span>
@@ -34,20 +34,20 @@ import data.Stop;
      */
     public double distFrom(double lat1, double lng1, double lat2, double lng2) {
 <span class="fc" id="L36">        double earthRadius = 6371000; //meters</span>
-<span class="fc" id="L37">        double dLat = Math.toRadians(lat2 - lat1);</span>
-<span class="fc" id="L38">        double dLng = Math.toRadians(lng2 - lng1);</span>
-        // double dLat = Math.toRadians(lat2 - lat1);
-        // double dLng = Math.toRadians(lng2 - lng1);
-<span class="fc" id="L41">        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)</span>
-<span class="fc" id="L42">                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))</span>
-<span class="fc" id="L43">                * Math.sin(dLng / 2) * Math.sin(dLng / 2);</span>
+    //    double dLat = Math.toRadians(lat2 - lat1);
+    //    double dLng = Math.toRadians(lng2 - lng1);
+<span class="fc" id="L39">         double dLat = math.toRadians(lat2 - lat1);</span>
+<span class="fc" id="L40">         double dLng = math.toRadians(lng2 - lng1);</span>
+<span class="fc" id="L41">        double a = math.sin(dLat / 2) * math.sin(dLat / 2)</span>
+<span class="fc" id="L42">                + math.cos(Math.toRadians(lat1)) * math.cos(Math.toRadians(lat2))</span>
+<span class="fc" id="L43">                * math.sin(dLng / 2) * math.sin(dLng / 2);</span>
 
         /**
          * double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
          * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
          * Math.sin(dLng / 2) * Math.sin(dLng / 2);*
          */
-<span class="fc" id="L50">        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</span>
+<span class="fc" id="L50">        double c = 2 * Math.atan2(math.sqrt(a), math.sqrt(1 - a));</span>
 <span class="fc" id="L51">        double dist = earthRadius * c;</span>
 
 <span class="fc" id="L53">        return dist;</span>

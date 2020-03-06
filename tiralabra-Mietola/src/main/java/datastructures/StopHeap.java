@@ -17,6 +17,10 @@ public class StopHeap {
     Stop[] stops = new Stop[50];
     int pointer = 1;
 
+    /**
+     * Add a stop to the heap
+     * @param stop the object to add
+     */
     public void add(Stop stop) {
         if (pointer == stops.length) {
             Stop[] newStops = new Stop[stops.length + 50];
@@ -43,6 +47,11 @@ public class StopHeap {
         }
     }
 
+    /**
+     * get the stop with the smallest estimated time to the 
+     * destination
+     * @return a stop object
+     */
     public Stop poll() {
         Stop closest = stops[1];
         stops[1] = stops[pointer - 1];

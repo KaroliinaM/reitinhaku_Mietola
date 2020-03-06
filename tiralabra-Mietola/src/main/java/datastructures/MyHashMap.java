@@ -9,7 +9,8 @@ import data.Stop;
 import utils.HashFunction;
 
 /**
- * HashMap structure.
+ * HashMap structure. Stores stop objects with a string key
+ *
  * @author k
  */
 public class MyHashMap {
@@ -25,6 +26,12 @@ public class MyHashMap {
         }
     }
 
+    /**
+     * Add an entry to the hashmap
+     *
+     * @param key String
+     * @param value Stop object
+     */
     public void put(String key, Stop value) {
         MyArrayList selected = entries[hasher.polynomialHash(key, n)];
         int entryIndex = getExistingIndex(key, selected);
@@ -35,6 +42,11 @@ public class MyHashMap {
 
     }
 
+    /**
+     * get a stop object that is stored with a specified key
+     * @param key String
+     * @return Stop object
+     */
     public Stop get(String key) {
         MyArrayList entriesWithKey = entries[hasher.polynomialHash(key, n)];
         int entryIndex = getExistingIndex(key, entriesWithKey);

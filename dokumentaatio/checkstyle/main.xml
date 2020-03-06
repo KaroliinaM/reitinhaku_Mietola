@@ -3,8 +3,7 @@
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Data.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/ExecuteQuery.java">
-</file>
-<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/HelloWorld.java">
+<error line="26" severity="warning" message="Wrong order for &apos;java.io.File&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/api/Route.java">
 </file>
@@ -26,7 +25,6 @@
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Connection.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/OptimalRoute.java">
-<error line="88" column="30" severity="warning" message="Name &apos;TravelTime&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/data/Stop.java">
 </file>
@@ -55,10 +53,10 @@
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/routefinder/package-info.java">
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/FinderUI.java">
-<error line="24" severity="warning" message="Wrong order for &apos;javax.swing.ButtonGroup&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="19" severity="warning" message="Wrong order for &apos;javax.swing.ButtonGroup&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/SearchListener.java">
-<error line="17" severity="warning" message="Wrong order for &apos;java.util.HashMap&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="14" severity="warning" message="Wrong order for &apos;javax.swing.JCheckBox&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/ui/package-info.java">
 </file>
@@ -66,7 +64,13 @@
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/HashFunction.java">
 </file>
+<file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/MathFunc.java">
+<error line="62" column="16" severity="warning" message="Name &apos;coeff_1&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck"/>
+<error line="63" column="16" severity="warning" message="Name &apos;coeff_2&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck"/>
+<error line="64" column="16" severity="warning" message="Name &apos;abs_y&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck"/>
+</file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/PerformanceTest.java">
+<error line="14" severity="warning" message="Wrong order for &apos;java.util.Random&apos; import." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
 </file>
 <file name="/home/k/reitinhaku_Mietola/tiralabra-Mietola/src/main/java/utils/package-info.java">
 </file>

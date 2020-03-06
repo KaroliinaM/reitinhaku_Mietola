@@ -35,10 +35,8 @@ public class RouteFinderApp {
             Mapdata maps = new Mapdata();
             DistanceCalculator calculator = new DistanceCalculator();
             MyArrayList stops = new MyArrayList();
-            HashMap<String, Stop> stopNames = new HashMap();
             for (Stop s : stopdata.values()) {
                 stops.insertObject(s);
-                stopNames.put(s.getGtfsId() + " " + s.getName(), s);
             }
             maps.setStops(stops);
             DijkstraRoutefinder dikstrafinder = new DijkstraRoutefinder();
@@ -51,7 +49,7 @@ public class RouteFinderApp {
 
             FinderUI ui = new FinderUI();
             ui.setAlgorithms(dikstrafinder, astarfinder);
-            ui.runUI(stopNames, stops, test);
+            ui.runUI(stops, test);
         }
     }
 

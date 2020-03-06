@@ -16,21 +16,20 @@ import network.Mapdata;
  */
 <span class="fc" id="L17">public class OptimalRoute {</span>
 
-    //private List&lt;Connection&gt; connections = new ArrayList&lt;&gt;();
-<span class="fc" id="L20">    private MyArrayList connections = new MyArrayList();</span>
+<span class="fc" id="L19">    private MyArrayList connections = new MyArrayList();</span>
     Mapdata mapdata;
-<span class="fc" id="L22">    private int travelTime = 0;</span>
-<span class="fc" id="L23">    private int departureTime = 0;</span>
-<span class="fc" id="L24">    private int arrivalTime = 0;</span>
-<span class="fc" id="L25">    private boolean exist = true;</span>
+<span class="fc" id="L21">    private int travelTime = 0;</span>
+<span class="fc" id="L22">    private int departureTime = 0;</span>
+<span class="fc" id="L23">    private int arrivalTime = 0;</span>
+<span class="fc" id="L24">    private boolean exist = true;</span>
 
     public void setMapdata(Mapdata mapdata) {
-<span class="fc" id="L28">        this.mapdata = mapdata;</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L27">        this.mapdata = mapdata;</span>
+<span class="fc" id="L28">    }</span>
 
     public void addConnection(Connection c) {
-<span class="fc" id="L32">        connections.insertObject(c);</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L31">        connections.insertObject(c);</span>
+<span class="fc" id="L32">    }</span>
 
     /**
      * @param departure}
@@ -38,27 +37,27 @@ import network.Mapdata;
      * @param arrival
      */
     public void setTravelTimes(int departure, int arrival) {
-<span class="fc" id="L41">        this.departureTime = departure;</span>
-<span class="fc" id="L42">        this.arrivalTime = arrival;</span>
-<span class="fc" id="L43">        this.travelTime = arrivalTime - departureTime;</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L40">        this.departureTime = departure;</span>
+<span class="fc" id="L41">        this.arrivalTime = arrival;</span>
+<span class="fc" id="L42">        this.travelTime = arrivalTime - departureTime;</span>
+<span class="fc" id="L43">    }</span>
 
     public int getTravelTime() {
-<span class="fc" id="L47">        return travelTime;</span>
+<span class="fc" id="L46">        return travelTime;</span>
     }
 
     public MyArrayList getConnections() {
         //Collections.reverse(connections);
-<span class="fc" id="L52">        connections.reverseObject();</span>
-<span class="fc" id="L53">        return connections;</span>
+<span class="fc" id="L51">        connections.reverseObject();</span>
+<span class="fc" id="L52">        return connections;</span>
     }
 
     public void setNonexistent() {
-<span class="nc" id="L57">        this.exist = false;</span>
-<span class="nc" id="L58">    }</span>
+<span class="nc" id="L56">        this.exist = false;</span>
+<span class="nc" id="L57">    }</span>
 
     public boolean getIfExists() {
-<span class="nc" id="L61">        return exist;</span>
+<span class="nc" id="L60">        return exist;</span>
     }
 
     /**
@@ -67,40 +66,40 @@ import network.Mapdata;
      * @return html String.
      */
     public String toUiString() {
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (!exist) {</span>
-<span class="nc" id="L71">            return &quot;Reittiä ei ole&quot;;</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (!exist) {</span>
+<span class="nc" id="L70">            return &quot;Reittiä ei ole&quot;;</span>
         }
-<span class="fc" id="L73">        connections.reverseObject();</span>
-<span class="fc" id="L74">        String ret = &quot;&lt;html&gt;&quot;;</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">        for (int i = 0; i &lt; connections.returnObjLength(); i++) {</span>
-<span class="fc" id="L76">            Connection c = (Connection) connections.getObject(i);</span>
-<span class="fc" id="L77">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; &quot;</span>
-<span class="fc" id="L78">                    + mapdata.getStop(c.getDepartureStop()).getName() + &quot; klo &quot; + </span>
-<span class="fc" id="L79">                    toTime(c.getDepartureTime()) + &quot; - &quot; + c.getTargetStop()</span>
-<span class="fc" id="L80">                    + &quot; &quot; + mapdata.getStop(c.getTargetStop()).getName() + &quot; klo &quot; + </span>
-<span class="fc" id="L81">                    toTime(c.getArrivalTime()) + &quot;] reitti: &quot;</span>
-<span class="fc" id="L82">                    + c.getRouteName() + &quot;&lt;br&gt; &quot;;</span>
+<span class="fc" id="L72">        connections.reverseObject();</span>
+<span class="fc" id="L73">        String ret = &quot;&lt;html&gt;&quot;;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        for (int i = 0; i &lt; connections.returnObjLength(); i++) {</span>
+<span class="fc" id="L75">            Connection c = (Connection) connections.getObject(i);</span>
+<span class="fc" id="L76">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; &quot;</span>
+<span class="fc" id="L77">                    + mapdata.getStop(c.getDepartureStop()).getName() + &quot; klo &quot;</span>
+<span class="fc" id="L78">                    + toTime(c.getDepartureTime()) + &quot; - &quot; + c.getTargetStop()</span>
+<span class="fc" id="L79">                    + &quot; &quot; + mapdata.getStop(c.getTargetStop()).getName() + &quot; klo &quot;</span>
+<span class="fc" id="L80">                    + toTime(c.getArrivalTime()) + &quot;] reitti: &quot;</span>
+<span class="fc" id="L81">                    + c.getRouteName() + &quot;&lt;br&gt; &quot;;</span>
         }
-<span class="fc" id="L84">        ret += &quot; on time &quot; + toTime(travelTime) + &quot;&lt;/html&gt;&quot;;</span>
-<span class="fc" id="L85">        return ret;</span>
+<span class="fc" id="L83">        ret += &quot; on time &quot; + toTime(travelTime) + &quot;&lt;/html&gt;&quot;;</span>
+<span class="fc" id="L84">        return ret;</span>
     }
 
-    public String toTime(int TravelTime) {
-<span class="fc" id="L89">        System.out.println(&quot;time &quot; + TravelTime);</span>
-<span class="fc" id="L90">        int hours = TravelTime / 3600;</span>
-<span class="fc" id="L91">        int minutes = (TravelTime % 3600) / 60;</span>
-<span class="fc" id="L92">        return hours + &quot;:&quot; + minutes;</span>
+    public String toTime(int travelTime) {
+<span class="fc" id="L88">        int hours = travelTime / 3600;</span>
+<span class="fc" id="L89">        int minutes = (travelTime % 3600) / 60;</span>
+<span class="fc" id="L90">        return hours + &quot;:&quot; + minutes;</span>
     }
 
+    @Override
     public String toString() {
-<span class="fc" id="L96">        connections.reverseObject();</span>
-<span class="fc" id="L97">        String ret = &quot;&quot;;</span>
-<span class="fc bfc" id="L98" title="All 2 branches covered.">        for (int i = 0; i &lt; connections.returnObjLength(); i++) {</span>
-<span class="fc" id="L99">            Connection c = (Connection) connections.getObject(i);</span>
-<span class="fc" id="L100">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; - &quot; + c.getTargetStop() + &quot;] &quot;;</span>
+<span class="fc" id="L95">        connections.reverseObject();</span>
+<span class="fc" id="L96">        String ret = &quot;&quot;;</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        for (int i = 0; i &lt; connections.returnObjLength(); i++) {</span>
+<span class="fc" id="L98">            Connection c = (Connection) connections.getObject(i);</span>
+<span class="fc" id="L99">            ret += &quot; [&quot; + c.getDepartureStop() + &quot; - &quot; + c.getTargetStop() + &quot;] &quot;;</span>
         }
-<span class="fc" id="L102">        ret += &quot; on time &quot; + travelTime;</span>
-<span class="fc" id="L103">        return ret;</span>
+<span class="fc" id="L101">        ret += &quot; on time &quot; + travelTime;</span>
+<span class="fc" id="L102">        return ret;</span>
     }
 
 }

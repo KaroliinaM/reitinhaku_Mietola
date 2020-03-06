@@ -46,27 +46,27 @@ import data.Stop;
     public Stop poll() {
 <span class="fc" id="L47">        Stop closest = stops[1];</span>
 <span class="fc" id="L48">        stops[1] = stops[pointer - 1];</span>
-<span class="fc" id="L49">        int place = 1;</span>
+<span class="fc" id="L49">        pointer--;</span>
+<span class="fc" id="L50">        int place = 1;</span>
         while (true) {
-<span class="fc bfc" id="L51" title="All 2 branches covered.">            if (pointer &lt;= place * 2) {</span>
-<span class="fc" id="L52">                break;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            if (pointer &lt;= place * 2) {</span>
+<span class="fc" id="L53">                break;</span>
             }
             int minPlace;
-<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (pointer == place * 2 + 1) {</span>
-<span class="fc" id="L56">                minPlace = place * 2;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (pointer == place * 2 + 1) {</span>
+<span class="fc" id="L57">                minPlace = place * 2;</span>
             } else {
-<span class="fc bfc" id="L58" title="All 2 branches covered.">                minPlace = stops[place * 2].getEstimate() &lt; stops[place * 2 + 1].getEstimate()</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                minPlace = stops[place * 2].getEstimate() &lt; stops[place * 2 + 1].getEstimate()</span>
                         ? place * 2 : place * 2 + 1;
             }
-<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (stops[minPlace].getEstimate() &gt;= stops[place].getEstimate()) {</span>
-<span class="fc" id="L62">                break;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            if (stops[minPlace].getEstimate() &gt;= stops[place].getEstimate()) {</span>
+<span class="fc" id="L63">                break;</span>
             }
-<span class="fc" id="L64">            Stop apu = stops[place];</span>
-<span class="fc" id="L65">            stops[place] = stops[minPlace];</span>
-<span class="fc" id="L66">            stops[minPlace] = apu;</span>
-<span class="fc" id="L67">            place = minPlace;</span>
-<span class="fc" id="L68">        }</span>
-<span class="fc" id="L69">        pointer--;</span>
+<span class="fc" id="L65">            Stop apu = stops[place];</span>
+<span class="fc" id="L66">            stops[place] = stops[minPlace];</span>
+<span class="fc" id="L67">            stops[minPlace] = apu;</span>
+<span class="fc" id="L68">            place = minPlace;</span>
+<span class="fc" id="L69">        }</span>
 <span class="fc" id="L70">        return closest;</span>
     }
 
