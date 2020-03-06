@@ -9,12 +9,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import datastructures.MyArrayList;
 import network.Mapdata;
-import org.mockito.Mockito;
 
 /**
  *
@@ -58,7 +58,6 @@ public class OptimalRouteTest {
         for (int i = 0; i < reitti.returnObjLength(); i++) {
             assertEquals(reitti.getObject(i), connections.get(i));
         }
-        // assertEquals(reitti, connections);
         assertEquals(optimalroute.getTravelTime(), 80);
     }
 

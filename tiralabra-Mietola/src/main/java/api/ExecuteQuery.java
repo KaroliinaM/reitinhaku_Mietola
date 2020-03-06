@@ -41,7 +41,6 @@ public class ExecuteQuery {
         System.out.println(sanoma);
         if (datafile.exists()) {
             HashMap<String, Stop> st = (HashMap<String, Stop>) readObjectFromFile(filepath);
-            //      System.out.println(st.get("HSL:1293150").getConnections().size());
             return st;
         } else {
             saveStopData();
@@ -103,11 +102,7 @@ public class ExecuteQuery {
                     previous = s;
                 }
             }
-            //    i--;
-            //    if(i<0) break;
         }
-        //    System.out.println(stops.get("HSL:1293150").getConnections().size());
-        //    System.out.println(stops.get("HSL:2643225").getConnections().size());
         System.out.println("saving...");
         writeObjectToFile(stops);
     }

@@ -10,26 +10,20 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.*;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import api.ExecuteQuery;
-import data.Stop;
-import datastructures.MyArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import network.Mapdata;
+import data.Stop;
+import datastructures.MyArrayList;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
-import utils.DistanceCalculator;
 import utils.PerformanceTest;
 
 /**

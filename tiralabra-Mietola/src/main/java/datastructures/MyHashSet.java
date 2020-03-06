@@ -8,7 +8,7 @@ package datastructures;
 import utils.HashFunction;
 
 /**
- *
+ * A hashset implementation.
  * @author k
  */
 public class MyHashSet {

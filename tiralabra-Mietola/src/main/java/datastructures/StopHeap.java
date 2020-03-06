@@ -67,7 +67,6 @@ public class StopHeap {
             stops[minPlace] = apu;
             place = minPlace;
         }
-       // pointer--;
         return closest;
     }
 

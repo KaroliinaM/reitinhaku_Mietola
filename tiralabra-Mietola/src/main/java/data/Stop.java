@@ -24,7 +24,6 @@ public class Stop implements Comparable<Stop>, Serializable {
     private double lon;
     private String zoneId;
     MyArrayList connections = new MyArrayList();
-//    List<Connection> connections = new ArrayList<>();
     private int timeEstimate;
     private Connection previous;
     private int estimatedDistance = -1;

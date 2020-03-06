@@ -17,7 +17,6 @@ import utils.HashFunction;
  */
 public class Mapdata {
 
-    //private Map<String, Stop> stops = new HashMap();
     private MyHashMap stops = new MyHashMap(new HashFunction());
 
     /**

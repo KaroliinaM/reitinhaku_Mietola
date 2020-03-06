@@ -8,7 +8,7 @@ package datastructures;
 import java.io.Serializable;
 
 /**
- * Implementation of a ArrayList. Cam be used to store Strings, Integers and
+ * Implementation of a ArrayList. Can be used to store Strings, Integers and
  * Objects
  *
  * @author k

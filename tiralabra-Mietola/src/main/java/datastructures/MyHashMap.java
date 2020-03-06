@@ -25,7 +25,6 @@ public class MyHashMap {
         }
     }
 
-    // refactor
     public void put(String key, Stop value) {
         MyArrayList selected = entries[hasher.polynomialHash(key, n)];
         int entryIndex = getExistingIndex(key, selected);
@@ -37,7 +36,6 @@ public class MyHashMap {
     }
 
     public Stop get(String key) {
-        //   MyArrayList entriesWithKey= entries[hashString(key)];
         MyArrayList entriesWithKey = entries[hasher.polynomialHash(key, n)];
         int entryIndex = getExistingIndex(key, entriesWithKey);
         if (entryIndex < 0) {

@@ -16,7 +16,6 @@ import network.Mapdata;
  */
 public class OptimalRoute {
 
-    //private List<Connection> connections = new ArrayList<>();
     private MyArrayList connections = new MyArrayList();
     Mapdata mapdata;
     private int travelTime = 0;
@@ -85,12 +84,13 @@ public class OptimalRoute {
         return ret;
     }
 
-    public String toTime(int TravelTime) {
-        int hours = TravelTime / 3600;
-        int minutes = (TravelTime % 3600) / 60;
+    public String toTime(int travelTime) {
+        int hours = travelTime / 3600;
+        int minutes = (travelTime % 3600) / 60;
         return hours + ":" + minutes;
     }
 
+    @Override
     public String toString() {
         connections.reverseObject();
         String ret = "";

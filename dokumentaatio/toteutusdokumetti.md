@@ -32,7 +32,7 @@ Math.atan2 -funktio jäi implementoimatta. Aika loppui kesken, ja se oli hankala
 
 Ohjelmassa on jokin virhe, koska aina välillä Dijkstran algoritmi antaa pidemmän polun kuin A*. Epäilen että liittyy ainakin osittain kekoon, koska Javan oma toteutus toimii toisin kuin omani. En saa tilannetta keossa toistettua yksikkötestillä, ja se ilmenee muutenkin n. kolmessa tapauksessa sadasta. Ongelma ilmenee lisäksi myös Javan kekoa käyttäessä, mutta eri tapauksissa.
 
-muut parannusehdotukset liittyisivät toimintaan reittioppaana, datan hakua voisi tehostaa sekä käyttöliittymä voisi olla parempi. 
+muut parannusehdotukset liittyisivät toimintaan reittioppaana, datan hakua voisi tehostaa sekä käyttöliittymä voisi olla parempi. Lisäksi tarkoitus oli refaktoroida hakualgoritmit, niissä on nyt melko paljon toistoa. Aika loppui kesken.
 
 ## Lähteet
 

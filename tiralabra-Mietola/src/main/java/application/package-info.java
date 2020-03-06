@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 /**
- * The main application for the program.
+ * The main application for the program. The classes that start the program are here.
  */
 package application;

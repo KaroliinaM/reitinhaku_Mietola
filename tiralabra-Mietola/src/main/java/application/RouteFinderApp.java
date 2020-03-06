@@ -21,10 +21,7 @@ import utils.DistanceCalculator;
 import utils.PerformanceTest;
 
 /**
- * step 1: Comment all the other code out, except the lines 34 and 35, this will
- * download the data from digitransit api, and save it locally.. Takes about 10
- * minutes, sorry :( step 2: Comment the line 35 out, and uncomment the rest.
- * The data is now loaded from a file. Should work from ui now
+ * The application, that collects the data and starts the program.
  *
  * @author k
  */
@@ -32,13 +29,11 @@ public class RouteFinderApp {
 
     public void run() {
         ExecuteQuery query = new ExecuteQuery();
-        //   query.saveStopData();
         Map<String, Stop> stopdata = query.loadStopData();
         if (stopdata != null) {
             System.out.println("haettu");
             Mapdata maps = new Mapdata();
             DistanceCalculator calculator = new DistanceCalculator();
-            //    List<Stop> stops = new ArrayList<>(stopdata.values());
             MyArrayList stops = new MyArrayList();
             HashMap<String, Stop> stopNames = new HashMap();
             for (Stop s : stopdata.values()) {
@@ -53,14 +48,10 @@ public class RouteFinderApp {
             astarfinder.setMapdata(maps);
             PerformanceTest test = new PerformanceTest();
             test.setData(dikstrafinder, astarfinder, stops);
-            //   test.run();
 
             FinderUI ui = new FinderUI();
             ui.setAlgorithms(dikstrafinder, astarfinder);
             ui.runUI(stopNames, stops, test);
-            // OptimalRoute route=astarfinder.search("HSL:6050208", "HSL:9204213", 0); 
-            // OptimalRoute route=dikstrafinder.search("HSL:6050208", "HSL:9204213", 0);
-            // System.out.println(route.toString());**/
         }
     }
 

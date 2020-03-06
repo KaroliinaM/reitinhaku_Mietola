@@ -7,17 +7,17 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 import data.Connection;
 import data.OptimalRoute;
 import data.Stop;
 import datastructures.MyArrayList;
-import java.util.HashMap;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
@@ -100,6 +100,5 @@ public class SearchListener implements ActionListener {
             }
             outputList.setText(route.toUiString());
         }
-        outputList.setText("Syötä lähtö -ja kohdepysäkit");
     }
 }

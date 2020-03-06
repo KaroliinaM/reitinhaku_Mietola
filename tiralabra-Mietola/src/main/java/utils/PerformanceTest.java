@@ -5,16 +5,17 @@
  */
 package utils;
 
-import java.util.Random;
-import data.Connection;
-import data.OptimalRoute;
-import data.Stop;
-import datastructures.MyArrayList;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Random;
+import data.Connection;
+import data.OptimalRoute;
+import data.Stop;
+import datastructures.MyArrayList;
 import network.Mapdata;
 import routefinder.AstarRouteFinder;
 import routefinder.DijkstraRoutefinder;
