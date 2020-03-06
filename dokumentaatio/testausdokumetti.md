@@ -14,6 +14,8 @@ Yksikkötestit voidaan toistaa junitin kautta ja ne ajetaan myös buildissa. Suo
 
 ## testauksen tulokset
 
+Algoritmien erot ovat hyvin satunnaisia, joissakin tapauksissa Dijkstra on nopeami, joissakin A*. Ennen etäisyyttä mittavien matemaattisten funktioiden implementointia A* oli useammilla hauilla nopeampi, mutta funktiot hidastivat algoritmin toimintaa selvästi. Ero ei kuitenkaan ole suuri eikä ole huomattavissa reittioppaan käytössä.
+
 Alla on graafinen esitys sekä Dijkstran algoritmista että A*:sta, jossa hakuihin käytetty aika on järjestetty etäisyyksittäin
 
 ![dijkstra etäisyyksittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/dijkstra_etaisyys.png)
@@ -28,7 +30,7 @@ Näissä graafeissa hakuihin kuluneet ajat on järjestetty pysäkeittäin
 
 ![A* pysäkeittäin](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/astar_pysakit.png)
 
-Näissä on selvästi näkysvissä se, että pysäkkimääränn kasvaessa myös matka-aika kasvaa, vaikka hajontaa on näissäkin reippaasti
+Näissä on näkyvissä se, että pysäkkimääränn kasvaessa myös matka-aika kasvaa, vaikka hajontaa on näissäkin reippaasti.
 
 Matkan kestolla ei ollut huoomattavia eroja, Dijkstran hakema reitti erosi A* hakemasta 11 testatuista 94 reitistä
 
