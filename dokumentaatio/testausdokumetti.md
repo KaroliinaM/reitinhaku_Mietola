@@ -36,7 +36,9 @@ Matkan kestolla ei ollut huoomattavia eroja, Dijkstran hakema reitti erosi A* ha
 
 Lopuksi vielä Dijkstra ja A* samassa graafissa
 
-![Dikstra vs A*](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/astar_pysakit.png)
+![Dikstra vs A*](https://github.com/KaroliinaM/reitinhaku_Mietola/blob/master/dokumentaatio/kuvat/dikstra_vs_astar.png)
+
+Pisimmät hakuajat ovat A* mutta nopeimmissa on melko tasaista.
 
 
 
