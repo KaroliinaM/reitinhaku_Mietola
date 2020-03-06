@@ -7,7 +7,10 @@ Huomasin bugin sovelluksessa: suorituskykytestejä tehdessäni dijkstrasta tulee
 Muutin a*:a tehokkaammaksi, nyt näyttää paremmalta. Yritin inplementoida siihen myös funktioita, onnistui arctania lukuun ottamatta. Täydentelin myös dokumentaatiota sekä lisäsin javadoceja. 
 
 tiistai 5h
+
 keskiviikko 8h
+
 torstai 6h
+
 perjantai 11h
 
